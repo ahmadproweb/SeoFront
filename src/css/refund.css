@@ -1,0 +1,45 @@
+.refundPolicy{
+padding-block: 3rem 6rem;
+}
+.textRfund{
+    margin-top: 2rem;
+    margin-inline: auto;
+    width: calc(100% - 30rem);
+}
+.refundPolicy h1{
+    font-size: clamp(1.6rem , 6vw  , 3rem);
+    text-transform: capitalize;
+    text-align: center;
+}
+.refundPolicy h2{
+    font-size: 1.6rem;
+    text-transform: capitalize;
+    font-weight: 700;
+}
+.refundPolicy p{
+    font-size: 1.4rem;
+    text-transform: capitalize;
+    font-weight: 500;
+    margin-block: 1rem;
+    width: calc(100% - 20rem);
+}
+@media (width < 1140px) {
+    .refundPolicy p{
+        width: calc(100% - 0rem);
+    }
+}
+@media (width < 825px) {
+    .textRfund{
+        width: calc(100% - 5rem);
+    }
+}
+    @media (width < 500px) {
+        .refundPolicy{
+            padding-block: 2rem 6rem;
+            }
+    }
+@media (width < 400px) {
+    .textRfund{
+        width: calc(100% - 1rem);
+    }
+}

@@ -1,0 +1,93 @@
+.paymentMain{
+    height: 100dvh;
+    padding-top: 5rem; 
+}
+.flex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+    flex-wrap: wrap;
+}
+
+.button1 p{
+    font-size: 2rem;
+    font-weight: 500;
+}
+.flex a{
+    padding: 0.8rem 4rem;
+    border: none;
+    border: 1px solid black;
+    outline: none;
+    font-family: 'Roboto Condensed', sans-serif;
+    color: black;
+    border-radius: 5rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    font-size: 2rem;
+}
+.flex3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14rem;
+}
+.flex2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 4rem;
+    gap: 2rem;
+}
+.flex2 p{
+    text-transform: capitalize;
+    font-size: 2rem;
+    font-weight: 600;
+}
+.flex2 a{
+    border: none;
+    height: 5.6rem;
+    padding-inline: 2.5rem;
+    outline: none;
+    padding-block: 1rem;
+    border-radius: 1rem;
+    background-color: green;
+    font-family: 'Roboto Condensed', sans-serif;
+    color: white;
+    font-weight: 500;
+    text-transform: capitalize;
+    font-size: 1.3rem;
+}
+
+
+
+@media (width < 970px) {
+    .flex3{
+        margin-top: 3rem;
+    }
+    .flex2 {
+        margin-top: 0rem;
+    }
+}
+@media (width < 620px) {
+    .flex{
+        gap: 3rem;
+    }
+    .flex a{
+        padding: 0.8rem 3rem;
+        font-size: 1.5rem;
+    }
+    .flex3{
+        gap: 1rem;
+    }
+ 
+}
+@media (width < 620px) {
+ 
+    .flex3{
+        gap: 1rem;
+        flex-direction: column;
+    }
+ 
+}

@@ -1,0 +1,122 @@
+.allReviews{
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 1rem;
+    margin-top: 4rem;
+    align-items: center;
+    margin-bottom: 10rem;
+    gap: 2rem;
+}
+.reviews{
+    width: 35rem;
+    height: 20em;
+    max-height: 25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.mainSlider{
+    position: relative;
+    overflow: hidden !important;
+}
+.slider3::before,
+.slider3::after {
+    content: "";
+    height: 100%;
+    position: absolute;
+    width: 0%;
+    z-index: 1;
+    background: -webkit-gradient(linear, left top, right top, from(white), to(rgba(255, 255, 255, 0.992)));
+    background: -o-linear-gradient(left, white 0%, rgba(255, 255, 255, 0.992) 100%);
+    background: linear-gradient(to right, white 0%, rgba(255, 255, 255, 0.992) 100%);
+}
+
+.slider3::before {
+    left: 0;
+    top: 0;
+}
+
+.slider3::after {
+    right: 0;
+    top: 0;
+transform: rotateZ(180deg);
+}
+.sliderTrack3 {
+  display: flex;
+  place-items: center;
+  width: calc(280px * 18);
+  animation: scroll 60s linear infinite;
+}
+
+@keyframes  scroll {
+    0% {
+                transform: translateX(0);
+    }
+  
+    100% {
+                transform: translateX(calc(-250px * 9));
+    }
+  }
+
+
+.flexSlider{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 1rem;
+}
+.firstSlider{
+    display: flex;
+    align-items: center;
+    position: relative;
+    right: 1rem;
+    column-gap: 0.5rem;
+    padding-inline: 0.7rem;
+}
+.firstSlider h2{
+    font-size: 1.3rem;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.flexSlider .img{
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+}
+.flexSlider img{
+    width: 100%;
+    border-radius: 50%;
+    height: 5rem;
+    object-fit: cover;
+}
+.iconsReviews{
+    display: flex;
+    gap: 0.5rem;
+    font-size: 1.3rem;
+}
+.paragraph{
+    font-size: 1.1rem;
+    text-transform: capitalize;
+    text-align: justify;
+}
+.date{
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    opacity: 0.8;
+}
+@media (Width < 992px) {
+    .iconsReviews{
+        margin-top: 1rem;
+        position: relative;
+        right: 1rem;
+    }
+}
+@media (width < 500px) {
+    .paragraph{
+        font-size: 1rem;
+    }
+}

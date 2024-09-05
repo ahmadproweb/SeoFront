@@ -1,0 +1,221 @@
+/* youtube.css */
+:root{
+  --dark-mode-bg: rgba(0, 0, 0, 0.292);
+  --dark-mode-text: #fff;
+  --dark-main-container-liner-1: #152026;  
+  --dark-main-container-liner-2: #18191B;  
+  --dark-mode-nav-bg: #353a3d49;
+  --dark-mode-yellow: #FDB224;
+  --dark-mode-percent-bg : #012237; 
+  --dark-mode-percent-bg-linear-1: #dc7b0c;
+  --dark-mode-percent-bg-linear-2: #fff973 ;
+  --dark-mode-footer-bg: #161D22 ;
+  --dark-mode-footer-btn-text: #bcbcc3 ;
+  --dark-mode-footer-bg-active: #3636367e ;
+  --dark-mode-footer-active-text-clr:  rgba(255, 255, 255, 0.86)  ;
+  --dark-mode-form-popup-bg: #171A1D;
+  --dark-mode-form-popup-btn-bg: rgba(255, 255, 255, 0.036);
+  --dark-mode-click-bg: #27292cb8;
+  --dark-mode-coin-collect: rgba(0, 0, 0, 0.17);
+  --dark-mode-icon-tick: 	#22bb33;
+  --dark-mode-timer-text-color: rgb(234, 64, 64);
+}
+ input[type="file"] {
+  position: relative;
+  bottom: 0rem;
+}
+
+ input[type="file"]::file-selector-button {
+  width: 136px;
+  color: transparent;
+}
+
+/* Faked label styles and icon */
+ input[type="file"]::before {
+  position: absolute;
+  pointer-events: none;
+  top: 10px;
+  left: 16px;
+  height: 20px;
+  width: 20px;
+  content: "";
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230964B0'%3E%3Cpath d='M18 15v3H6v-3H4v3c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-3h-2zM7 9l1.41 1.41L11 7.83V16h2V7.83l2.59 2.58L17 9l-5-5-5 5z'/%3E%3C/svg%3E");
+}
+
+ input[type="file"]::after {
+  position: absolute;
+  pointer-events: none;
+  top: 11px;
+  left: 40px;
+  color: #0964b0;
+  font-size: 1.3rem;
+  content: "Upload File";
+}
+
+/* ------- From Step 1 ------- */
+
+/* file upload button */
+ input[type="file"]::file-selector-button {
+  border-radius: 4px;
+  padding: 0 16px;
+  height: 40px;
+  cursor: pointer;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+  margin-right: 16px;
+  transition: background-color 200ms;
+}
+
+/* file upload button hover state */
+ input[type="file"]::file-selector-button:hover {
+  background-color: #f3f4f6;
+}
+
+/* file upload button active state */
+ input[type="file"]::file-selector-button:active {
+  background-color: #e5e7eb;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(223, 7, 7, 0.5);
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+.youtubeFormFill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.youtubeFormFill h1{
+  color: white;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+.CrossIcons {
+  font-size: 2.3rem;
+  cursor: pointer;
+  color: var(--dark-mode-footer-btn-text) ;
+}
+.mainPopup{
+  background-color: rgba(0, 0, 0, 0.496);
+  height: 100dvh;
+  width: 100dvw;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  right: 0%;
+
+  z-index: 2;
+}
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.108);
+  padding: 4rem 3rem;
+  height: 55rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  z-index: 1001;
+  color: var( --dark-mode-footer-btn-text);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 50rem;
+}
+.popup button{
+  margin-top: 1rem;
+}
+.inputYoutube{
+  margin-top: 2rem;
+}
+.inputYoutube label {
+  font-size: 2rem;
+  text-transform: capitalize;
+  color: white;
+}
+
+.inputYoutube input,
+.inputYoutube textarea {
+  border: 1px solid white;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  outline: none;
+  font-size: 1.4rem;
+  height: 3.4rem;
+  line-height: 1.25rem;
+
+  background-color: var(--dark-mode-nav-bg);
+  margin-top: 1.4rem;
+  color: var(--dark-mode-text);
+  padding: 0.25rem 0.5rem;
+padding-inline: 1rem;
+  width: 100%;
+  transition: all 0.25s;
+}
+.inputYoutube input::placeholder{
+color: var(	--dark-mode-footer-btn-text);
+font-size: 1.2rem;
+text-transform: capitalize;
+}
+
+.inputYoutube button {
+  position: relative;
+  border: none;
+  outline: none;
+  background: #FDB224;
+  color: aliceblue;
+  padding: 1rem 2.4rem;
+  border-radius: 0.5rem;
+  text-transform: capitalize;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.MainEmail{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+}
+.ChangeEmail{
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+  /* align-items: center; */
+  margin-top: 1.5rem;
+}
+.ChangeEmail h1{
+  font-size: 2rem;
+  color: white;
+  font-weight: 700;
+}
+.ChangeEmail h2{
+  font-size: 1.8rem;
+  color: white;
+  margin-top: 0.5rem;
+  font-weight: 500;
+  text-transform: lowercase;
+}
+.ChangeEmail button{
+background-color: black;
+border-radius: 0.5rem;
+font-size: 1.7rem;
+width: calc(100% - 60%);
+font-weight: 700;
+padding: 1rem 1.5rem;
+color: white;
+}
+
+
+

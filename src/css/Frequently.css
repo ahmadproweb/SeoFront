@@ -1,0 +1,132 @@
+
+.Helo{
+  display: flex;
+  padding-inline: 1rem;
+  padding-bottom: 1rem;
+}
+.Helo img{
+  width: 30% !important;
+  margin-inline: auto;
+  height: 100%;
+  margin-block: auto;
+  background: transparent;
+}
+.row input {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+
+.row {
+  margin-top: 5rem;
+}
+
+.row .col:last-child {
+  margin-left: 1em;
+}
+
+.tabs {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.tab {
+  width: calc(100% - 20rem);
+  margin-inline: auto;
+  color: black;
+  overflow: hidden;
+}
+@media (width < 1149px) {
+  .tab {
+  width: calc(100% - 8rem);
+}
+}
+.tab-label {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  border: 1px solid black;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 1.2rem;
+  font-size: 1.3rem;
+  /* Icon */
+}
+.tab-label::after {
+  content: "❯";
+  width: 1em;
+  height: 1em;
+  text-align: center;
+  transition: all 0.1s;
+}
+.tab-content {
+  max-height: 0;
+  color: #2c3e50;
+  transition: all 0.1s;
+}
+.tab-content  h2{
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+.row input:checked ~ .tab-label{
+    border-bottom: none;
+
+}
+.row input:checked + .tab-label::after {
+    transform: rotate(90deg);
+}
+.row input:checked ~ .tab-content {
+    max-height: 100%;
+    padding-inline: 2rem;
+    padding-bottom: 1rem;
+  border: 1px solid black;
+  border-top: none;
+}
+
+@media (width < 992px) {
+  .Helo{
+    justify-content: center;
+    padding-inline: 0rem;
+    flex-direction: column-reverse;
+  }
+  .tab {
+    width: calc(100% - 22rem);
+  }
+  .frequently img{
+    width: 50% !important;
+  }
+}
+@media (width < 800px) {
+ 
+  .tab {
+    width: calc(100% - 15rem);
+  }
+}
+@media (width < 700px) {
+ 
+  .tab {
+    width: calc(100% - 8rem);
+  }
+  .tab-label {
+    padding: 1rem 1rem;
+  }
+}
+@media (width < 653px) {
+  .tab {
+    width: calc(100% - 3rem);
+  }
+
+}
+@media (width < 500px) {
+  .row {
+    margin-top: 2rem;
+  }
+  .tab {
+    width: calc(100% - 2rem);
+  }
+  .tab-label {
+    padding: 1rem 1rem;
+    font-size: 1.1rem;
+  }
+}

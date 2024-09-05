@@ -1,0 +1,159 @@
+
+:root {
+  --color-bg: #EEEDEB;
+  --color-title: #0E1C4E;
+  --color-summary-1: #FFF6EE;
+  --color-summary-1-highlight: #FFC48B;
+  --color-summary-2: #FAFAFF;
+  --color-summary-2-highlight: #B4B3FF;
+  --color-summary-3: #FFF0F3;
+  --color-summary-3-highlight: #FFB3C0;
+}
+
+
+.Helo {
+  /* overflow: auto; */
+  width: 100%;
+}
+
+.cardAccordin {
+  background: white;
+  padding: 4rem 4rem;
+  margin-top: 25px;
+  
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  border-radius: 4px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  width: calc(100% - 30%);
+  margin-inline: auto;
+}
+.cardAccordin::marker{
+  list-style-type: none;
+}
+.cardAccordin::selection{
+  list-style-type: none;
+}
+.cardAccordin details {
+  display: flex;
+  border-radius: 5px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.05);
+  border-left: 15px solid gray;
+  padding: 0.3rem;
+  position: relative;
+}
+
+details summary { 
+  
+}
+summary:after {
+  background: green;
+  border-radius: 50%;
+  content: "+";
+  color: #fff;
+  font-size: 3rem;
+  font-weight: bold;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+details[open] summary:after {
+  content: "-";
+}
+.cardAccordin details summary{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-between;
+  font-size: 1.6rem;
+  color: var(--color-title);    
+  padding: 2rem 1rem;
+}
+summary span{
+  width: calc(100% - 3%);
+}
+.cardAccordin details  p{
+    font-size: 1.5rem;
+    padding-inline: 1rem;
+    margin-top: 0.5rem;
+}
+.cardAccordin details {
+  /* background: rgba(0, 128, 0, 0.321); */
+  border-left-color: green;
+}
+
+.IoIosArrowDown , .RxCross2{
+    font-size: 2.5rem;
+    font-weight: 700;
+    background-color: green;
+    border-radius: 50%;
+    color: white
+}
+
+.cardAccordin details summary {
+  font-weight: 700;
+}
+
+@media (width < 992px) {
+  .cardAccordin {
+    width: calc(100% - 16rem);
+  }
+}
+@media (width < 800px) {
+  .cardAccordin {
+    padding: 2rem ;
+  }
+  .cardAccordin {
+    width: calc(100% - 16rem);
+  }
+  .cardAccordin details  p{
+    font-size: 1.1rem;
+}
+.cardAccordin details summary {
+  font-weight: 600;
+}
+.cardAccordin details summary{
+  font-size: 1.4rem;
+}
+.cardAccordin details {
+  padding: 0rem;
+}
+}
+@media (width < 600px) {
+  .cardAccordin {
+    padding: 2rem 0.3rem ;
+  }
+  .cardAccordin {
+    width: calc(100% - 3rem);
+  }
+  .cardAccordin details  p{
+    font-size: 1.1rem;
+    margin-left: 0rem;
+}
+.cardAccordin details summary {
+  font-weight: 500;
+}
+.cardAccordin details summary{
+  font-size: 1.3rem;
+}
+.cardAccordin details {
+  border-left: 9px solid green;
+}
+}
+@media (width < 450px) {
+  .cardAccordin {
+    padding: 1rem  0rem;
+  }
+  .cardAccordin {
+    width: calc(100% - 1rem);
+  }
+.cardAccordin details summary{
+  font-size: 1.2rem;
+}
+}

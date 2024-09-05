@@ -1,0 +1,126 @@
+.listenBetter {
+    background-color: var(--green);
+    margin-top: 7rem;
+    display: grid;
+    padding: 6rem;
+    padding-bottom: 10rem;
+    column-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(430px, 1fr));
+}
+
+.imgListen img {
+    width: 60rem;
+    object-fit: cover;
+}
+
+.listenBetter .textListen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.textListen span {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-size: 1.4rem;
+    letter-spacing: 0.1rem;
+    color: white;
+}
+.textListen a{
+  color: white;
+  text-decoration: none;
+}
+.textListen h3 {
+    font-size: 2.4rem;
+    margin-top: 1.2rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    color: white;
+}
+
+.textListen p {
+    margin-top: 1.4rem;
+    text-align: justify;
+    font-size: 1.3rem;
+    line-height: 2.5rem;
+    color: rgba(255, 255, 255, 0.761);
+}
+
+.textListen button {
+    margin-top: 1.5rem;
+    padding: 0.8rem 1rem;
+    border: none;
+    background-color: red;
+    width: 10rem;
+    outline: none;
+    color: white;
+    font-weight: 500;
+    text-transform: capitalize;
+    font-size: 1.2rem;
+}
+
+@media (width < 1308px) {
+    .listenBetter {
+        padding: 3rem;
+        padding-bottom: 5rem;
+        column-gap: 2rem;
+        align-items: center;
+    }
+
+
+
+    .textListen h3 {
+        font-size: 2.3rem;
+        margin-top: 1rem;
+
+    }
+
+    .textListen p {
+        margin-top: 1rem;
+
+    }
+
+    .textListen button {
+        margin-top: 1rem;
+    }
+}
+
+@media (width < 992px) {
+ 
+    .imgListen img {
+        width: 100%;
+        height: 35rem;
+    }
+
+    .listenBetter .textListen {
+        margin-top: 3rem;
+        align-items: center;
+    }
+    .textListen p {
+        text-align: center;
+    }
+}
+
+@media (width < 500px) {
+    .listenBetter {
+        padding: 0rem;
+        padding-inline: 1rem;
+        padding-block: 2rem;
+        column-gap: 0rem;
+        grid-template-columns: 1fr;
+    }
+
+    .imgListen img {
+        width: 100%;
+        height: 20rem;
+    }
+
+    .textListen p {
+        margin-top: 1.4rem;
+        text-align: justify;
+        font-size: 1.3rem;
+        line-height: 2rem;
+        color: rgba(255, 255, 255, 0.761);
+    }
+}

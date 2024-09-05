@@ -1,0 +1,388 @@
+.data{
+    padding-block: 0rem 10rem;
+}
+.firstDataSeo img{
+    display: block;
+    position: absolute;
+    top: 2rem;
+}
+.firstDataSeo{
+    margin-bottom: 5rem;
+    height: 100vh;
+    background: url('../images/homePage.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.firstDataSeo img{
+    display: none;
+}
+.firstDataSeo .textMain{
+    padding-top: 10rem;
+    padding-left: 5rem;
+}
+.textMain h3{
+    font-size: 4.5rem;
+    width: 49%;
+    text-transform: capitalize;
+    font-weight: 700;
+}
+@media (width < 1381px) {
+    .textMain h3{
+        font-size: 4rem;
+        width: 45%;
+        min-width: 40%;
+    }
+}
+.textMain p{
+    font-size: 1.5rem;
+    width:50rem;
+    margin-top: 1rem;
+}
+.buttonMain{
+    display: flex;
+    column-gap: 2rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+}
+
+  .search-container {
+    width: 490px;
+    position: relative;
+    margin-top: 4rem;
+  }
+  .search-container img{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 10%;
+    display: block;
+  }
+    .search-container input#search-bar {
+    margin: 0 auto;
+    width: 100%;
+    height: 45px;
+    padding: 0 20px;
+    font-size: 1rem;
+    border: 1px solid #D0CFCE;
+    outline: none;
+  border-radius: 10rem;
+
+  }
+    .search-container input#search-bar:focus {
+    border: 1px solid var( --green);
+    transition: 0.35s ease;
+    color: black;
+  }
+    .search-container input#search-bar:focus::-webkit-input-placeholder {
+    transition: opacity 0.45s ease;
+    opacity: 0;
+  }
+    .search-container input#search-bar:focus::-moz-placeholder {
+    transition: opacity 0.45s ease;
+    opacity: 0;
+  }
+    .search-container input#search-bar:focus:-ms-placeholder {
+    transition: opacity 0.45s ease;
+    opacity: 0;
+  }
+ .servicesSeo{
+    margin-top: 6rem;
+ }
+.mainREl{
+  position: relative;
+  overflow: hidden;
+  margin-top: 2rem;
+}
+.slider2::before,
+.slider2::after {
+    content: "";
+    height: 100%;
+    position: absolute;
+    width: 0%;
+    z-index: 1;
+    background: -webkit-gradient(linear, left top, right top, from(white), to(rgba(255, 255, 255, 0.992)));
+    background: -o-linear-gradient(left, white 0%, rgba(255, 255, 255, 0.992) 100%);
+    background: linear-gradient(to right, white 0%, rgba(255, 255, 255, 0.992) 100%);
+}
+
+.slider2::before {
+    left: 0;
+    top: 0;
+}
+
+.slider2::after {
+    right: 0;
+    top: 0;
+    -webkit-transform: rotateZ(180deg);
+        -ms-transform: rotate(180deg);
+            transform: rotateZ(180deg);
+}
+.sliderTrack {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  place-items: center;
+  width: calc(280px * 18);
+  -webkit-animation: scroll 40s linear infinite;
+          animation: scroll 40s linear infinite;
+}
+
+@-webkit-keyframes scroll {
+  0% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+  }
+
+  100% {
+      -webkit-transform: translateX(calc(-250px * 9));
+              transform: translateX(calc(-250px * 9));
+  }
+}
+
+@keyframes scroll {
+  0% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+  }
+
+  100% {
+      -webkit-transform: translateX(calc(-250px * 9));
+              transform: translateX(calc(-250px * 9));
+  }
+}
+.servicesGrid{
+  padding-inline: 6rem;
+}
+.boxSer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.boxSer p{
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-top: 2rem;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.img{
+    border-radius: 50%;
+    height: 11rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 11rem;
+    background-color: #f3f3f3;
+    position: relative;
+}
+.boxSer img{
+    width: 70%;
+}
+.servicesButton{
+    text-align: center;
+}
+.servicesButton button{
+    padding: 0.8rem 2.5rem;
+    border: none;
+    margin-top: 3rem;
+    background-color: var( --green);
+    outline: none;
+    color: white;
+    border-radius: 0.5rem;
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+    text-transform: capitalize;
+    font-size: 1.2rem;
+}
+
+  @media (width < 1189px) {
+    .firstDataSeo{
+        background-size: contain;
+    }
+    .firstDataSeo .textMain{
+        padding-top: 10rem;
+        padding-left: 4rem;
+    }
+    .textMain h3{
+    width: 45rem;
+        font-size: 3rem;
+    }
+    .textMain p{
+        width: 38rem;
+    }
+    .search-container {
+        width: 350px;
+    margin-top: 3rem;
+      }
+}
+
+@media (width < 992px) {
+    .firstDataSeo{
+        position: relative;
+        background-size: none;
+        background-repeat: none;
+        background: none;
+        display: flex;
+        margin-top: 0rem;
+        margin-bottom: 0rem;
+        flex-direction: row-reverse;
+  border-radius: 0rem;
+  padding-inline: 2rem;
+    }
+   .servicesSeo{
+      margin-top: 4rem;
+   }
+    .firstDataSeo  img{
+        display: block;
+    }
+    .firstDataSeo .textMain{
+        padding-block: 7rem 0rem;
+        padding-left: 0rem;
+        width: 100%;
+    }
+    .textMain h3{
+        font-size: clamp(3rem , 20% , 4rem);
+        width: 60%;
+        text-transform: capitalize;
+        font-weight: 700;
+    }
+    .textMain p{
+        font-size: 1.2rem;
+        width:50%;
+        margin-top: 1rem;
+    }
+    .buttonMain{
+        display: flex;
+        column-gap: 2rem;
+        margin-top: 0rem;
+    }
+    
+      .search-container {
+        width: 490px;
+        position: relative;
+        margin-top: 3rem;
+      }
+      .textSer p{
+        width: 70%;
+        margin-top: 0.6rem;
+     }
+     .mainREl{
+      margin-top: 2rem;
+    }
+     .img{
+      height: 9rem;
+      width: 9rem;
+  }
+}
+@media (width < 728px) {
+    .firstDataSeo img{
+        display: none;
+ 
+    }
+    .firstDataSeo{
+  padding-inline: auto;
+  height: 100%;
+  margin-bottom: 0rem;
+    }
+    .firstDataSeo .textMain{
+        padding-top: 2rem;
+        padding-bottom: 0rem;
+    }
+    .textMain h3{
+        font-size: clamp(3rem , 20% , 4rem);
+        width: min(100%  - 10rem);
+        text-transform: capitalize;
+        font-weight: 700;
+    }
+    .textMain p{
+        font-size: 1.2rem;
+        width:70%;
+        margin-top: 1rem;
+    }
+    .buttonMain{
+        display: flex;
+        column-gap: 2rem;
+        margin-top: 0rem;
+    }
+    
+      .search-container {
+        width: 70%;
+        margin-top: 3rem;
+      }
+      .search-container img{
+        position: absolute;
+        top: -0.8rem;
+        right: 0;
+        width: 5rem;
+        display: block;
+      }
+      .search-container input#search-bar {
+        height: 35px;
+        padding: 0 10px;
+      }
+    
+}
+
+@media (width < 600px) {
+ .servicesGrid{
+  padding-inline: 3rem;
+}
+
+}
+
+@media (width < 500px) {
+    .firstDataSeo img{
+        display: none;
+        position: absolute;
+        top: 0;
+    }
+    .firstDataSeo{
+  padding-inline: 0.4rem;
+
+    }
+    .firstDataSeo .textMain{
+          padding-top: 1rem;
+          padding-bottom: 0rem;
+          padding-left: 1rem;
+    }
+    .textMain h3{
+        font-size: clamp(2.3rem , 20% , 4rem);
+        width: min(100%  - 1rem);
+    }
+    .textMain p{
+        font-size: 1.1rem;
+        width:90%;
+        margin-top: 0.7rem;
+    }
+    .buttonMain{
+        display: flex;
+        column-gap: 2rem;
+        margin-top: 0rem;
+    }
+    
+      .search-container {
+        width: calc(100% - 3rem);
+        margin-top: 3rem;
+      }
+      .textMain .buttonMain button {
+        padding: 0.6rem 1rem;
+        margin-top: 1rem;
+        font-weight: 500;
+        font-size: 1rem;
+      }
+      .search-container img{
+        position: absolute;
+        top: -0.8rem;
+        right: 0;
+        width: 5rem;
+        display: block;
+      }
+      .servicesButton button{
+        padding: 0.7rem 1.8rem;
+        margin-top: 6rem !important;
+        font-size: 1rem;
+    }
+}

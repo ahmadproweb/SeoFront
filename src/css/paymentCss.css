@@ -1,0 +1,211 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
+/* .payment{
+  overflow: hidden;
+} */
+.buttonServicess{
+  width: calc(100% - 0rem);
+  font-weight: 700;
+  display: -ms-grid;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  place-items: center;
+  padding-top: clamp(1rem , 3vw , 3rem);   
+}
+.buttonServicess button , .Payment_text a{
+  font-size: 1.4rem;
+  text-transform: capitalize;
+  position: relative;
+  padding: 0.7rem 2rem;
+  margin-top: 0.7rem;
+  -webkit-transition: 0.3s ease-in-out;
+  -o-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out; 
+}
+.buttonServicess button:hover{
+  border-radius: 2rem;
+  background-color: #F1F1F1;
+}
+.payment-text{
+  text-align: center;
+  /* background-color: red; */
+  padding-inline: 0.4rem;
+  margin-block: clamp(3rem , 5vw ,5rem) 0rem;
+}
+.flex{
+  
+  display: -webkit-box;
+  
+  display: -ms-flexbox;
+  
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.textFlex{
+  /* background-color: pink; */
+  width: clamp(10rem , 100% , 60rem);
+}
+.textFlex  h2{
+  font-size: clamp(1rem , 3vw , 1.7rem);
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.textFlex  p{
+  font-size: clamp(1rem , 3vw , 1.4rem);
+  margin-top: 1.rem;
+}
+.all-payment-Box{
+  /* height: 100%; */
+  display: -ms-grid;
+  display: grid;
+  /* grid-template-columns: repeat(fit-content , minmax(100px)); */
+  grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
+  padding:  0rem clamp(0.2rem , 2vw , 5rem) 7rem;
+  row-gap: 4rem;
+  place-items: center;
+}
+.payment-text a {
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+  text-transform: capitalize;
+  padding: 0.7rem clamp(1rem , 3vw , 3rem);
+position: relative;
+top: 3rem;
+  border-radius: 2rem;
+  border: 2px solid black;
+}
+
+.payment-box{
+  -webkit-box-shadow: rgba(0, 0, 0, 0.189) 0px 4px 12px;
+          box-shadow: rgba(0, 0, 0, 0.189) 0px 4px 12px;
+  border-radius: 2rem;
+  width: 30rem;
+  height: 45rem;
+  margin-top: 8rem;
+  padding-block: 3rem;
+}
+.payment-box input{
+  outline: none;
+  padding: 1rem min(20vh,2rem);
+  border: 1px solid rgba(0, 0, 0, 0.379);
+  border-radius: 2rem;
+  -webkit-transition: 300ms ease;
+  -o-transition: 300ms ease;
+  transition: 300ms ease;
+}
+.payment input:focus{
+  border-color: black;
+}
+.payment-box input::-webkit-input-placeholder{
+  font-size: 1rem;
+  font-weight: 600;
+  color: black;
+}
+.payment-box input::-moz-placeholder{
+  font-size: 1rem;
+  font-weight: 600;
+  color: black;
+}
+.payment-box input:-ms-input-placeholder{
+  font-size: 1rem;
+  font-weight: 600;
+  color: black;
+}
+.payment-box input::-ms-input-placeholder{
+  font-size: 1rem;
+  font-weight: 600;
+  color: black;
+}
+.payment-box input::placeholder{
+  font-size: 1rem;
+  font-weight: 600;
+  color: black;
+}
+.payment-box img{
+  width: 50%;
+  /* background: red; */
+  height: 20%;
+  -webkit-transform: translateX(50%);
+      -ms-transform: translateX(50%);
+          transform: translateX(50%);
+}
+.Payment_text{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.Payment_text h3{
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.Payment_text h3 > span{
+  font-weight: 400;
+}
+.Payment_text > p{
+  font-size: clamp(0.9rem , 3vw , 1.5rem);
+  color: rgb(234, 57, 57);
+  font-weight: 900;
+  text-transform: capitalize;
+}
+.Payment_text a{
+  border-radius: 2rem;
+  background-color: #F1F1F1;
+  padding: 0.4rem 3rem;
+  color: black;
+  font-weight: 500;
+  letter-spacing: 0.2rem;
+}
+.all-payment-Box :is(p , input , a , h3){
+  margin-top: 2rem;
+}
+@media (Width < 1250px) {
+  .flex{
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack:center;
+        -ms-flex-pack:center;
+            justify-content:center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+@media (Width < 451px) {
+  .payment-box{
+    margin-left: -5rem;
+  }
+  .buttonServicess{
+
+      width: calc(100% - 0rem);
+  }
+  .buttonServicess{
+
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+
+     
+  }
+  .buttonServicess button{
+      font-size: 1.1rem;
+      padding: 0.5rem 1rem;
+  }
+
+}

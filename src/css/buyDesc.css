@@ -1,0 +1,272 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
+.upText{
+  /* background-color: red; */
+  padding: 2rem clamp(1rem , 3vw , 7rem);
+}
+.upText h2{
+  /* background-color: pink; */
+  font-size: clamp(2rem , 3vw , 2.5rem);
+  font-weight: 500;
+  text-transform: capitalize;
+  letter-spacing: 0.1rem;
+  width: clamp(25rem , 100% , 40rem);
+}
+.upText p{
+  margin-top: 3rem;
+  /* background-color: aqua; */
+  font-size: clamp(1rem , 3vw ,1.4rem);
+  width: clamp(25rem , 100% , 60rem);
+}
+.smallText{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: clamp(25rem , 100% , 70rem);
+  margin-top: 3rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  /* background-color: aquamarine; */
+}
+.smallText .small1{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.small1 h3::before{
+  position: relative;
+  top: 0;
+  right: clamp(2rem , 3vw ,4rem);
+  content: "";
+  border-left: 2px solid black;
+  opacity: 0.1;
+}
+
+.small1 h3{
+  font-size: clamp(1rem , 3vw , 2rem);
+  font-weight: 600;
+  text-transform: capitalize;
+  letter-spacing: 0.2rem;
+}
+.small1 strong{
+  font-size: clamp(1rem , 3vw , 1.5rem);
+  font-weight: 400;
+}
+@media (width < 500px) {
+  .small1 h3::before{
+    display: none;
+  }
+  .small1 h3{
+    font-weight: 400;
+    text-transform: capitalize;
+    letter-spacing: 0rem;
+  }
+  .small1 strong{
+    font-weight: 400;
+    font-size: 0.9rem;
+    margin-top: 0.8rem;
+  }
+  .upText{
+    padding: 0rem clamp(1rem , 3vw , 7rem);
+  }
+}
+:root {
+  --primary: #227093;
+  --secondary: #ff5252;
+  --background: #eee;
+  --highlight: #ffda79;
+  /* Theme color */
+  --theme: var(--primary);
+}
+
+/* Core styles/functionality */
+.tab input {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+.tab__content {
+  max-height: 0;
+  overflow: hidden;
+  -webkit-transition: all 0.35s;
+  -o-transition: all 0.35s;
+  transition: all 0.35s;
+}
+.tab input:checked ~ .tab__content {
+  max-height: 100rem;
+}
+
+/* Visual styles */
+.accordion {
+  border: 2px solid black;
+  border-radius: 2rem;
+  overflow: hidden;
+  margin-top: 3rem;
+   width: clamp(10rem , 100% , 70rem);
+}
+
+.tab__label,
+.tab__close {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: white;
+  background-color: green;
+  cursor: pointer;
+}
+.tab__label {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: clamp(0.5rem , 3vw , 1rem);
+  font-size: 1.3rem;
+  background-color: var(--bg);
+  color: black;
+  text-transform: capitalize;
+}
+.tab__label::after {
+  content: "\276F";
+  width: 2rem;
+  height: 2rem;
+  text-align: center;
+  -webkit-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+          transform: rotate(90deg);
+  -webkit-transition: all 0.35s;
+  -o-transition: all 0.35s;
+  position: relative;
+  right: 1rem;
+  transition: all 0.35s;
+  color: white;
+  background-color: green;
+  border-radius: 50%;
+}
+.tab input:checked + .tab__label::after {
+  -webkit-transform: rotate(270deg);
+      -ms-transform: rotate(270deg);
+          transform: rotate(270deg);
+}
+.tab__content h2{
+  font-size: 1.5rem;
+  color: black;
+  text-transform: capitalize;
+  margin-left: 2rem;
+  margin-top: 2rem;
+}
+.tab__content  img{
+  margin-top: 1rem;
+}
+.tab__content img{
+  width: 100%;
+}
+.tab__close {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+}
+.accordion--radio {
+  --theme: var(--secondary);
+}
+
+/* Arrow animation */
+.tab input:not(:checked) + .tab__label:hover::after {
+  -webkit-animation: bounce .5s infinite;
+          animation: bounce .5s infinite;
+}
+@-webkit-keyframes bounce {
+  25% {
+    -webkit-transform: rotate(90deg) translate(.25rem);
+            transform: rotate(90deg) translate(.25rem);
+  }
+  75% {
+    -webkit-transform: rotate(90deg) translate(-.25rem);
+            transform: rotate(90deg) translate(-.25rem);
+  }
+}
+@keyframes bounce {
+  25% {
+    -webkit-transform: rotate(90deg) translate(.25rem);
+            transform: rotate(90deg) translate(.25rem);
+  }
+  75% {
+    -webkit-transform: rotate(90deg) translate(-.25rem);
+            transform: rotate(90deg) translate(-.25rem);
+  }
+}
+
+/* .contact {
+    width: 20rem;
+    padding: 0;
+    display: flex;
+    position: relative;
+    top: 2rem;
+
+  }
+  .contact a{
+    height: 10rem;
+    width: 30rem;
+    position: relative;
+  }
+  .contact  a .contaciIcon{
+    font-size: clamp(5rem , 5vw , 7rem);
+    animation: up 2s ease-in-out infinite;
+    color: #FACD36;
+  }
+  .selay{
+    animation-delay: 0.2s !important;
+  }
+  @keyframes up {
+    0%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(-10px);
+    }
+    100%{
+        transform: translateY(0);
+     }
+    
+  
+  
+  }
+
+
+  
+  
+  
+ 
+  
+ 
+
+  @media (width < 550px) {
+      
+      .contact a{
+
+        right: 0rem;
+      }
+      .contact {
+
+        top: 0rem;
+    
+      }
+  } */

@@ -1,0 +1,187 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+*{
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+a{
+  text-decoration: none;
+  border: none;
+  color: black;
+}
+button{
+  background: none;
+  outline: none;
+  border: none;
+}
+html{
+  font-size: 62.5%;
+}
+:root{
+  --bg : #FFFFFF;
+  --green : green;
+  --white:white;
+}
+
+body{
+  background-color: var( --bg );
+}
+.accountAll , .data , .paymentMain , .refundPolicy , .payment , .servicesAll , .forms , .sellForm2 , .limiter , .Clients , .mainServicesPage  ,.div , .paymentafter{
+  background-color: var( --bg );
+}
+
+
+
+
+
+.headerButton button , .textMain .buttonMain button  {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  margin-top: clamp(1rem , 5vw ,2rem);
+  background-color: green;
+  outline: none;
+  font-family: 'Roboto Condensed', sans-serif;
+  color: white;
+  border-radius: 5rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  font-size: 1.2rem;
+}
+.textMid{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.textMid p{
+  font-size: 1.2rem;
+  margin-top: 1.4rem;
+  width: calc(100% - 40rem);
+  margin-inline: auto;
+  text-align: center;
+}
+.textMid h2{
+  font-size: 5rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: capitalize;
+}
+.textMid span{
+  color: var( --green);
+}
+@media (width < 768px) {
+  .data , .accountAll , .payment{
+    border-radius: 0rem 0rem 0rem 0em;
+    width: calc(100% - 0rem);
+  }
+ 
+}
+@media (width < 992px) {
+  .textMid p{
+    width: calc(100% - 10rem);
+  }
+
+}
+
+@media (width < 500px) {
+  .textMid h2{
+      font-size: 3rem;
+   }
+  .textMid p{
+      font-size: 1rem;
+  margin-top: 1.2rem;
+  margin-bottom: 0.5rem;
+  width: calc(100% - 3rem);
+   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.search_container {
+  width: 490px;
+  position: relative;
+}
+@media (width <  805px) {
+  .search_container {
+    width: 350px;
+  }
+}
+.search_container img{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 12%;
+  display: block;
+}
+  .search_container input#search-bar {
+  margin: 0 auto;
+  width: 100%;
+  height: 55px;
+  padding: 0 20px;
+  font-size: 1rem;
+  border: 1px solid #D0CFCE;
+  outline: none;
+  border-radius: 10rem;
+}
+@media (width <  805px) {
+  .search_container input#search-bar {
+    height: 45px;
+  }
+  .search_container img{
+    width: 10%;
+  }
+}
+  .search_container input#search-bar:focus {
+  border: 1px solid var( --green);
+  transition: 0.35s ease;
+  color: black;
+}
+  .search_container input#search-bar:focus::-webkit-input-placeholder {
+  transition: opacity 0.45s ease;
+  opacity: 0;
+}
+  .search_container input#search-bar:focus::-moz-placeholder {
+  transition: opacity 0.45s ease;
+  opacity: 0;
+}
+  .search_container input#search-bar:focus:-ms-placeholder {
+  transition: opacity 0.45s ease;
+  opacity: 0;
+}
+
+@media (width < 500px) {
+  .search_container {
+    width: 290px;
+  }
+  .search_container img{
+    width: 12%;
+  }
+    .search_container input#search-bar {
+    height: 35px;
+  }
+}

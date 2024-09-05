@@ -1,0 +1,260 @@
+:root{
+    --border-radius : 0.4rem
+}
+.main-scammer{
+    margin-block: 2rem 4rem;
+}
+.allScammer{
+    font-size: 3rem;
+    text-transform: capitalize;
+    text-align: center;
+    font-weight: 600;
+}
+.card-scammer {
+    height: 38rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    width: calc(100% - 30rem);
+    margin-inline: auto;
+    border-radius: var(--border-radius) ;
+    display: flex;
+    margin-top: 3rem;
+}
+.card-scammer .img img{
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: var(--border-radius) ;
+    border-bottom-left-radius: var(--border-radius) ;
+}
+.card-scammer .img {
+    width: 35rem;
+}
+.scammer-data{
+    width: 100%;
+    padding: 0.3rem 5rem;
+}
+.scammer-text{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.scammer-text h1{
+    font-size: 3rem;
+    font-weight: 900;
+    color: black;
+    text-transform: capitalize;
+}
+.scammer-text .first  h3{
+    font-size: 1.8rem;
+    text-transform: capitalize;
+    font-weight: 500;
+    color: black;
+    position: relative;
+    left: 10rem;
+}
+.scammer-text .second .link{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.4rem;
+ 
+}
+.second{
+    position: relative;
+    top: 1rem;
+}
+.scammer-text .second a{
+    font-size: 1.4rem;
+    text-transform: capitalize;
+}
+/* .below-data{
+    padding-top: 1rem;
+} */
+.below-text h1{
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: black;
+    text-transform: capitalize;
+}
+.below-text{
+    margin-top: 0.7rem;
+}
+.below-text p{
+    position: relative;
+    left: 8rem;
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin-top: 0.7rem;
+}
+.below-text2{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.below-text2 .button{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    right: 4rem;
+}
+.below-text2 .button button{
+    background-color: #FAAA1F;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, #FAAA1F 0px 3px 7px -3px;
+    padding: 0.8rem 1.3rem;
+    text-transform: capitalize;
+    font-size: 1.6rem;
+    color: black;
+    font-weight: 600;
+    border-radius: 0.5rem;
+}
+.heart-bg{
+    color: #5b5383;
+    border: 0.2rem solid #938DB1;
+    padding: 0.8rem;
+    --value : 3.9rem ;
+    border-radius: 0.5rem;
+    height: var(--value);
+    width: 4.5rem;
+}
+
+@media (Width < 1262px) {
+    .card-scammer {
+        width: calc(100% - 20rem);
+        margin-inline: auto;
+
+    }
+}
+@media (Width < 1130px) {
+    .card-scammer {
+        width: calc(100% - 10rem);
+        margin-inline: auto;
+
+    }
+}
+@media (Width < 992px) {
+    .card-scammer {
+        width: calc(100% - 10rem);
+        margin-inline: auto;
+
+    }
+    .scammer-data{
+        padding: 0.3rem 2rem;
+    }
+    .scammer-text h1{
+        font-size: 2.5rem;
+        font-weight: 700;
+    }
+    .scammer-text .first  h3{
+        font-size: 1.5rem;
+    }
+    .below-text2 .button{
+        position: relative;
+        right: 2rem;
+    }
+}
+@media (width < 833px) {
+    .card-scammer {
+        height: 100%;
+        width: calc(100% - 10rem);
+        display: flex;
+        margin-inline: auto;
+        flex-direction: column;
+        margin-bottom: 3rem;
+    }
+    .card-scammer .img {
+        width: 100%;
+        height: 20rem;
+    }
+    .card-scammer .img img{
+        object-fit: cover;
+    }
+}
+@media (width < 600px) {
+    .card-scammer {
+        width: calc(100% - 1rem);
+        margin-bottom: 2rem;
+    }
+   
+ 
+    .scammer-text h1{
+        font-size: 2rem;
+        font-weight: 600;
+    }
+    .scammer-text .first  h3{
+        font-size: 1.6rem;
+        font-weight: 500;
+        position: relative;
+        left: 7rem;
+    }
+    .below-text h1{
+        font-size: 1.6rem;
+        font-weight: 500;
+    }
+    .below-text{
+        margin-top: 0.2rem;
+    }
+    .below-text p{
+        position: relative;
+        left: 5rem;
+        font-weight: 500;
+        font-size: 1.2rem;
+        margin-top: 0.2rem;
+    }
+    .below-text2 .button{
+        position: relative;
+        right: 0rem;
+    }
+    .below-text2 .button button{
+        padding: 0.4rem 1.3rem;
+        text-transform: capitalize;
+        font-size: 1.5rem;
+    }
+ 
+}
+@media (width < 400px) {
+    .card-scammer .img {
+        height: 17rem;
+    }
+    .scammer-text .first  h3{
+        position: relative;
+        left: 0rem;
+        text-align: center;
+    }
+    .scammer-text h1{
+        font-size: 2rem;
+        font-weight: 700;
+    }
+    .below-text h1{
+        font-size: 1.8rem;
+        font-weight: 700;
+    }
+    .below-text p{
+        position: relative;
+        left: 0rem;
+    }
+    .below-text{
+        text-align: center;
+        margin-top: 1rem;
+    }
+    .scammer-text{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+        padding-bottom: 1rem;
+    }
+    .below-text2{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .below-text2 .button{
+        position: relative;
+        right: 0rem;
+        margin-block: 2rem;
+    }
+    .scammer-text .second a{
+        font-size: 1.2rem;
+    }
+}

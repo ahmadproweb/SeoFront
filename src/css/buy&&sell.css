@@ -1,0 +1,232 @@
+
+
+.servicesAll{
+  padding-bottom: 12rem;
+}
+.sell1{
+  display: flex;
+      position: relative;
+      top: 3rem;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          align-items: center;
+  padding-inline: 5rem ;
+  gap: 2rem;
+  /* align-items: center; */
+  
+  }
+  
+.totalAccount{
+  /* text-align: center; */
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 0.2rem;
+  margin-top: 3rem;
+  text-align: center;
+}
+.buttonServices{
+  position: relative;
+  margin-top: 7rem;
+  width: calc(100% - 0rem);
+  font-weight: 700;
+  display: -ms-grid;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  place-items: center;
+ 
+}
+.buttonServices button{
+font-size: 1.4rem;
+text-transform: capitalize;
+position: relative;
+position: relative;
+padding: 0.7rem 2rem;
+margin-top: 0.7rem;
+-webkit-transition: 0.3s ease-in-out;
+-o-transition: 0.3s ease-in-out;
+border: 1px solid black;
+transition: 0.3s ease-in-out; 
+border-radius: 2rem;
+cursor: pointer;
+}
+.buttonServices button:hover{
+border-radius: 2rem;
+background-color: #F1F1F1;
+}
+.buttonServices button span{
+  --width :  2.5rem;
+background-color: green;
+position: absolute;
+top: -1.5rem;
+color: white;
+right: 50%;
+transform: translate(50%);
+height: var( --width);
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+width: var( --width);
+font-size: 1.3rem;
+border-radius: 50%;
+}
+
+ .sell1 a{
+
+  height: 4.4rem;
+  width: 18rem;
+  background-color: transparent;
+  color: white;
+  border-radius: 6rem;
+  background-color: green;
+  padding: 1.2rem 1.5rem 1.2rem 1.5rem;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  text-align: center;
+  font-weight: 500;
+  -webkit-transition: 0.5s ease;
+  -o-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+@media (width <  670px) {
+  .sell1 a{
+margin-top: 1rem;
+height: 4rem;
+width: 15rem;
+color: white;
+border-radius: 6rem;
+background-color: green;
+padding: 1rem 1.5rem 0rem 1.5rem;
+font-size: 1.3rem;
+  }
+}
+
+.account{
+ margin-top: 2rem;
+ overflow: hidden;
+ display: grid;
+}
+.account h3{
+  font-size: 2rem;
+  letter-spacing: 0.1rem;
+  text-transform: capitalize;
+  font-weight: 600;
+  position: relative;
+  left: 1rem;
+}
+
+
+@media (width < 670px) {
+  .sell1{
+          -webkit-box-orient: vertical;
+          -webkit-box-direction: normal;
+              -ms-flex-direction: column;
+                  flex-direction: column;
+      padding-inline: 0rem ;
+
+ 
+      
+      }
+      .accountAll > .sell1 a{
+
+          width: 18rem;
+          margin-top: 3.5rem;
+          padding: 1rem 1.5rem 0rem 1.5rem;
+      }
+     
+ 
+}
+@media (Width < 451px) {
+  .buttonServices{
+
+      width: calc(100% - 0rem);
+  }
+  .buttonServices{
+
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+
+     
+  }
+  .buttonServices button{
+      font-size: 1.1rem;
+      padding: 0.5rem 1rem;
+  }
+
+}
+.wi{
+/* background-color: pink; */
+height: 5rem;
+width: 10%;
+overflow-x: scroll;
+max-width: 5px;
+
+}
+.error{
+text-align: center;
+color: red;
+font-size: 2.5rem;
+margin-top: 1rem;
+}
+.none{
+display: none !important;
+}
+
+
+
+
+
+.gridAccount{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+.class{
+  margin-top: 2rem;
+  text-align: center;
+}
+.gridAccount .class h2{
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+.class p{
+  font-size: 1.4rem;
+}
+.class :is(p , button , a){
+  margin-top: 1rem;
+}
+.class:nth-child(5){
+  width: 100%;
+  max-width: 24.5rem;
+  overflow-x: scroll;
+}
+.class:nth-child(6) button{
+ font-size: 1.2rem;
+ text-transform: capitalize;
+ border-radius: 2rem;
+ background-color: green;
+ padding: 0.4rem 1rem;
+ width: 8rem;
+ color: white;
+}
+.class:nth-child(7) button{
+ font-size: 1.1rem;
+ text-transform: capitalize;
+ border: 1px solid black;
+ border-radius: 2rem;
+ padding: 0.4rem 1rem;
+}
+.class:nth-child(8) button{
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  border-radius: 2rem;
+  background-color: green;
+  padding: 0.7rem 1rem;
+  width: 8rem;
+  color: white;
+ }
+@media (width < 300px) {
+  .account h3{
+    text-align: center;
+  }
+}
+

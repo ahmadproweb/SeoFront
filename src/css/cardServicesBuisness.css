@@ -1,0 +1,392 @@
+
+  body {
+    --background-color: #FAFAFA;
+    --text-color: #52525B;
+    --cardBuisnees-background-color: white;
+    --cardBuisnees-border-color: rgba(24, 24, 27, 0.08);
+    --cardBuisnees-box-shadow-1: rgba(24, 24, 27, 0.02);
+    --cardBuisnees-box-shadow-1-y: 3px;
+    --cardBuisnees-box-shadow-1-blur: 6px;
+    --cardBuisnees-box-shadow-2: rgba(24, 24, 27, 0.04);
+    --cardBuisnees-box-shadow-2-y: 2px;
+    --cardBuisnees-box-shadow-2-blur: 7px;
+    --cardBuisnees-label-color: #18181B;
+    --cardBuisnees-icon-color: #18181B;
+    --cardBuisnees-icon-background-color: rgba(24, 24, 27, 0.04);
+    --cardBuisnees-icon-border-color: rgba(24, 24, 27, 0.1);
+    --cardBuisnees-shine-opacity: .3;
+    --cardBuisnees-shine-gradient: conic-gradient(from 225deg at 50% 50%, rgba(16, 185, 129, 0) 0deg, #10B981 25deg, #EDFAF6 285deg, #FFFFFF 345deg, rgba(16, 185, 129, 0) 360deg);
+    --cardBuisnees-line-color: #E9E9E7;
+    --cardBuisnees-tile-color: rgba(16, 185, 129, 0.08);
+    --cardBuisnees-hover-border-color: rgba(24, 24, 27, 0.15);
+    --cardBuisnees-hover-box-shadow-1: rgba(66, 66, 68, 0.327);
+    --cardBuisnees-hover-box-shadow-1-y: 3px;
+    --cardBuisnees-hover-box-shadow-1-blur: 6px;
+    --cardBuisnees-hover-box-shadow-2: rgba(24, 24, 27, 0.1);
+    --cardBuisnees-hover-box-shadow-2-y: 8px;
+    --cardBuisnees-hover-box-shadow-2-blur: 15px;
+    --cardBuisnees-hover-icon-color: #18181B;
+    --cardBuisnees-hover-icon-background-color: rgba(24, 24, 27, 0.04);
+    --cardBuisnees-hover-icon-border-color: rgba(24, 24, 27, 0.34);
+    --blur-opacity: .1;
+  }
+  body.toggle .grid * {
+    transition-duration: 0s !important;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit , minmax(420px , 1fr));
+    position: relative;
+    gap: 5rem;
+    place-items: center;
+    margin-block: 5rem;
+    padding: 4rem 3rem;
+  }
+  
+  .cardBuisnees {
+    background-color: var(--background-color);
+    padding: 8rem 2rem 2rem 2rem;
+    border-radius: 15px;
+    width: 45rem;
+    height: auto;
+    cursor: pointer;
+    position: relative;
+    transition: box-shadow 0.25s;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  }
+  .cardBuisnees button {
+    position: relative;
+    margin-top: 1.2rem;
+    z-index: 2;
+    border: none;
+    outline: none;
+    color: green;
+    font-weight: 600;
+    text-transform: capitalize;
+    font-size: 1.4rem;
+  }
+
+@media (Width < 947px) {
+    .cardBuisnees {
+        width: 100%;
+      }
+}
+  .cardBuisnees img{
+    width: 4rem;
+    position: relative;
+  }
+  .cardBuisnees::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 15px;
+    background-color: var(--cardBuisnees-background-color);
+  }
+  .cardBuisnees h4 {
+    position: relative;
+    margin: 12px 0 4px 0;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 2.5rem;
+    line-height: 2;
+    color: var(--cardBuisnees-label-color);
+  }
+  .cardBuisnees p {
+    position: relative;
+    margin: 0;
+    text-align: justify;
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+    color: var(--text-color);
+  }
+  
+  .cardBuisnees .shine {
+    border-radius: inherit;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+    opacity: 1;
+    transition: opacity 0.5s;
+  }
+  .cardBuisnees .shine:before {
+    content: "";
+    width: 150%;
+    padding-bottom: 150%;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    bottom: 55%;
+    filter: blur(35px);
+    opacity: var(--cardBuisnees-shine-opacity);
+    transform: translateX(-50%);
+    background-image: var(--cardBuisnees-shine-gradient);
+  }
+  .cardBuisnees .background {
+    border-radius: inherit;
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    -webkit-mask-image: radial-gradient(circle at 60% 5%, black 0%, black 15%, transparent 60%);
+    mask-image: radial-gradient(circle at 60% 5%, black 0%, black 15%, transparent 60%);
+  }
+  .cardBuisnees .background .tiles {
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+  .cardBuisnees .background .tiles .tile {
+    position: absolute;
+    background-color: var(--cardBuisnees-tile-color);
+    -webkit-animation-duration: 8s;
+            animation-duration: 8s;
+    -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+    opacity: 0;
+  }
+  .cardBuisnees .background .tiles .tile.tile-4, .cardBuisnees .background .tiles .tile.tile-6, .cardBuisnees .background .tiles .tile.tile-10 {
+    -webkit-animation-delay: -2s;
+            animation-delay: -2s;
+  }
+  .cardBuisnees .background .tiles .tile.tile-3, .cardBuisnees .background .tiles .tile.tile-5, .cardBuisnees .background .tiles .tile.tile-8 {
+    -webkit-animation-delay: -4s;
+            animation-delay: -4s;
+  }
+  .cardBuisnees .background .tiles .tile.tile-2, .cardBuisnees .background .tiles .tile.tile-9 {
+    -webkit-animation-delay: -6s;
+            animation-delay: -6s;
+  }
+  .cardBuisnees .background .tiles .tile.tile-1 {
+    top: 0;
+    left: 0;
+    height: 10%;
+    width: 22.5%;
+  }
+  .cardBuisnees .background .tiles .tile.tile-2 {
+    top: 0;
+    left: 22.5%;
+    height: 10%;
+    width: 27.5%;
+  }
+  .cardBuisnees .background .tiles .tile.tile-3 {
+    top: 0;
+    left: 50%;
+    height: 10%;
+    width: 27.5%;
+  }
+  .cardBuisnees .background .tiles .tile.tile-4 {
+    top: 0;
+    left: 77.5%;
+    height: 10%;
+    width: 22.5%;
+  }
+  .cardBuisnees .background .tiles .tile.tile-5 {
+    top: 10%;
+    left: 0;
+    height: 22.5%;
+    width: 22.5%;
+  }
+  .cardBuisnees .background .tiles .tile.tile-6 {
+    top: 10%;
+    left: 22.5%;
+    height: 22.5%;
+    width: 27.5%;
+  }
+  .cardBuisnees .background .tiles .tile.tile-7 {
+    top: 10%;
+    left: 50%;
+    height: 22.5%;
+    width: 27.5%;
+  }
+  .cardBuisnees .background .tiles .tile.tile-8 {
+    top: 10%;
+    left: 77.5%;
+    height: 22.5%;
+    width: 22.5%;
+  }
+  .cardBuisnees .background .tiles .tile.tile-9 {
+    top: 32.5%;
+    left: 50%;
+    height: 22.5%;
+    width: 27.5%;
+  }
+  .cardBuisnees .background .tiles .tile.tile-10 {
+    top: 32.5%;
+    left: 77.5%;
+    height: 22.5%;
+    width: 22.5%;
+  }
+  @-webkit-keyframes tile {
+    0%, 12.5%, 100% {
+      opacity: 1;
+    }
+    25%, 82.5% {
+      opacity: 0;
+    }
+  }
+  @keyframes tile {
+    0%, 12.5%, 100% {
+      opacity: 1;
+    }
+    25%, 82.5% {
+      opacity: 0;
+    }
+  }
+  .cardBuisnees .background .line {
+    position: absolute;
+    inset: 0;
+    opacity: 1;
+    transition: opacity 0.35s;
+  }
+  .cardBuisnees .background .line:before, .cardBuisnees .background .line:after {
+    content: "";
+    position: absolute;
+    background-color: var(--cardBuisnees-line-color);
+    transition: transform 0.35s;
+  }
+  .cardBuisnees .background .line:before {
+    left: 0;
+    right: 0;
+    height: 1px;
+    transform-origin: 0 50%;
+    transform: scaleX(0);
+  }
+  .cardBuisnees .background .line:after {
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    transform-origin: 50% 0;
+    transform: scaleY(0);
+  }
+  .cardBuisnees .background .line.line-1:before {
+    top: 10%;
+  }
+  .cardBuisnees .background .line.line-1:after {
+    left: 22.5%;
+  }
+  .cardBuisnees .background .line.line-1:before, .cardBuisnees .background .line.line-1:after {
+    transition-delay: 0.3s;
+  }
+  .cardBuisnees .background .line.line-2:before {
+    top: 32.5%;
+  }
+  .cardBuisnees .background .line.line-2:after {
+    left: 50%;
+  }
+  .cardBuisnees .background .line.line-2:before, .cardBuisnees .background .line.line-2:after {
+    transition-delay: 0.15s;
+  }
+  .cardBuisnees .background .line.line-3:before {
+    top: 55%;
+  }
+  .cardBuisnees .background .line.line-3:after {
+    right: 22.5%;
+  }
+  .cardBuisnees:hover {
+    box-shadow: 0px 3px 6px var(--cardBuisnees-hover-box-shadow-1), 0px var(--cardBuisnees-hover-box-shadow-2-y) var(--cardBuisnees-hover-box-shadow-2-blur) var(--cardBuisnees-hover-box-shadow-2), 0 0 0 1px var(--cardBuisnees-hover-border-color);
+  }
+  .cardBuisnees:hover .shine {
+    opacity: 1;
+    transition-duration: 0.5s;
+    transition-delay: 0s;
+  }
+  .cardBuisnees:hover .background .tiles {
+    opacity: 1;
+    transition-delay: 0.25s;
+  }
+  .cardBuisnees:hover .background .tiles .tile {
+    -webkit-animation-name: tile;
+            animation-name: tile;
+  }
+  .cardBuisnees:hover .background .line {
+    opacity: 1;
+    transition-duration: 0.15s;
+  }
+ 
+  .cardBuisnees:hover .background .line:before {
+    transform: scaleX(1);
+  }
+  .cardBuisnees:hover .background .line:after {
+    transform: scaleY(1);
+  }
+  .cardBuisnees:hover .background .line.line-1:before, .cardBuisnees:hover .background .line.line-1:after {
+    transition-delay: 0s;
+  }
+  .cardBuisnees:hover .background .line.line-2:before, .cardBuisnees:hover .background .line.line-2:after {
+    transition-delay: 0.15s;
+  }
+  .cardBuisnees:hover .background .line.line-3:before, .cardBuisnees:hover .background .line.line-3:after {
+    transition-delay: 0.3s;
+  }
+  
+  
+
+@media (width < 992px) {
+  .cardBuisnees .background .line:before {
+    transform: scaleX(1);
+  }
+  .cardBuisnees .background .line:after {
+    transform: scaleY(1);
+  }
+  .cardBuisnees .shine {
+    opacity: 1;
+  }
+  .cardBuisnees .background .tiles {
+    opacity: 1;
+  }
+  .cardBuisnees .background .tiles .tile {
+    opacity: 1;
+  }
+}
+
+@media (Width < 530px) {
+    .grid {
+        margin-top: 3rem;
+        padding: 1rem ;
+      }
+    .cardBuisnees {
+        padding: 8rem 1.5rem 2rem 1.5rem;
+        width: calc(100% - 8rem);
+      }
+      .cardBuisnees h4 {
+        font-size: 2rem;
+      }
+      .cardBuisnees p {
+        font-size: 1.2rem;
+        line-height: 2rem;
+      }
+}
+@media (Width < 416px) {
+    .grid {
+    place-items: start;
+      }
+    .cardBuisnees {
+        width: calc(100% - 5rem);
+      }
+}
+@media (Width < 390px) {
+    .cardBuisnees {
+        width: calc(100% - 8rem);
+      }
+}
+@media (Width < 354px) {
+    .grid {
+        padding: 0.2rem ;
+      }
+    .cardBuisnees {
+        width: calc(100% - 10rem);
+      }
+}
+@media (Width < 326px) {
+  
+    .cardBuisnees {
+        width: calc(100% - 12rem);
+      }
+      .cardBuisnees h4 {
+        font-size: 1.7rem;
+      }
+      .cardBuisnees p {
+        font-size: 1.1rem;
+        line-height: 1.7rem;
+      }
+}
