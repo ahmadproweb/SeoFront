@@ -1,109 +1,47 @@
-/* containerLiveChat for the entire chat application */
-.MainLiveChat{
-  background-color: #FFFFFF;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 100dvh;
-  width: 100dvw;
-  z-index: 1;
+.MainChat{
+    display: flex;
+    gap: 1rem;
+    height: 60dvh;
 }
+.RightData{
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+.userData{
+    background-color: rgba(0, 0, 0, 0.404);
+    border-radius: 4rem;
+    width: 22rem;
+    height: 5rem;
+    padding: 1rem 2rem;
+    color: white;
+    text-align: center;
 
-
-
-/* containerLiveChat for the chat interface */
-.containerLiveChat {
-  background-color: white;
-  border-radius: 8px;
-  width: 700px;
-  margin: auto;
-  margin-top: 2rem;
-  overflow: hidden;
-  box-shadow: 1px 4px 10px 1px #aaa;
 }
-
-.header-chat {
-  background-color: #F6F6F6;
-  color: black;
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.userData h1{
+    text-transform: capitalize;
+    font-size: 1.3rem;
 }
-.header-chat h3{
-  font-size: 1.3rem;
-  text-transform: capitalize;
+.userData h2{
+    font-size: 1rem;
 }
-.header-chat .name {
-  font-size: 18px;
-  font-weight: bold;
+.leftDataChat{
+    background-color: red;
+    width: 100%;
 }
-
-.header-chat .icon {
-  font-size: 24px;
-  cursor: pointer;
+.leftDataChat{
+    padding: 2rem;
+    font-size: 2rem;
+    position: relative;
 }
-
-.messages-chat {
-  height: 570px;
-  max-height: 570px;
-  overflow-y: auto;
-  padding: 10px;
+.reciverMessage{
+    position: relative;
 }
-
-.message {
-  padding: 10px 10px;
-  margin-bottom: 10px;
-  border-radius: 4px;
-  background-color: #F6F6F6;
+.senderMessage{
+    position: absolute;
+    right: 2rem;
 }
-
-.message.response {
-  background-color: #E3EFFD;
-}
-
-.message span {
-  font-weight: bold;
-}
-
-.footer-chat {
-  display: flex;
-  padding: 10px;
-  background-color: #f9f9f9;
-  border-top: 1px solid #ddd;
-}
-.footer-chat input{
-  background: none;
-  outline: none;
-  border: none;
-}
-.footer-chat input::placeholder{
-  font-size: 1.4rem;
-}
-.write-message {
-  flex-grow: 1;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-right: 10px;
-}
-
-.iconChat {
-  padding: 10px;
-  background-color: #4F6EBD;
-  color: white;
-  font-size: 1.5rem;
-
-  border: none;
-  border-radius: 2rem;
-  padding: 0.7rem;
-  cursor: pointer;
-}
-
-.iconChat:hover {
-  background-color: #45a049;
-}
-.no-scroll {
-  overflow: hidden;
+.InputSendMessage{
+    position: absolute;
+    bottom: 1rem;
 }
