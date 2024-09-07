@@ -69,6 +69,7 @@ function Navbar() {
             <li><FaRegPaperPlane className="font" /><a href="/liveChat">Live Chat</a></li>
             <li><LuLayoutPanelLeft className="font" /><a href="/DealDone">Deal Done</a></li>
             <li><RiMoneyPoundCircleLine className="font" /><a href="/CodeGenerate">Code Generate</a></li>
+            <li><RiMoneyPoundCircleLine className="font" /><a href="/payment">Buyer Payment</a></li>
           </ul>
         </nav>
         <div className="login_SignUp">

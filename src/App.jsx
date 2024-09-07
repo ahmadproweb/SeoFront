@@ -15,6 +15,7 @@ import AccountDetails from "./pages/BuySell/AccountDetails";
 import AccountSell from "./component/accountSell";
 import Custom404 from "./not-found";
 import "./index.css";
+import BuyerPayment from "./pages/BuyerPayment";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="/BuySell/:accountId" element={<AccountDetails />} />
         <Route path="/liveChat" element={<LiveChat />} />
         <Route path="/CodeGenerate" element={<CodeGenerate />} />
+        <Route path="/payment" element={<BuyerPayment />} />
         <Route path="/DealDone" element={<DealDone />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/verify" element={<VerifyAuth />} />

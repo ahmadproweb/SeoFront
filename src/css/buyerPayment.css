@@ -1,0 +1,249 @@
+
+
+.paymentafter{
+
+    padding-block: 3rem 6rem;
+    padding-inline: 1rem;
+}
+.imgAuth{
+    position: relative;
+}
+.imgAuth img{
+    position: absolute;
+    right: 0;
+    width: 55rem;
+}
+.formPa{
+  width: clamp(200px , 100% , 600px);
+    margin-inline: 15rem;
+    background: #fff;
+    box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 3rem 2rem;
+}
+@media (Width < 1286px) {
+    .formPa{
+          margin-inline: 10rem;
+    }
+    .imgAuth img{
+        width: 50rem;
+    }
+}
+@media (Width < 1222px) {
+    .formPa{
+          margin-inline: 10rem;
+    }
+    .imgAuth img{
+        width: 40rem;
+    }
+}
+@media (Width < 1136px) {
+    .formPa{
+          margin-inline: 4rem;
+    }
+    .imgAuth img{
+        width: 40rem;
+    }
+}
+@media (Width < 1069px) {
+    .formPa{
+          margin-inline: 2rem;
+    }
+    .imgAuth img{
+        width: 40rem;
+    }
+}
+@media (width  < 1025px) {
+    .formPa{
+        margin-inline: auto;
+  }
+  .imgAuth img{
+      display: none;
+  }
+}
+@media (width < 992px) {
+    .paymentafter{
+        padding-block: 1rem 6rem;
+    }
+
+}
+@media (width < 500px) {
+    .paymentafter{
+        padding-block: 0rem 6rem;
+    }
+    .formPa{
+        padding: 2rem;
+    }
+
+}
+.welcomePayment h1{
+    font-size: 2rem;
+    padding-bottom: 1.5rem;
+    font-weight: 500;
+    color: black;
+    text-align: start;
+    text-transform: capitalize;
+}
+@media (width < 400px) {
+    .welcomePayment h1{
+    padding-bottom: 1.5rem;
+    }
+}
+.formPa label{
+    font-size: 1.4rem !important;
+}
+.formPa .sendEmail{
+    background-color: green;
+    padding: 1rem 3.5rem;
+    text-transform: capitalize;
+    color: white;
+    border-radius: 0.6rem;
+    margin-top: 2rem;
+    font-size: 1.4rem;
+}
+
+
+.paymentafter select{
+    width:100%;
+    height:40px;
+    border:none;
+    outline:0;
+    border-radius:5px;
+    border:1px solid #cbced4;
+    gap:20px;
+    box-sizing:border-box;
+    padding:0px 10px;
+    margin-top: .5rem;
+}
+
+
+.buttonPaymentSend{
+    padding-bottom: 1.3rem;
+    display: flex;
+    justify-content: center;
+}
+.buttonPaymentSend a{
+    width: calc(100% - 10rem);
+    text-align:center;
+    background-color: green;
+    padding: 1rem 2rem;
+    font-size: 1.4rem;
+    text-transform: capitalize;
+    font-weight: 500;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+@media (width < 369px) {
+    #yourBtn{
+        font-size: 1.2rem;
+    }
+    .buttonPaymentSend a{
+        width: calc(100% - 0rem);
+        padding: 1rem 0rem;
+        font-size: 1.2rem;
+    }
+}
+
+
+.mainFormPayment{
+    display: grid;
+}
+.mainFormPaymentInner{
+    position: relative;
+    z-index: 0;
+    width: 100%;
+    margin-bottom: 2.75rem 
+}
+.mainFormPaymentInner input{
+    display: block;
+    padding-top: 1rem /* 10px */;
+    padding-bottom: 1rem ;
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 100%;
+    --tw-text-opacity: 1;
+    color: rgb(17 24 39 / var(--tw-text-opacity)) ;
+    background: transparent;
+    border-width: 0;
+    border-bottom-width: 2px;
+    --tw-border-opacity: 1;
+    border-color: rgb(209 213 219 / var(--tw-border-opacity));
+    appearance: none;
+ 
+
+
+}
+.mainFormPaymentInner input:focus{
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+    --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+    box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+    --tw-border-opacity: 1;
+    border-color: rgb(22 163 74 / var(--tw-border-opacity)) ;
+}
+.mainFormPaymentInner label{
+    position: absolute;
+    --tw-text-opacity: 1;
+    color: rgb(107 114 128 / var(--tw-text-opacity)) ;
+    transition-duration: 300ms;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    --tw-translate-y: -2rem /* -32px */;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    --tw-scale-x: 1;
+    --tw-scale-y: 1;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    top: 1.4rem ;
+    z-index: -10;
+    transform-origin: 0;
+    font-size:1.5rem !important;
+}
+
+.mainFormPaymentInner input:focus +  label {
+    font-weight: 500;
+    inset-inline-start: 0px;
+    top: 0rem;
+    --tw-translate-x: 25%;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    --tw-text-opacity: 1;
+    --tw-scale-x: 1;
+    --tw-scale-y: 1;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    --tw-translate-y: -2rem /* -32px */;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    color: rgb(22 163 74 / var(--tw-text-opacity)) /* #16a34a */;
+
+}
+
+.accountInfo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+.accountInfo div{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+.accountInfo div h1{
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    font-weight: 700;
+}
+.accountInfo div span{
+    font-size: 1.3rem;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+@media (min-width: 640px) {
+    .mainFormPayment {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem /* 24px */;
+    }
+}
+
