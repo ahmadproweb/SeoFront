@@ -4,7 +4,7 @@ import "../css/home.css";
 import For from "../component/For";
 import Frequently from "../component/Frequently";
 import Listen from "../component/Listen";
-import Happy from "../component/Happy";
+import Happy from "../component/happy";
 import Reviews from "../component/reviews";
 import bgMobile from '../images/bgMobile.png';
 import g1 from '../images/g1.png';
