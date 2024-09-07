@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../css/BuyerPayment.css";
+import "../css/buyerPayment.css";
 import { toast } from "react-toastify";
 
 const BuyerPayment = () => {
