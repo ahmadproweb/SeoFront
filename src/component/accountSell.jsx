@@ -119,11 +119,16 @@ function AccountSell() {
         toast.error("Invalid image files. Please try again.");
         return;
       }
+      const token = localStorage.getItem('token'); // 
 
       // Send POST request
       const response = await fetch(`${VITE_BASE_URL}/buySell/create`, {
         method: "POST",
         body: formDataToSend,
+             headers: {
+          // "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}` 
+        },
       });
 
       // Check response

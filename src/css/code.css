@@ -291,6 +291,13 @@
     font-size:14px;
     transition:all 0.5s;
 }
+.input-text .input-div label{
+    position:absolute;
+    top:-20px;
+    left:2px;
+    font-size:14px;
+    transition:all 0.5s;
+}
 .input-div input:focus ~ span,.input-div input:valid ~ span  {
     top:-15px;
     left:6px;

@@ -49,6 +49,14 @@ const SellerCode = () => {
       setSelectedAccountType("");
     }
   }, [selectedAccountId, accountData]);
+  useEffect(() => {
+    // Retrieve fullName and emailAddress from localStorage and set them in state
+    const userData = JSON.parse(localStorage.getItem("user"));
+    if (userData) {
+      setFullName(userData.fullName);
+      setEmailAddress(userData.email);
+    }
+  }, []);
 
   const closePopup = () => {
     const overlay = document.getElementById("popup1");
@@ -85,12 +93,14 @@ const SellerCode = () => {
     console.log("Selected Account ID:", selectedAccountId);
     console.log("Selected Account Type:", selectedAccountType);
     console.log("Code:", code);
-  
+    const token = localStorage.getItem('token'); // 
+     
     try {
       const response = await fetch(`${import.meta.env.VITE_BASE_URL}/codeGenerator/create/seller`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}` 
         },
         body: JSON.stringify({
           fullName,
@@ -178,20 +188,22 @@ const SellerCode = () => {
               </div>
               <div className="input-text">
                 <div className="input-div">
+                  <label>Full Name</label>
                   <input
                     type="text"
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
+                    disabled
                   />
-                  <span>Full Name</span>
                 </div>
                 <div className="input-div">
+                  <label>E-mail Address</label>
                   <input
                     type="email"
                     value={emailAddress}
                     onChange={(e) => setEmailAddress(e.target.value)}
+                    disabled
                   />
-                  <span>E-mail Address</span>
                 </div>
               </div>
               <div className="buttons">

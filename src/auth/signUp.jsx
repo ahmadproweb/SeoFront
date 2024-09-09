@@ -17,8 +17,7 @@ import logo from '../images/logo.png'
 
 function SignUp() {
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    fullName:"",
     email: "",
     password: "",
     confirmPassword: "",
@@ -44,7 +43,7 @@ function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { firstName, lastName, email, password, confirmPassword, profileImage } = formData;
+    const { fullName , email, password, confirmPassword, profileImage } = formData;
 
     if (password !== confirmPassword) {
       toast.error("Passwords do not match");
@@ -53,8 +52,7 @@ function SignUp() {
 
     try {
       const formDataObj = new FormData();
-      formDataObj.append("firstName", firstName);
-      formDataObj.append("lastName", lastName);
+      formDataObj.append("fullName", fullName);
       formDataObj.append("email", email);
       formDataObj.append("password", password);
       formDataObj.append("confirmPassword", confirmPassword);
@@ -108,31 +106,17 @@ function SignUp() {
             onChange={handleFileChange} />
           </div>
           <div className="main-input">
-            <label htmlFor="firstName">First Name</label>
+            <label htmlFor="fullName">Full Name</label>
             <div className="input">
               <input
                 type="text"
                 placeholder="Enter Your First Name"
-                name="firstName"
-                value={formData.firstName}
+                name="fullName"
+                value={formData.fullName}
                 required
                 onChange={handleInputChange}
               />
               <MdOutlineDriveFileRenameOutline className="input-icons" />
-            </div>
-          </div>
-          <div className="main-input">
-            <label htmlFor="lastName">Last Name</label>
-            <div className="input">
-              <input
-                type="text"
-                placeholder="Enter Your Last Name"
-                name="lastName"
-                required
-                value={formData.lastName}
-                onChange={handleInputChange}
-              />
-              <MdDriveFileRenameOutline className="input-icons" />
             </div>
           </div>
           <div className="main-input">

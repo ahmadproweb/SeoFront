@@ -14,8 +14,7 @@ const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
 
 function Profile() {
   const [user, setUser] = useState({
-    firstName: "",
-    lastName: "",
+    fullName: "",
     email: "",
     profileImage: "",
   });
@@ -36,8 +35,7 @@ function Profile() {
         if (response.ok) {
           const data = await response.json();
           setUser({
-            firstName: data.firstName,
-            lastName: data.lastName,
+            fullName: data.fullName,
             email: data.email,
             profileImage: data.profileImage,
           });
@@ -65,8 +63,7 @@ function Profile() {
 
   const handleUserUpdate = (updatedUser) => {
     setUser({
-      firstName: updatedUser.firstName,
-      lastName: updatedUser.lastName,
+      fullName: updatedUser.fullName,
       email: updatedUser.email,
       profileImage: updatedUser.profileImage,
     });
@@ -75,7 +72,8 @@ function Profile() {
   return (
     <div className="profile-main">
       <h2>
-        Profile<FaPencil onClick={togglePopup} />
+        Profile
+        <FaPencil onClick={togglePopup} />
       </h2>
       <div className="card-profile">
         <div className="profile-image">
@@ -88,7 +86,7 @@ function Profile() {
         <div className="profile-text">
           <div className="name">
             <h1>
-              {user.firstName} {user.lastName}
+              {user.fullName} 
             </h1>
             <a href="#" onClick={toggleEmailPopup}>
               {user.email} <FaPencil />
@@ -109,32 +107,31 @@ function Profile() {
       {isEmailPopupVisible && (
         <>
           <div className="overlay" onClick={toggleEmailPopup}></div>
-         <div className="mainPopup">
-
-          <div className="popup">
-            <PopFormNew
-              togglePopup={toggleEmailPopup} // Use toggleEmailPopup to close the new popup
-              user={user} // Pass user data as props
-              token={token} // Pass token as props
-              onUpdate={handleUserUpdate} // Pass update handler
-            />
-          </div>
+          <div className="mainPopup">
+            <div className="popup">
+              <PopFormNew
+                togglePopup={toggleEmailPopup} // Use toggleEmailPopup to close the new popup
+                user={user} // Pass user data as props
+                token={token} // Pass token as props
+                onUpdate={handleUserUpdate} // Pass update handler
+              />
+            </div>
           </div>
         </>
       )}
       {isPopupVisible && (
         <>
           <div className="overlay" onClick={togglePopup}></div>
-         <div className="mainPopup">
-         <div className="popup">
-            <PopForm
-              togglePopup={togglePopup}
-              user={user} // Pass user data as props
-              token={token} // Pass token as props
-              onUpdate={handleUserUpdate} // Pass update handler
-            />
+          <div className="mainPopup">
+            <div className="popup">
+              <PopForm
+                togglePopup={togglePopup}
+                user={user} // Pass user data as props
+                token={token} // Pass token as props
+                onUpdate={handleUserUpdate} // Pass update handler
+              />
+            </div>
           </div>
-         </div>
         </>
       )}
     </div>

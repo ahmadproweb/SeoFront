@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "../css/code.css";
 import { toast } from "react-toastify";
-import logo from '../images/logo.png'
-
+import logo from '../images/logo.png';
 
 const removeHashFromURL = () => {
   history.replaceState(null, "", window.location.pathname + window.location.search);
 };
-
-
 
 const BuyerCode = () => {
   const [formNumber, setFormNumber] = useState(0);
@@ -45,6 +42,15 @@ const BuyerCode = () => {
     }
   }, [selectedAccountId, accountData]);
 
+  useEffect(() => {
+    // Retrieve fullName and emailAddress from localStorage and set them in state
+    const userData = JSON.parse(localStorage.getItem("user"));
+    if (userData) {
+      setFullName(userData.fullName);
+      setEmailAddress(userData.email);
+    }
+  }, []);
+
   const closePopup = () => {
     const overlay = document.getElementById("popup1");
     if (overlay) {
@@ -79,14 +85,14 @@ const BuyerCode = () => {
     console.log("Selected Account ID:", selectedAccountId);
     console.log("Selected Account Type:", selectedAccountType);
     console.log("Code:", code);
-  
-    
-  
+
+    const token = localStorage.getItem('token'); 
     try {
       const response = await fetch(`${import.meta.env.VITE_BASE_URL}/codeGenerator/create/buyer`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}` 
         },
         body: JSON.stringify({
           fullName,
@@ -97,11 +103,10 @@ const BuyerCode = () => {
           code,
         }),
       });
-  
+
       const data = await response.json();
-  
+
       if (!response.ok) {
-        // Check if the backend sent multiple errors
         if (data.errors && Array.isArray(data.errors)) {
           data.errors.forEach((error) => toast.error(error));
         } else {
@@ -109,14 +114,13 @@ const BuyerCode = () => {
         }
       } else {
         toast.success("Information submitted successfully!");
-        setFormNumber(3); // Move to the success step
+        setFormNumber(3); 
       }
     } catch (error) {
       console.error("Error submitting form:", error);
       toast.error("An error occurred while submitting the form.");
     }
   };
-  
 
   return (
     <div className="containerMain">
@@ -166,20 +170,23 @@ const BuyerCode = () => {
               </div>
               <div className="input-text">
                 <div className="input-div">
+                  <label>Full Name</label>
                   <input
                     type="text"
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
+                    disabled
                   />
-                  <span>Full Name</span>
                 </div>
                 <div className="input-div">
+                  <label>E-mail Address</label>
+
                   <input
                     type="email"
                     value={emailAddress}
                     onChange={(e) => setEmailAddress(e.target.value)}
+                    disabled
                   />
-                  <span>E-mail Address</span>
                 </div>
               </div>
               <div className="buttons">
@@ -275,8 +282,7 @@ const BuyerCode = () => {
                     type="text" // Changed to text to use maxLength
                     value={code}
                     onChange={(e) => setCode(e.target.value)}
-                    maxLength={8}
-                    required
+                    maxLength={8} // Added maxLength to restrict to 8 characters
                   />
                   <span>Code</span>
                 </div>
@@ -286,7 +292,7 @@ const BuyerCode = () => {
                 <button className="back_button" onClick={handleBackClick}>
                   Back
                 </button>
-                <button className="next_button" onClick={handleSubmit}>
+                <button className="submit_button" onClick={handleSubmit}>
                   Submit
                 </button>
               </div>
@@ -314,7 +320,7 @@ const BuyerCode = () => {
                 />
               </svg>
 
-              <div className="text89 congrats">
+              <div className="Text2 congrats">
                 <h2>Congratulations!</h2>
                 <p>
                   Thanks Mr./Mrs. <span className="shown_name"></span> your

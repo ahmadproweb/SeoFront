@@ -5,7 +5,13 @@
     align-items: center;
     box-shadow: rgba(0, 0, 0, 0.194) 0px 5px 10px;
 }
-
+.resetPassword{
+    color: black;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: capitalize;
+    cursor: pointer;
+}
 .first {
     display: flex;
     flex-direction: column;
@@ -166,6 +172,7 @@ form .main-input label {
 
 .second .button1 {
     background-color: #3C50E0;
+    cursor: pointer;
 }
 
 .second .button2 {

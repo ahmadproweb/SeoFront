@@ -7,8 +7,7 @@ const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
 
 function PopForm({ togglePopup, user, token, onUpdate }) {
   const [formData, setFormData] = useState({
-    firstName: user.firstName,
-    lastName: user.lastName,
+    fullName: user.fullName,
     profileImage: null,
   });
 
@@ -24,8 +23,7 @@ function PopForm({ togglePopup, user, token, onUpdate }) {
     e.preventDefault();
 
     const formDataToSend = new FormData();
-    formDataToSend.append("firstName", formData.firstName);
-    formDataToSend.append("lastName", formData.lastName);
+    formDataToSend.append("fullName", formData.fullName); // Update to fullName
     if (formData.profileImage) {
       formDataToSend.append("profileImage", formData.profileImage);
     }
@@ -41,9 +39,9 @@ function PopForm({ togglePopup, user, token, onUpdate }) {
 
       if (response.ok) {
         const updatedUser = await response.json();
-        localStorage.setItem('user', JSON.stringify(updatedUser)); // Update localStorage
+        localStorage.setItem('user', JSON.stringify(updatedUser.user)); // Update localStorage with correct user data
 
-        onUpdate(updatedUser); // Call the callback to update user state in Profile
+        onUpdate(updatedUser.user); // Call the callback to update user state in Profile
 
         toast.success("Profile updated successfully!");
         togglePopup(); // Close popup on successful update
@@ -69,23 +67,12 @@ function PopForm({ togglePopup, user, token, onUpdate }) {
           onChange={handleChange}
         />
         <div className="inputYoutube">
-          <label htmlFor="firstName">First Name:</label>
+          <label htmlFor="fullName">Full Name:</label>
           <input
-            placeholder="Enter First Name"
+            placeholder="Enter Full Name"
             type="text"
-            id="firstName"
-            value={formData.firstName}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="inputYoutube">
-          <label htmlFor="lastName">Last Name:</label>
-          <input
-            placeholder="Enter Last Name"
-            type="text"
-            id="lastName"
-            value={formData.lastName}
+            id="fullName"
+            value={formData.fullName}
             onChange={handleChange}
             required
           />

@@ -53,9 +53,6 @@ function Details() {
         </div>
       </div>
       {selectedComponent === "Profile" && <Profile />}
-      {selectedComponent === "Dashboard" && <Dashboard />}
-      {selectedComponent === "History" && <History />}
-      {selectedComponent === "History2" && <History2 />}
     </div>
   );
 }

@@ -1,115 +1,88 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "../css/buyerPayment.css";
-import { toast } from "react-toastify";
+
+const VITE_ADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAIL; // Read admin email from environment variable
+const VITE_BASE_URL = import.meta.env.VITE_BASE_URL; // Read admin email from environment variable
 
 const BuyerPayment = () => {
   const [formData, setFormData] = useState({
-    name: "",
+    fullName: "",
     email: "",
-    phone: "",
-    selectPaymentMethod: "",
-    description: "",
-    userName: "",
-    transitionId: "",
+    adminEmail: VITE_ADMIN_EMAIL, 
+    sellerEmail: "",
+    totalPrice: "",
+    transactionId: "",
     transactionDate: "",
-    totalAccountPrice: "",
-    image: null,
+    paymentMethod: "",
+    contactNumber: ""
   });
+  const [file, setFile] = useState(null);
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    console.log(`User typing in ${name} field: ${value}`);
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
-    }));
-  };
-
-  const handleImageChange = (event) => {
-    const file = event.target.files[0];
-    console.log("Selected image file:", file);
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      image: file,
-    }));
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const {
-      name,
-      email,
-      phone,
-      selectPaymentMethod,
-      userName,
-      image,
-      description,
-      transitionId,
-      transactionDate,
-      totalAccountPrice,
-    } = formData;
-    console.log("Form data submitted:", formData);
-    if (
-      !name ||
-      !email ||
-      !phone ||
-      !selectPaymentMethod ||
-      !userName ||
-      !image ||
-      !description ||
-      !totalAccountPrice ||
-      !transactionDate
-    ) {
-      toast.success("Please fill in all input fields", {
-        position: toast.POSITION.TOP_CENTER,
-        autoClose: 800,
-      });
-      return;
+  // Initialize formData with data from localStorage
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user) {
+      setFormData((prevState) => ({
+        ...prevState,
+        fullName: user.fullName,
+        email: user.email
+      }));
     }
+  }, []);
 
-    const formDataToSend = new FormData();
-    formDataToSend.append("name", name);
-    formDataToSend.append("email", email);
-    formDataToSend.append("phone", phone);
-    formDataToSend.append("selectPaymentMethod", selectPaymentMethod);
-    formDataToSend.append("description", description);
-    formDataToSend.append("userName", userName);
-    formDataToSend.append("transitionId", transitionId);
-    formDataToSend.append("transactionDate", transactionDate);
-    formDataToSend.append("totalAccountPrice", totalAccountPrice);
-    formDataToSend.append("image", image);
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/Account/upload-image`, {
-      method: "POST",
-      body: formDataToSend,
-    })
-      .then((response) => response.json())
-      .then((res) => {
-        toast.success("Your Form Has Been Submitted. You will be contacted within 2 to 5 hours", {
-          position: toast.POSITION.TOP_CENTER,
-          autoClose: 800,
-        });
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          selectPaymentMethod: "",
-          description: "",
-          userName: "",
-          transitionId: "",
-          transactionDate: "",
-          totalAccountPrice: "",
-          image: null,
-        });
-      })
-      .catch((err) => {
-        console.error(err);
-        alert("Something went wrong. Please try again later");
+  const handleImageChange = (e) => {
+    setFile(e.target.files[0]);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formDataObj = new FormData();
+    for (const key in formData) {
+      formDataObj.append(key, formData[key]);
+    }
+    if (file) {
+      formDataObj.append("paymentPic", file);
+    }
+    const token = localStorage.getItem('token'); // 
+
+    try {
+      const response = await fetch(`${VITE_BASE_URL}/payment`, {
+        method: "POST",
+        body: formDataObj,
+        headers: {
+          "Authorization": `Bearer ${token}` 
+        },
+        // No need to set Content-Type for FormData, the browser will set it correctly
       });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        toast.success(result.message);
+      } else {
+        toast.error(result.message || "An error occurred");
+      }
+      setFormData({
+        sellerEmail: "",
+        totalPrice: "",
+        transactionId: "",
+        transactionDate: "",
+        paymentMethod: "",
+        contactNumber: ""
+      })
+    } catch (error) {
+      toast.error("An error occurred");
+    }
   };
 
   const renderAccountInfo = () => {
-    switch (formData.selectPaymentMethod) {
+    switch (formData.paymentMethod) {
       case "jazzCash":
         return (
           <div className="accountInfo">
@@ -156,6 +129,7 @@ const BuyerPayment = () => {
 
   return (
     <div className="paymentafter">
+      <ToastContainer />
       <div className="imgAuth">
         <img
           src="https://img.freepik.com/free-vector/checklist-concept-illustration_114360-479.jpg?w=740&t=st=1708034311~exp=1708034911~hmac=bcaed47c9ae3ee37247348450d9f84f2073483848649d0fdea5d199d1209703a"
@@ -164,131 +138,118 @@ const BuyerPayment = () => {
       </div>
       <form className="formPa" onSubmit={handleSubmit}>
         <div className="welcomePayment">
-          <h1>welcome Buyer Payment</h1>
+          <h1>Welcome Buyer Payment</h1>
         </div>
         <div className="mainFormPayment">
           <div className="mainFormPaymentInner">
             <input
               type="text"
-              id="name"
-              name="name"
-              value={formData.name}
+              name="fullName"
+              value={formData.fullName}
               onChange={handleChange}
+              disabled // Disable editing
             />
-            <label htmlFor="floating_first_name">Full Name</label>
+            <label htmlFor="fullName">Full Name</label>
           </div>
           <div className="mainFormPaymentInner">
             <input
               type="email"
-              id="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
+              disabled // Disable editing
             />
-            <label htmlFor="floating_last_name"> Email</label>
-          </div>
-          </div>
-        <div className="mainFormPayment">
-
-          <div className="mainFormPaymentInner">
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-            />
-            <label htmlFor="floating_last_name">Admin Email</label>
-          </div>
-          <div className="mainFormPaymentInner">
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-            />
-            <label htmlFor="floating_last_name">Seller Email</label>
+            <label htmlFor="email">Email</label>
           </div>
         </div>
-       
+        <div className="mainFormPayment">
+          <div className="mainFormPaymentInner">
+            <input
+              type="email"
+              name="adminEmail"
+              value={formData.adminEmail}
+              onChange={handleChange}
+              disabled // Disable editing
+            />
+            <label htmlFor="adminEmail">Admin Email</label>
+          </div>
+          <div className="mainFormPaymentInner">
+            <input
+              type="email"
+              name="sellerEmail"
+              value={formData.sellerEmail}
+              onChange={handleChange}
+            />
+            <label htmlFor="sellerEmail">Seller Email</label>
+          </div>
+        </div>
         <div className="mainFormPayment">
           <div className="mainFormPaymentInner">
             <input
               type="number"
-              id="totalAccountPrice"
-              name="totalAccountPrice"
-              value={formData.totalAccountPrice}
+              name="totalPrice"
+              value={formData.totalPrice}
               onChange={handleChange}
             />
-            <label>Total Price</label>
+            <label htmlFor="totalPrice">Total Price</label>
           </div>
-          <div className="mainFormPaymentInner">
-            <input
-              type="number"
-              id="transitionId"
-              name="transitionId"
-              value={formData.transitionId}
-              onChange={handleChange}
-            />
-            <label>Transition Id</label>
-          </div>
-        </div>
-        <div className="mainFormPayment">
           <div className="mainFormPaymentInner">
             <input
               type="text"
-              id="transactionDate"
+              name="transactionId"
+              value={formData.transactionId}
+              onChange={handleChange}
+            />
+            <label htmlFor="transactionId">Transaction ID</label>
+          </div>
+        </div>
+        <div className="mainFormPayment">
+          <div className="mainFormPaymentInner">
+            <input
+              type="date"
               name="transactionDate"
               value={formData.transactionDate}
               onChange={handleChange}
             />
-            <label>Transaction Date</label>
+            <label htmlFor="transactionDate">Transaction Date</label>
           </div>
           <div className="mainFormPaymentInner">
             <select
-              id="selectPaymentMethod"
-              name="selectPaymentMethod"
-              value={formData.selectPaymentMethod}
+              name="paymentMethod"
+              value={formData.paymentMethod}
               onChange={handleChange}
             >
-              <option value="Select Payment Method">
-                Payment Send Select Please
-              </option>
-              <option value="jazzCash">jazzCash</option>
-              <option value="easyPaisa">easyPaisa</option>
-              <option value="bankAccount">bankAccount</option>
+              <option value="">Select Payment Method</option>
+              <option value="jazzCash">JazzCash</option>
+              <option value="easyPaisa">EasyPaisa</option>
+              <option value="bankAccount">Bank Account</option>
             </select>
           </div>
         </div>
-
         {renderAccountInfo()}
         <div className="mainFormPayment">
-        <div className="selected">
-          <label>Payment Screenshot:</label>
-          <br />
-          <br />
-          <input
-            accept="image/png , image/jpg , image/jpeg"
-            type="file"
-            id="image"
-            name="image"
-            onChange={handleImageChange}
-          />
-        </div>
-        <div className="mainFormPaymentInner">
+          <div className="selected">
+            <label>Payment Screenshot:</label>
+            <br />
+            <br />
+            <input
+              accept="image/png, image/jpg, image/jpeg"
+              type="file"
+              id="paymentPic"
+              name="paymentPic"
+              onChange={handleImageChange}
+            />
+          </div>
+          <div className="mainFormPaymentInner">
             <input
               type="text"
-              id="phone"
-              name="phone"
-              value={formData.phone}
+              name="contactNumber"
+              value={formData.contactNumber}
               onChange={handleChange}
             />
-            <label>Contact Number</label>
+            <label htmlFor="contactNumber">Contact Number</label>
           </div>
-       
         </div>
-
         <button type="submit" className="sendEmail">
           Send
         </button>

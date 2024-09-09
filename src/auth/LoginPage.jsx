@@ -4,20 +4,17 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "../css/auth.css";
 import { toast } from "react-toastify";
 import { useNavigate } from 'react-router-dom';
-import imageSign from '../images/imageSign.png'
-import goggleImage from '../images/goggleImage.png'
-import logo from '../images/logo.png'
+import imageSign from '../images/imageSign.png';
+import goggleImage from '../images/goggleImage.png';
+import logo from '../images/logo.png';
 
-
-const VITE_BASE_URL = import.meta.env.VITE_BASE_URL
-
+const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
 
 function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
-
 
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
@@ -43,9 +40,31 @@ function LoginPage() {
         localStorage.setItem("user", JSON.stringify(data.user));
 
         toast.success("Login successful!");
-        navigate("/"); // Redirect to the dashboard or any other LoginPage
+        navigate("/"); // Redirect to the dashboard or any other page
       } else {
         toast.error(data.message || "Login failed. Please try again.");
+      }
+    } catch (error) {
+      toast.error("An error occurred. Please try again.");
+    }
+  };
+
+  const handlePasswordReset = async () => {
+    try {
+      const response = await fetch(`${VITE_BASE_URL}/api/users/reset-password-request`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        toast.success("Password reset link sent to your email.");
+      } else {
+        toast.error(data.message || "Please Enter The Videos");
       }
     } catch (error) {
       toast.error("An error occurred. Please try again.");
@@ -102,6 +121,7 @@ function LoginPage() {
                 </span>
               </div>
             </div>
+            <a  className="resetPassword" onClick={handlePasswordReset}>Forgot Password</a>
             <button type="submit" className="button1">
               Sign in
             </button>
@@ -116,6 +136,6 @@ function LoginPage() {
       </div>
     </>
   );
-};
+}
 
 export default LoginPage;

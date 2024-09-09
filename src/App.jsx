@@ -16,6 +16,10 @@ import AccountSell from "./component/accountSell";
 import Custom404 from "./not-found";
 import "./index.css";
 import BuyerPayment from "./pages/BuyerPayment";
+import SectionFirst from "./component/Section1";
+import SectionSecond from "./component/Section2";
+import DealCancel from "./component/DealCancel";
+import ResetPassword from "./component/ResetPassword";
 
 function App() {
   return (
@@ -34,6 +38,10 @@ function App() {
         <Route path="/verify" element={<VerifyAuth />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/details" element={<Details />} />
+        <Route path="/SectionFirst" element={<SectionFirst />} />
+        <Route path="/SectionSecond" element={<SectionSecond />} />
+        <Route path="/DealCancel" element={<DealCancel />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="*" element={<Custom404 />} />
       </Routes>
       <Footer />
