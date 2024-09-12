@@ -8,7 +8,7 @@ import CodeGenerate from "./pages/CodeGenerate";
 import DealDone from "./pages/DealDone";
 import LoginPage from "./auth/LoginPage";
 import SignUp from "./auth/register";
-import VerifyAuth from "./auth/VerifyAuth";
+import VerifyAuth from "./auth/verify";
 import Details from "./pages/Details";
 import AccountDetails from "./pages/BuySell/AccountDetails";
 import AccountSell from "./component/accountSell";
