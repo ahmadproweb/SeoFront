@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import "../css/accordiona.css";
 function Frequently() {
   const [openItems, setOpenItems] = useState([]);
-  // Specify the type of index as number
   const toggleItem = (index) => {
     setOpenItems((prevOpenItems) =>
       prevOpenItems.includes(index)
@@ -12,7 +11,6 @@ function Frequently() {
     );
   };
 
-  // Specify the type of index as number
   const isItemOpen = (index) => openItems.includes(index);
 
   return (

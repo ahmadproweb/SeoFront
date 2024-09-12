@@ -5,12 +5,11 @@ import { useNavigate } from 'react-router-dom';
 const VITE_BASE_URL = import.meta.env.VITE_BASE_URL
 
 const ActivationForm = () => {
-  const [email, setEmail] = useState(""); // State to hold email
-  const [code, setCode] = useState(""); // State to hold verification code
+  const [email, setEmail] = useState(""); 
+  const [code, setCode] = useState(""); 
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Assuming the email is stored in localStorage after registration
     const storedEmail = localStorage.getItem("email");
     if (storedEmail) {
       setEmail(storedEmail);
@@ -33,7 +32,7 @@ const ActivationForm = () => {
 
       if (response.ok) {
         toast.success("Email verified successfully!");
-        navigate("/login"); // Redirect to a success page or home page after verification
+        navigate("/login"); 
       } else {
         toast.error(data.message || "Failed to verify email.");
       }

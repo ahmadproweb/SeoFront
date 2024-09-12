@@ -6,23 +6,23 @@ import {
 import "../css/auth.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
 
-import { MdDriveFileRenameOutline } from "react-icons/md";
-import { useNavigate } from 'react-router-dom';
-const VITE_BASE_URL = import.meta.env.VITE_BASE_URL
-
-import imageSign from '../images/imageSign.png'
-import goggleImage from '../images/goggleImage.png'
-import logo from '../images/logo.png'
+import imageSign from "../images/imageSign.png";
+import goggleImage from "../images/goggleImage.png";
+import logo from "../images/logo.png";
+import Processing from "../component/Processing";
 
 function SignUp() {
   const [formData, setFormData] = useState({
-    fullName:"",
+    fullName: "",
     email: "",
     password: "",
     confirmPassword: "",
     profileImage: null,
   });
+  const [loading, setLoading] = useState(false);
 
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
@@ -43,12 +43,14 @@ function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { fullName , email, password, confirmPassword, profileImage } = formData;
+    const { fullName, email, password, confirmPassword, profileImage } =
+      formData;
 
     if (password !== confirmPassword) {
       toast.error("Passwords do not match");
       return;
     }
+    setLoading(true);
 
     try {
       const formDataObj = new FormData();
@@ -76,6 +78,8 @@ function SignUp() {
       }
     } catch (error) {
       toast.error("An error occurred during registration. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -101,9 +105,7 @@ function SignUp() {
         <h1>Sign Up</h1>
         <form onSubmit={handleSubmit}>
           <div className="main-input">
-            <input type="file"
-            required
-            onChange={handleFileChange} />
+            <input type="file" required onChange={handleFileChange} />
           </div>
           <div className="main-input">
             <label htmlFor="fullName">Full Name</label>
@@ -173,8 +175,8 @@ function SignUp() {
               </span>
             </div>
           </div>
-          <button type="submit" className="button1">
-            Sign Up
+          <button type="submit" className="button1" disabled={loading}>
+            {loading ? <Processing /> : "Sign Up"}
           </button>
         </form>
         <button type="button" className="button2">
@@ -186,6 +188,6 @@ function SignUp() {
       </div>
     </div>
   );
-};
+}
 
 export default SignUp;

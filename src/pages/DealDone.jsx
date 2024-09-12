@@ -1,32 +1,41 @@
-import React, { useEffect, useState } from 'react';
-import '../css/deal.css';
+import React, { useEffect, useState } from "react";
+import "../css/deal.css";
 import "../css/buyerPayment.css";
-import { toast } from 'react-toastify';
-const VITE_ADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAIL; // Read admin email from environment variable
-const VITE_BASE_URL = import.meta.env.VITE_BASE_URL; 
+import { toast } from "react-toastify";
+import Processing from "../component/Processing";
+const VITE_ADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAIL;
+const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
 function DealDone() {
   const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
+    fullName: "",
+    email: "",
     adminEmail: VITE_ADMIN_EMAIL,
-    buyerEmail: '',
-    accountInfo: '',
+    buyerEmail: "",
+    accountInfo: `1. You have 5 minutes to check seller account.
+2. You can cancel the deal if the account is not correct (Email & Password or others).
+3. In case of deal cancellation, You Need Seller generated code & Contact with admin.
+4. If the seller doesn't give you the code, you can report it to the admin.`,
     accountPic: null,
   });
-  // Initialize formData with data from localStorage
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleCheckboxChange = (e) => {
+    setIsChecked(e.target.checked);
+  };
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
     if (user) {
       setFormData((prevState) => ({
         ...prevState,
         fullName: user.fullName,
-        email: user.email
+        email: user.email,
       }));
     }
   }, []);
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-    if (name === 'accountPic') {
+    if (name === "accountPic") {
       setFormData({ ...formData, accountPic: files[0] });
     } else {
       setFormData({ ...formData, [name]: value });
@@ -35,46 +44,56 @@ function DealDone() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    if (!isChecked) {
+      toast.error("Please Check");
+      return;
+    }
     const form = new FormData();
     for (let key in formData) {
       form.append(key, formData[key]);
     }
-    const token = localStorage.getItem('token'); // 
+    const token = localStorage.getItem("token");
+    setLoading(true);
 
     try {
       const response = await fetch(`${VITE_BASE_URL}/accountinfo/create`, {
-        method: 'POST',
+        method: "POST",
         body: form,
         headers: {
           // "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}` 
+          Authorization: `Bearer ${token}`,
         },
       });
 
       const result = await response.json();
       if (response.ok) {
-        toast.success('Account information created successfully');
+        toast.success("Account information created successfully");
         setFormData({
-          buyerEmail: '',
-          accountInfo: '',
-          accountPic: '',
-        })
+          buyerEmail: "",
+          accountPic: "",
+        });
       } else {
-        alert(`Error: ${result.message}`);
+        toast.error(`Error: ${result.message}`);
       }
     } catch (error) {
-      console.error('Error:', error);
-      alert('An error occurred. Please try again later.');
+      toast.error("An error occurred. Please try again later.");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <>
-      <div className='DealBtn'>
-        <a href="/SectionFirst">btn1</a>
-        <a href="/SectionSecond">btn2</a>
-        <a href="/DealCancel">Deal Cancel</a>
+      <div className="DealBtn">
+        <div className="DealBtnInner">
+          <a href="/codeMatching">Code Matching</a>
+          <a href="/paymentMethodSeller">Payment Method Seller</a>
+        </div>
+        <div className="bgRed">
+          <a href="/DealCancel" className="">
+            Deal Cancel
+          </a>
+        </div>
       </div>
       <div className="paymentafter">
         <div className="imgAuth">
@@ -85,7 +104,8 @@ function DealDone() {
         </div>
         <form className="formPa" onSubmit={handleSubmit}>
           <div className="welcomePayment">
-            <h1>welcome Seller</h1>
+            <h1>Acct Info Exchanger</h1>
+            <p>Only seller can use and fill this form</p>
           </div>
           <div className="mainFormPayment">
             <div className="mainFormPaymentInner">
@@ -106,7 +126,6 @@ function DealDone() {
                 value={formData.email}
                 onChange={handleChange}
                 disabled
-
               />
               <label htmlFor="email">Email</label>
             </div>
@@ -119,7 +138,6 @@ function DealDone() {
                 value={formData.adminEmail}
                 onChange={handleChange}
                 disabled
-
               />
               <label htmlFor="adminEmail">Admin Email</label>
             </div>
@@ -138,8 +156,8 @@ function DealDone() {
               name="accountInfo"
               value={formData.accountInfo}
               onChange={handleChange}
+              disabled
             />
-            <label htmlFor="accountInfo">Account Access (Enter Account Password, etc.)</label>
           </div>
           <div className="mainFormPayment">
             <div className="selected">
@@ -155,8 +173,36 @@ function DealDone() {
               />
             </div>
           </div>
-          <button type="submit" className="sendEmail">
-            Send
+          <div className="Text">
+            1. Fill out the form after getting the payment screenshot in the
+            email.
+            <br />
+            2. Confirm your email and seller's email while filling out this
+            form.
+            <br />
+            3. Confirm the account email and password in form filling. So that
+            the
+            <br />
+            buyer does not face any issues have while opening the account.{" "}
+            <br />
+            (For this you can use the input box below and write the account
+            email and password in two places).
+            <br />
+            4. After filling the form you have to wait 3 or 5 minutes, so that
+            the buyer can open and check your account. 5. Now at this time you
+            have to get buyer generated code from the buyer. which you have to
+            enter in the next form.
+            <br />
+            So that admin can easily send money into your Account.
+            <br />
+            6. Form fill Data will be stored
+            <div className="Condition">
+              <input type="checkbox" onChange={handleCheckboxChange} /> Ready
+              Term And Conditions
+            </div>
+          </div>
+          <button type="submit" className="sendEmail" disabled={loading}>
+            {loading ? <Processing /> : "Send"}
           </button>
         </form>
       </div>

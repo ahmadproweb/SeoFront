@@ -4,7 +4,9 @@
 * Autoprefixer: v10.4.7
 * Browsers: last 4 version
 */
-
+.CarouselReact{
+  margin-block: 2rem;
+}
 .upText{
   /* background-color: red; */
   padding: 2rem clamp(1rem , 3vw , 7rem);

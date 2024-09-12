@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { RxCrossCircled } from "react-icons/rx";
 import "../css/pupo.css";
+import { toast } from "react-toastify";
 
 const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
 
@@ -34,7 +35,7 @@ function PopFormNew({ togglePopup, user, token, onUpdate }) {
   };
 
   const handleEmailChangeConfirm = async () => {
-    try {
+    // try {
       const response = await fetch(
         `${VITE_BASE_URL}/api/users/confirm-email-change`,
         {
@@ -49,14 +50,14 @@ function PopFormNew({ togglePopup, user, token, onUpdate }) {
 
       if (response.ok) {
         const updatedUser = await response.json();
-        onUpdate(updatedUser); // Update the user data in the parent component
-        togglePopup(); // Close the popup
+        onUpdate(updatedUser); 
+        togglePopup();
       } else {
-        console.error("Failed to confirm email change");
+        toast.error("Failed to confirm email change");
       }
-    } catch (error) {
-      console.error("Error:", error);
-    }
+    // } catch (error) {
+    //   console.error("Error:", error);
+    // }
   };
 
   return (

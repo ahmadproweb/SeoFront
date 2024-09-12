@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../css/code.css";
 import { toast } from "react-toastify";
 import logo from '../images/logo.png'
+import Processing from "./Processing";
 
 
 const removeHashFromURL = () => {
@@ -21,19 +22,21 @@ const SellerCode = () => {
   const [buyerName, setBuyerName] = useState("");
   const [code, setCode] = useState("");
   const [paymentForBuyer, setPaymentForBuyer] = useState("");
+  const [loading, setLoading] = useState(false);
+
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
+      // try {
         const response = await fetch(`${import.meta.env.VITE_BASE_URL}/buySellList/all`);
         if (!response.ok) {
           throw new Error(`Error fetching data: ${response.statusText}`);
         }
         const data = await response.json();
         setAccountData(data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
+      // } catch (error) {
+      //   console.error("Error fetching data:", error);
+      // }
     };
     
 
@@ -41,7 +44,6 @@ const SellerCode = () => {
   }, []);
 
   useEffect(() => {
-    // Update accountType when selectedAccountId changes
     const selectedAccount = accountData.find((account) => account.accountId === selectedAccountId);
     if (selectedAccount) {
       setSelectedAccountType(selectedAccount.accountType);
@@ -50,7 +52,6 @@ const SellerCode = () => {
     }
   }, [selectedAccountId, accountData]);
   useEffect(() => {
-    // Retrieve fullName and emailAddress from localStorage and set them in state
     const userData = JSON.parse(localStorage.getItem("user"));
     if (userData) {
       setFullName(userData.fullName);
@@ -86,14 +87,15 @@ const SellerCode = () => {
   };
 
   const handleSubmit = async () => {
-    console.log("Full Name:", fullName);
-    console.log("Email Address:", emailAddress);
-    console.log("Buyer Name:", buyerName);
-    console.log("Payment Buyer:", paymentForBuyer);
-    console.log("Selected Account ID:", selectedAccountId);
-    console.log("Selected Account Type:", selectedAccountType);
-    console.log("Code:", code);
-    const token = localStorage.getItem('token'); // 
+    // console.log("Full Name:", fullName);
+    // console.log("Email Address:", emailAddress);
+    // console.log("Buyer Name:", buyerName);
+    // console.log("Payment Buyer:", paymentForBuyer);
+    // console.log("Selected Account ID:", selectedAccountId);
+    // console.log("Selected Account Type:", selectedAccountType);
+    // console.log("Code:", code);
+    const token = localStorage.getItem('token'); 
+    setLoading(true);
      
     try {
       const response = await fetch(`${import.meta.env.VITE_BASE_URL}/codeGenerator/create/seller`, {
@@ -113,15 +115,11 @@ const SellerCode = () => {
         }),
       });
   
-      // Check if response is OK (status code 2xx)
       if (!response.ok) {
-        // Log the full response for debugging
-        console.error("Response not OK:", response);
+        // console.error("Response not OK:", response);
   
-        // Attempt to parse JSON response
         const data = await response.json().catch(() => null);
   
-        // Check if the backend sent multiple errors
         if (data && data.errors && Array.isArray(data.errors)) {
           data.errors.forEach((error) => toast.error(error));
         } else {
@@ -130,11 +128,13 @@ const SellerCode = () => {
       } else {
         const data = await response.json();
         toast.success("Information submitted successfully!");
-        setFormNumber(3); // Move to the success step
+        setFormNumber(3);
       }
     } catch (error) {
-      console.error("Error submitting form:", error);
+      // console.error("Error submitting form:", error);
       toast.error("An error occurred while submitting the form.");
+    }finally {
+      setLoading(false);
     }
   };
   
@@ -266,7 +266,7 @@ const SellerCode = () => {
                     {accountData
                       .filter(
                         (account) =>
-                          account.accountId === selectedAccountId // Direct comparison
+                          account.accountId === selectedAccountId 
                       )
                       .map((account) => (
                         <option
@@ -304,7 +304,7 @@ const SellerCode = () => {
               <div className="input-text">
                 <div className="input-div">
                   <input
-                    type="text" // Changed to text to use maxLength
+                    type="number" 
                     value={code}
                     onChange={(e) => setCode(e.target.value)}
                     maxLength={8}
@@ -318,8 +318,8 @@ const SellerCode = () => {
                 <button className="back_button" onClick={handleBackClick}>
                   Back
                 </button>
-                <button className="next_button" onClick={handleSubmit}>
-                  Submit
+                <button className="next_button" onClick={handleSubmit} disabled={loading}>
+        {loading ? <Processing/> : 'Send'}
                 </button>
               </div>
             </div>

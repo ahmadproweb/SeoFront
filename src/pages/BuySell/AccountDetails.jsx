@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 import "../../css/buyDesc.css";
 
 function AccountDetails() {
-  const { accountId } = useParams(); // Extract accountId from URL params
+  const { accountId } = useParams(); 
   const [detailsBuy, setBuyDetails] = useState(null);
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,7 +19,7 @@ function AccountDetails() {
         const data = await response.json();
         console.log("Fetched data:", data);
         setBuyDetails(data);
-        console.log("State set to:", data); // Check if this logs correctly
+        console.log("State set to:", data);
       } catch (error) {
         console.error("Error fetching full details:", error.message);
       }
@@ -26,14 +27,11 @@ function AccountDetails() {
   
     if (accountId) {
       fetchData();
-    } else {
-      console.error("No account ID provided");
-    }
+    } 
   }, [accountId]);
   
   console.log("Details Buy state:", detailsBuy);
   
-
   return (
     <div className="div">
       {detailsBuy ? (
@@ -78,6 +76,16 @@ function AccountDetails() {
               <strong>{detailsBuy.earningMethod}</strong>
             </div>
           </div>
+        <div className="CarouselReact">
+        {detailsBuy.imagesUpload1 && (
+            <Carousel>
+              {detailsBuy.imagesUpload1 && <div><img src={detailsBuy.imagesUpload1} alt="Image 1" /></div>}
+              {detailsBuy.imagesUpload2 && <div><img src={detailsBuy.imagesUpload2} alt="Image 2" /></div>}
+              {detailsBuy.imagesUpload3 && <div><img src={detailsBuy.imagesUpload3} alt="Image 3" /></div>}
+              {detailsBuy.imagesUpload4 && <div><img src={detailsBuy.imagesUpload4} alt="Image 4" /></div>}
+            </Carousel>
+          )}
+        </div>
         </div>
       ) : (
         <p className="error">No results found, please check spelling</p>

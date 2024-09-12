@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../css/buyerPayment.css";
+import Processing from "../component/Processing";
 
-const VITE_ADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAIL; // Read admin email from environment variable
-const VITE_BASE_URL = import.meta.env.VITE_BASE_URL; // Read admin email from environment variable
+const VITE_ADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAIL; 
+const VITE_BASE_URL = import.meta.env.VITE_BASE_URL; 
 
 const BuyerPayment = () => {
   const [formData, setFormData] = useState({
@@ -18,9 +19,10 @@ const BuyerPayment = () => {
     paymentMethod: "",
     contactNumber: ""
   });
+  const [loading, setLoading] = useState(false);
+
   const [file, setFile] = useState(null);
 
-  // Initialize formData with data from localStorage
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
     if (user) {
@@ -49,7 +51,8 @@ const BuyerPayment = () => {
     if (file) {
       formDataObj.append("paymentPic", file);
     }
-    const token = localStorage.getItem('token'); // 
+    setLoading(true);
+    const token = localStorage.getItem('token'); 
 
     try {
       const response = await fetch(`${VITE_BASE_URL}/payment`, {
@@ -58,7 +61,7 @@ const BuyerPayment = () => {
         headers: {
           "Authorization": `Bearer ${token}` 
         },
-        // No need to set Content-Type for FormData, the browser will set it correctly
+    
       });
 
       const result = await response.json();
@@ -78,6 +81,8 @@ const BuyerPayment = () => {
       })
     } catch (error) {
       toast.error("An error occurred");
+    }finally {
+      setLoading(false);
     }
   };
 
@@ -147,7 +152,7 @@ const BuyerPayment = () => {
               name="fullName"
               value={formData.fullName}
               onChange={handleChange}
-              disabled // Disable editing
+              disabled 
             />
             <label htmlFor="fullName">Full Name</label>
           </div>
@@ -157,7 +162,7 @@ const BuyerPayment = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              disabled // Disable editing
+              disabled 
             />
             <label htmlFor="email">Email</label>
           </div>
@@ -169,7 +174,7 @@ const BuyerPayment = () => {
               name="adminEmail"
               value={formData.adminEmail}
               onChange={handleChange}
-              disabled // Disable editing
+              disabled 
             />
             <label htmlFor="adminEmail">Admin Email</label>
           </div>
@@ -195,7 +200,7 @@ const BuyerPayment = () => {
           </div>
           <div className="mainFormPaymentInner">
             <input
-              type="text"
+              type="number"
               name="transactionId"
               value={formData.transactionId}
               onChange={handleChange}
@@ -242,7 +247,7 @@ const BuyerPayment = () => {
           </div>
           <div className="mainFormPaymentInner">
             <input
-              type="text"
+              type="number"
               name="contactNumber"
               value={formData.contactNumber}
               onChange={handleChange}
@@ -250,8 +255,8 @@ const BuyerPayment = () => {
             <label htmlFor="contactNumber">Contact Number</label>
           </div>
         </div>
-        <button type="submit" className="sendEmail">
-          Send
+        <button type="submit" className="sendEmail" disabled={loading}>
+        {loading ? <Processing/> : 'Send'}
         </button>
       </form>
     </div>

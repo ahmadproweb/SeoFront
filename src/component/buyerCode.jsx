@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../css/code.css";
 import { toast } from "react-toastify";
 import logo from '../images/logo.png';
+import Processing from "./Processing";
 
 const removeHashFromURL = () => {
   history.replaceState(null, "", window.location.pathname + window.location.search);
@@ -17,16 +18,18 @@ const BuyerCode = () => {
   const [emailAddress, setEmailAddress] = useState("");
   const [sellerName, setSellerName] = useState("");
   const [code, setCode] = useState("");
+  const [loading, setLoading] = useState(false);
+
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
+      // try {
         const response = await fetch(`${import.meta.env.VITE_BASE_URL}/buySellList/all`);
         const data = await response.json();
         setAccountData(data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
+      // } catch (error) {
+        // console.error("Error fetching data:", error);
+      // }
     };
 
     fetchData();
@@ -43,7 +46,6 @@ const BuyerCode = () => {
   }, [selectedAccountId, accountData]);
 
   useEffect(() => {
-    // Retrieve fullName and emailAddress from localStorage and set them in state
     const userData = JSON.parse(localStorage.getItem("user"));
     if (userData) {
       setFullName(userData.fullName);
@@ -79,13 +81,13 @@ const BuyerCode = () => {
   };
 
   const handleSubmit = async () => {
-    console.log("Full Name:", fullName);
-    console.log("Email Address:", emailAddress);
-    console.log("Seller Name:", sellerName);
-    console.log("Selected Account ID:", selectedAccountId);
-    console.log("Selected Account Type:", selectedAccountType);
-    console.log("Code:", code);
-
+    // console.log("Full Name:", fullName);
+    // console.log("Email Address:", emailAddress);
+    // console.log("Seller Name:", sellerName);
+    // console.log("Selected Account ID:", selectedAccountId);
+    // console.log("Selected Account Type:", selectedAccountType);
+    // console.log("Code:", code);
+    setLoading(true);
     const token = localStorage.getItem('token'); 
     try {
       const response = await fetch(`${import.meta.env.VITE_BASE_URL}/codeGenerator/create/buyer`, {
@@ -116,9 +118,8 @@ const BuyerCode = () => {
         toast.success("Information submitted successfully!");
         setFormNumber(3); 
       }
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      toast.error("An error occurred while submitting the form.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -279,10 +280,10 @@ const BuyerCode = () => {
               <div className="input-text">
                 <div className="input-div">
                   <input
-                    type="text" // Changed to text to use maxLength
+                    type="number"
                     value={code}
                     onChange={(e) => setCode(e.target.value)}
-                    maxLength={8} // Added maxLength to restrict to 8 characters
+                    maxLength={8}
                   />
                   <span>Code</span>
                 </div>
@@ -292,8 +293,8 @@ const BuyerCode = () => {
                 <button className="back_button" onClick={handleBackClick}>
                   Back
                 </button>
-                <button className="submit_button" onClick={handleSubmit}>
-                  Submit
+                <button className="submit_button" onClick={handleSubmit} disabled={loading}>
+        {loading ? <Processing/> : 'Submit'}
                 </button>
               </div>
             </div>

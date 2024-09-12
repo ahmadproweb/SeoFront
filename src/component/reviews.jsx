@@ -4,13 +4,6 @@ import { FaStar } from "react-icons/fa";
 import { FaRegStar } from "react-icons/fa";
 
 function Reviews() {
-  const review = [
-    {
-      image: "",
-      name: "",
-      text: "",
-    },
-  ];
   return (
     <>
       <div className="ReviewsClient">

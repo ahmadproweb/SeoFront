@@ -23,7 +23,7 @@ function PopForm({ togglePopup, user, token, onUpdate }) {
     e.preventDefault();
 
     const formDataToSend = new FormData();
-    formDataToSend.append("fullName", formData.fullName); // Update to fullName
+    formDataToSend.append("fullName", formData.fullName);
     if (formData.profileImage) {
       formDataToSend.append("profileImage", formData.profileImage);
     }
@@ -39,12 +39,11 @@ function PopForm({ togglePopup, user, token, onUpdate }) {
 
       if (response.ok) {
         const updatedUser = await response.json();
-        localStorage.setItem('user', JSON.stringify(updatedUser.user)); // Update localStorage with correct user data
-
-        onUpdate(updatedUser.user); // Call the callback to update user state in Profile
+        localStorage.setItem('user', JSON.stringify(updatedUser.user)); 
+        onUpdate(updatedUser.user); 
 
         toast.success("Profile updated successfully!");
-        togglePopup(); // Close popup on successful update
+        togglePopup(); 
       } else {
         toast.error("Failed to update profile. Please try again.");
       }

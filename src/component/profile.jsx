@@ -6,7 +6,7 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import { MdMarkEmailUnread } from "react-icons/md";
-import PopForm from "./popupforme"; // Adjust the import path as needed
+import PopForm from "./popupforme";
 import "../css/pupo.css";
 import { FaPencil } from "react-icons/fa6";
 import PopFormNew from "./PopFormNew";
@@ -21,11 +21,11 @@ function Profile() {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const [isEmailPopupVisible, setIsEmailPopupVisible] = useState(false);
 
-  const token = localStorage.getItem("token"); // Fetch token from localStorage
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     const fetchUserData = async () => {
-      try {
+      // try {
         const response = await fetch(`${VITE_BASE_URL}/api/users/profile`, {
           method: "GET",
           headers: {
@@ -39,13 +39,11 @@ function Profile() {
             email: data.email,
             profileImage: data.profileImage,
           });
-        } else {
-          // Handle errors or redirect
-        }
-      } catch (error) {
-        console.error("Failed to fetch user data:", error);
-        // Handle errors or redirect
-      }
+        } 
+      // } catch (error) {
+      //   console.error("Failed to fetch user data:", error);
+      //   // Handle errors or redirect
+      // }
     };
 
     fetchUserData();
@@ -110,10 +108,10 @@ function Profile() {
           <div className="mainPopup">
             <div className="popup">
               <PopFormNew
-                togglePopup={toggleEmailPopup} // Use toggleEmailPopup to close the new popup
-                user={user} // Pass user data as props
-                token={token} // Pass token as props
-                onUpdate={handleUserUpdate} // Pass update handler
+                togglePopup={toggleEmailPopup}
+                user={user}
+                token={token} 
+                onUpdate={handleUserUpdate} 
               />
             </div>
           </div>
@@ -126,9 +124,9 @@ function Profile() {
             <div className="popup">
               <PopForm
                 togglePopup={togglePopup}
-                user={user} // Pass user data as props
-                token={token} // Pass token as props
-                onUpdate={handleUserUpdate} // Pass update handler
+                user={user}
+                token={token}
+                onUpdate={handleUserUpdate}
               />
             </div>
           </div>

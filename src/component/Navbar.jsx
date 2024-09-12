@@ -48,7 +48,7 @@ function Navbar() {
         <button type="button" onClick={() => navigate("https://web-chat-seo-toolers.vercel.app/")}>
           admin deal
         </button>
-        <button type="button" onClick={() => navigate("/chat")}>
+        <button type="button" onClick={() => navigate("/liveChat")}>
           join community
         </button>
         <button type="button" onClick={() => navigate("/scammers")}>
@@ -66,9 +66,8 @@ function Navbar() {
           <ul>
             <li><IoHomeOutline className="font" /><a href="/">home</a></li>
             <li><MdOutlineSell className="font" /><a href="/BuySell">buy & sell</a></li>
-            <li><FaRegPaperPlane className="font" /><a href="/liveChat">Live Chat</a></li>
             <li><LuLayoutPanelLeft className="font" /><a href="/DealDone">Deal Done</a></li>
-            <li><RiMoneyPoundCircleLine className="font" /><a href="/CodeGenerate">Code Generate</a></li>
+            <li><FaRegPaperPlane className="font" /><a href="/CodeGenerate">Code Generate</a></li>
             <li><RiMoneyPoundCircleLine className="font" /><a href="/payment">Buyer Payment</a></li>
           </ul>
         </nav>

@@ -35,12 +35,11 @@ function LoginPage() {
       const data = await response.json();
 
       if (response.ok) {
-        // Store the token in localStorage
         localStorage.setItem("token", data.token);
         localStorage.setItem("user", JSON.stringify(data.user));
 
         toast.success("Login successful!");
-        navigate("/"); // Redirect to the dashboard or any other page
+        navigate("/"); 
       } else {
         toast.error(data.message || "Login failed. Please try again.");
       }
@@ -50,7 +49,7 @@ function LoginPage() {
   };
 
   const handlePasswordReset = async () => {
-    try {
+    // try {
       const response = await fetch(`${VITE_BASE_URL}/api/users/reset-password-request`, {
         method: "POST",
         headers: {
@@ -66,9 +65,9 @@ function LoginPage() {
       } else {
         toast.error(data.message || "Please Enter The Videos");
       }
-    } catch (error) {
-      toast.error("An error occurred. Please try again.");
-    }
+    // } catch (error) {
+    //   toast.error("An error occurred. Please try again.");
+    // }
   };
 
   return (

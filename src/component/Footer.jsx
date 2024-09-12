@@ -22,27 +22,27 @@ function Footer() {
           </div>
         </footer>
         <div className="footer-row">
-          {/* <div className="footer-col">
+          <div className="footer-col">
             <h4>about us</h4>
             <ul className="links">
               <li>
-                <Link href="/">home</Link>
+            <a href="/">home</a>
               </li>
               <li>
-                <Link href="../Routes/buy&&sell">buy & sell</Link>
+                <a href="/BuySell">buy & sell</a>
               </li>
               <li>
-                <Link href="../Routes/earningPlatform">earning</Link>
+                <a href="/DealDone">Deal Done</a>
               </li>
               <li>
-                <Link href="../Routes/socail">social  panel</Link>
+                <a href="/CodeGenerate">Code Generate</a>
               </li>
               <li>
-                <Link href="../Routes/paymentMethod">paymentMethod</Link>
+                <a href="/payment">Payment</a>
               </li>
             </ul>
-          </div> */}
-          <div className="footer-col">
+          </div>
+          {/* <div className="footer-col">
             <h4>Working Hour's</h4>
             <ul className="links">
               <li>
@@ -67,7 +67,7 @@ function Footer() {
                 <a href="#">Sunday: Off Day</a>
               </li>
             </ul>
-          </div>
+          </div> */}
           <div className="footer-col">
             <h4>Helpful Page's</h4>
             

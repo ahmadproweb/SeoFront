@@ -9,7 +9,6 @@ function DealCancel() {
   const [sellerEmail, setSellerEmail] = useState('');
 
   useEffect(() => {
-    // Retrieve data from localStorage and environment variables
     const userData = localStorage.getItem('user');
     if (userData) {
       const user = JSON.parse(userData);
@@ -17,15 +16,13 @@ function DealCancel() {
       setEmail(user.email);
     }
 
-    // Ensure this environment variable is set
     setAdminEmail(import.meta.env.VITE_ADMIN_EMAIL || '');
   }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const token = localStorage.getItem('token'); // 
+    const token = localStorage.getItem('token'); 
 
-    // Send request to the backend
     fetch(`${VITE_BASE_URL}/dealCancel/sendMessage`, {
       method: 'POST',
       headers: {
@@ -47,7 +44,6 @@ function DealCancel() {
       }
     })
     .catch(error => {
-      console.error('Error sending request:', error);
       toast.error('Error sending request');
     });
   };

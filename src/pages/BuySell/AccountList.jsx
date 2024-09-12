@@ -42,7 +42,7 @@ function AccountList({ services }) {
               <div className="class">
                 <h2>Deal</h2>
                 <button type="button"
-                  onClick={() => navigate(`/liveChat`)}
+                  onClick={() => navigate(`${import.meta.env.VITE_CHAT_URL}`)}
                 >Live Chat</button>
               </div>
               <div className="class">

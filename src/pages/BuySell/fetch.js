@@ -7,10 +7,8 @@ export const fetchBuySellList = async () => {
       throw new Error(`Network response was not ok. Status: ${response.status}, Message: ${errorText}`);
     }
     
-    // Directly parse JSON from the response
     const data = await response.json();
     
-    // Return the parsed data
     return data;
   } catch (error) {
     console.error("Error fetching buy/sell list:", error);

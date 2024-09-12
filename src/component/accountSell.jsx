@@ -36,8 +36,6 @@ function AccountSell() {
     telegramUsername: "",
     accountImages: [],
   });
-  // Ensure accountImages is initialized correctly
-  // const [accountImages, setAccountImages] = useState<File[]>([]);
   const handleFileChange = (e) => {
     if (e.target.files) {
       const files = Array.from(e.target.files);
@@ -47,11 +45,10 @@ function AccountSell() {
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-    // console.log(value);
     if (name === "accountImages") {
       setFormData((prevFormData) => ({
         ...prevFormData,
-        [name]: files, // Directly setting the FileList object
+        [name]: files, 
       }));
     } else {
       setFormData((prevFormData) => ({
@@ -64,7 +61,6 @@ function AccountSell() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Ensure all required fields are filled
     const requiredFields  = [
       "accountName",
       "accountPrice",
@@ -99,42 +95,35 @@ function AccountSell() {
     try {
       const formDataToSend = new FormData();
 
-      // Append form fields to FormData
       requiredFields.forEach((key) => {
         const value = formData[key];
         if (key === "monetizationEnabled") {
-          formDataToSend.append(key, value === "Yes" ? "true" : "false"); // Convert to string "true" or "false"
+          formDataToSend.append(key, value === "Yes" ? "true" : "false");
         } else {
-          formDataToSend.append(key, value ); // Ensure value is a string
+          formDataToSend.append(key, value ); 
         }
       });
 
-      // Ensure accountImages is an array and append files to FormData
       if (Array.isArray(formData.accountImages)) {
         formData.accountImages.forEach((file) => {
           formDataToSend.append("accountImages", file);
         });
       } else {
-        // console.error("accountImages is not an array:", formData.accountImages);
         toast.error("Invalid image files. Please try again.");
         return;
       }
-      const token = localStorage.getItem('token'); // 
+      const token = localStorage.getItem('token'); 
 
-      // Send POST request
       const response = await fetch(`${VITE_BASE_URL}/buySell/create`, {
         method: "POST",
         body: formDataToSend,
              headers: {
-          // "Content-Type": "application/json",
           "Authorization": `Bearer ${token}` 
         },
       });
 
-      // Check response
       if (!response.ok) {
         const errorData = await response.json();
-        // console.error("Error response:", errorData);
         toast.error(`Error: ${errorData.message || "Something went wrong"}`);
       } else {
         const successData = await response.json();
@@ -165,7 +154,6 @@ function AccountSell() {
         });
       }
     } catch (error) {
-      // console.error("Submission error:", error);
       toast.error("Failed to submit the form. Please try again.");
     }
   };
