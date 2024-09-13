@@ -41,7 +41,7 @@ body.menu-open {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 2rem 3rem;
+    padding: 2rem 0rem;
 }
 
 .logo-first-ft h1 {
@@ -56,23 +56,26 @@ body.menu-open {
 }
 
 .mid-tail h2 {
-    font-size: 1.5rem;
+    font-size: 3rem;
     color: white;
-    opacity: 0.7;
     text-transform: capitalize;
 }
 
 .mid-tail nav {
-    margin-top: 2rem;
+    margin-top: 4rem;
 }
-
+.mid-tail nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
 .mid-tail nav ul li {
     display: flex;
     align-items: center;
     line-height: 5rem;
     gap: 0.7rem;
     font-size: 2rem;
-    color: white;
+    color: rgba(255, 255, 255, 0.674);
     list-style: none;
 }
 
@@ -96,6 +99,7 @@ body.menu-open {
     height: 100dvh;
     padding: 5rem 10rem;
     padding-bottom: 0rem;
+    overflow: scroll !important;
 }
 .Dashboard{
     position: relative;
@@ -271,7 +275,8 @@ body.menu-open {
     margin-top: 5rem;
     box-shadow: rgba(0, 0, 0, 0.194) 0px 5px 10px;
     padding-block: 3rem 2rem;
-    /* overflow-x: scroll; */
+    overflow-x: scroll;
+    width: 100%;
 }
 
 .card-history .table {
@@ -293,10 +298,12 @@ body.menu-open {
 }
 
 .table__tbody tr td {
-    font-size: 1.2rem;
-    opacity: 0.8;
-    font-weight: 400;
+    font-size: 1.3rem;
+    font-weight: 500;
     text-align: center;
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflowed text */
+    text-overflow: ellipsis; /* Add ellipsis for overflowed text */
 }
 
 @media (width < 1157px) {
@@ -421,6 +428,13 @@ body.menu-open {
         right: 0;
         width: 15%;
     }
+    .card-history {
+        width: 100%;
+    }
+    
+    .card-history .table {
+        width: 100dvw;
+    }
 
 }
 
@@ -429,11 +443,14 @@ body.menu-open {
         padding: 6rem 3rem;
         padding-bottom: 0rem;
     }
-
-    .history-main {
-        padding: 6rem 1rem;
-        padding-bottom: 0rem;
+    .table__tbody tr td {
+        font-size: 1.1rem;
+        font-weight: 300;
+        white-space: nowrap; /* Prevent text from wrapping */
+        overflow: hidden; /* Hide overflowed text */
+        text-overflow: ellipsis; /* Add ellipsis for overflowed text */
     }
+
     .Dashboard{
         padding: 6rem 1rem;
         padding-bottom: 0rem;
@@ -459,6 +476,7 @@ body.menu-open {
     .wrapTy {
         height: 125vw;
     }
+  
 }
 @media (width < 500px) {
     .wrapTy {
@@ -471,14 +489,7 @@ body.menu-open {
         padding-bottom: 0rem;
     }
 
-    .history-main {
-        padding: 6rem 0.3rem;
-        padding-bottom: 0rem;
-    }
-    .Dashboard{
-        padding: 6rem 0.3rem;
-        padding-bottom: 0rem;
-    }
+ 
 
     .search-container {
         width: 300px;

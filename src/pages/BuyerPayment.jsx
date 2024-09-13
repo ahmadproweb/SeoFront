@@ -255,7 +255,7 @@ const BuyerPayment = () => {
             <label htmlFor="contactNumber">Contact Number</label>
           </div>
         </div>
-        <button type="submit" className="sendEmail" disabled={loading}>
+        <button type="submit" className="sendEmail">
         {loading ? <Processing/> : 'Send'}
         </button>
       </form>

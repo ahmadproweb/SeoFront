@@ -16,7 +16,10 @@
     padding-block: 0rem 1rem;
 }
 
-
+.headerButton a{
+    color: white;
+    text-transform: lowercase;
+}
 .headerButton button:has(p){
     text-transform: lowercase;
 } 

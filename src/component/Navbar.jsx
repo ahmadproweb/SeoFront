@@ -54,8 +54,8 @@ function Navbar() {
         <button type="button" onClick={() => navigate("/scammers")}>
           scam alert
         </button>
-        <button type="button" onClick={() => navigate("https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=GTvVlcSBpgJcPLCbFhTdgkPXDdqVbtmnXNfLRwRjmctRHQKwBxrpcBgbkrrLKWDxLbfdZgLJtrplc")}>
-          <p>seotoolers@gmail.com</p>
+        <button type="button">
+          <a href="mailto:ahmaddeveloper122@gmail.com?subject=Hello!">seotoolers@gmail.com</a>
         </button>
       </div>
       <header className={`header ${stickyClass}`}>

@@ -4,6 +4,8 @@ import { CgProfile } from "react-icons/cg";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RxCross1 } from "react-icons/rx";
 import Profile from "../component/profile.jsx";
+import PaymentHistory from "../component/PaymentHistory.jsx";
+import { FaHistory } from "react-icons/fa";
 
 function Details() {
   const [selectedComponent, setSelectedComponent] = useState("Profile");
@@ -38,7 +40,7 @@ function Details() {
       <div className={isMenuOpen ? "main-part open" : "main-part"}>
         <div className="logo-first-ft">
           <img src="favicon.ico" alt="" />
-          <h1>TailAdmin</h1>
+          <h1>User Details</h1>
         </div>
         <div className="mid-tail">
           <h2>menu</h2>
@@ -48,11 +50,16 @@ function Details() {
                 <CgProfile />
                 <button onClick={() => handleButtonClick("Profile")}>Profile</button>
               </li>
+              <li>
+                <FaHistory />
+                <button onClick={() => handleButtonClick("PaymentHistory")}>Payment History</button>
+              </li>
             </ul>
           </nav>
         </div>
       </div>
       {selectedComponent === "Profile" && <Profile />}
+      {selectedComponent === "PaymentHistory" && <PaymentHistory />}
     </div>
   );
 }

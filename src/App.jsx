@@ -21,6 +21,7 @@ import ProtectedRoute from "./component/ProtectedRoute";
 import "./index.css";
 import CodeMatching from "./component/CodeMatching";
 import PaymentMethodSeller from "./component/PaymentMethodSeller";
+import Scammers from "./pages/Scammers";
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
         <Route path="/paymentMethodSeller" element={<PaymentMethodSeller />} />
         <Route path="/DealCancel" element={<DealCancel />} />
         <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/scammers" element={<Scammers />} />
         <Route path="*" element={<Custom404 />} />
       </Routes>
       <Footer />
