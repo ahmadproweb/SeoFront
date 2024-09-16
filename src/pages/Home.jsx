@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import "../css/home.css";
-import For from "../component/For";
+// import For from "../component/For";
 import Frequently from "../component/Frequently";
 import Listen from "../component/Listen";
 import Happy from "../component/happy";
@@ -152,7 +152,7 @@ function Home() {
 
       <Listen />
 
-      <For />
+      {/* <For /> */}
 
       <Reviews />
 

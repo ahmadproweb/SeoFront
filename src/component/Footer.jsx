@@ -32,13 +32,13 @@ function Footer() {
                 <a href="/BuySell">buy & sell</a>
               </li>
               <li>
-                <a href="/DealDone">Deal Done</a>
-              </li>
-              <li>
                 <a href="/CodeGenerate">Code Generate</a>
               </li>
               <li>
                 <a href="/payment">Payment</a>
+              </li>
+              <li>
+                <a href="/DealDone">Deal Done</a>
               </li>
             </ul>
           </div>

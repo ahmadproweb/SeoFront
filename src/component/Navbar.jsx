@@ -45,10 +45,12 @@ function Navbar() {
   return (
     <>
       <div className="headerButton">
-        <button type="button" onClick={() => navigate("https://web-chat-seo-toolers.vercel.app/")}>
+        <button type="button" style={{
+          display:'none'
+        }} onClick={() => navigate("https://web-chat-seo-toolers.vercel.app/")}>
           admin deal
         </button>
-        <button type="button" onClick={() => navigate("/liveChat")}>
+        <button type="button" onClick={() => navigate(`https://chat.whatsapp.com/CgwgYt1Pl6e84oZHA2Uy1K`)}>
           join community
         </button>
         <button type="button" onClick={() => navigate("/scammers")}>
@@ -60,15 +62,15 @@ function Navbar() {
       </div>
       <header className={`header ${stickyClass}`}>
         <div className="logo">
-          <a href="/">Seotoolers</a>
+          <a href="/">Socialpress</a>
         </div>
         <nav className={`nav ${isNavOpen ? "nav-open" : ""}`}>
           <ul>
             <li><IoHomeOutline className="font" /><a href="/">home</a></li>
             <li><MdOutlineSell className="font" /><a href="/BuySell">buy & sell</a></li>
-            <li><LuLayoutPanelLeft className="font" /><a href="/DealDone">Deal Done</a></li>
-            <li><FaRegPaperPlane className="font" /><a href="/CodeGenerate">Code Generate</a></li>
+            <li><FaRegPaperPlane className="font" /><a href="/CodeGenerate">Generate Code</a></li>
             <li><RiMoneyPoundCircleLine className="font" /><a href="/payment">Buyer Payment</a></li>
+            <li><LuLayoutPanelLeft className="font" /><a href="/DealDone">Deal Done</a></li>
           </ul>
         </nav>
         <div className="login_SignUp">
@@ -85,7 +87,7 @@ function Navbar() {
             <>
               <a href="/login">Login</a>
               <a href="/signup">Signup</a>
-              <a href="/admin">Admin</a>
+              <a href='https://admin.socialpress.online'>Admin</a>
             </>
           )}
           <div className={`hamburger ${isNavOpen ? "ahmad" : ""}`} style={{ cursor: "pointer" }} onClick={toggleNav}>
