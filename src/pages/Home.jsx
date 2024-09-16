@@ -79,9 +79,9 @@ function Home() {
       <div className="firstDataSeo">
         <img src={bgMobile} alt="My Image" width={300} height={100} />
         <div className="textMain">
-          <h3>SEO SMM, Rank Learner & Digital Accounts Website</h3>
+          <h3>SocialPress SMM, Rank Learner & Digital Accounts Website</h3>
           <p>
-            The largest and cheapest SEO, Digital Accounts SMM panel on the
+            The largest and cheapest SocialPress, Digital Accounts SMM panel on the
             market. Buy AdSense, YouTube, Gaming And Much More With SMM
             Panel.
           </p>
@@ -93,7 +93,7 @@ function Home() {
               Handle social account
             </button>
             <button type="button" onClick={() => navigate("/services")}>
-              Seo / Ppc
+            SocialPress / Ppc
             </button>
           </div>
           <form className="search-container">

@@ -119,7 +119,7 @@ function Footer() {
               <a href="https://twitter.com/seotoolers">
                 <FaTwitter className="favFooter " />
               </a>
-              <a href="https://gmail.com/seotoolers@gmail.com">
+              <a href="mailto:swap.socialpress@gmail.com?subject=Hello!">
                 <MdOutlineMail className="favFooter" />
               </a>
               <a href="https://medium.com/@seotoolers">

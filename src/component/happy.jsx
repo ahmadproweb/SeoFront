@@ -48,7 +48,7 @@ function Happy() {
           Why <span>Choose Us?</span>
         </h2>
         <p>
-          Access top-notch SEO tools, enriching learning courses,
+          Access top-notch SocialPress tools, enriching learning courses,
           and elevate your online presence strategically. We navigate social
           networks, understand Google algorithms, and excel in effective
           marketing strategies. Our premium plans offer an exclusive,

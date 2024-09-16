@@ -82,7 +82,7 @@ function Reviews() {
                         <FaRegStar />
                       </div>
                     </div>
-                    <div className="paragraph">Had an amazing experience with the Heroes of SEO Toolers team! They are super responsive, consistently offer suggestions to boost our online presence in the F&B industry, and handle our SEO and SEM with expertise. No worries on our end. Definitely recommend them!</div>
+                    <div className="paragraph">Had an amazing experience with the Heroes of SocialPress  team! They are super responsive, consistently offer suggestions to boost our online presence in the F&B industry, and handle our SocialPress and SEM with expertise. No worries on our end. Definitely recommend them!</div>
                     <div className="date">jan/08/2024</div>
                   </div>
                   <div className="reviews" >
@@ -104,7 +104,7 @@ function Reviews() {
                         <FaRegStar />
                       </div>
                     </div>
-                    <div className="paragraph">The SEO Toolers team, made up of highly skilled and passionate professionals, played a crucial role in helping us build a strong digital presence in our local market. They are responsive, flexSliderible, and forward-thinking, consistently meeting our requests and expectations. Working with them over the past 3 years has been a pleasure.</div>
+                    <div className="paragraph">The SocialPress  team, made up of highly skilled and passionate professionals, played a crucial role in helping us build a strong digital presence in our local market. They are responsive, flexSliderible, and forward-thinking, consistently meeting our requests and expectations. Working with them over the past 3 years has been a pleasure.</div>
                     <div className="date">Jan/11/2024</div>
                   </div>
                   <div className="reviews" >
@@ -126,7 +126,7 @@ function Reviews() {
                         <FaStar />
                       </div>
                     </div>
-                    <div className="paragraph">In my view, Heroes of ST team is the top digital marketing agency. They boosted our traffic and quality leads by over 350% in just 6 months. Shane, Vance, and the team excel in SEM, SEO, and FB marketing. The ROI surpasses traditional marketing methods, and they outshine my previous experiences with other agencies and freelancers. Highly pleased with their services!</div>
+                    <div className="paragraph">In my view, Heroes of ST team is the top digital marketing agency. They boosted our traffic and quality leads by over 350% in just 6 months. Shane, Vance, and the team excel in SEM, SocialPress, and FB marketing. The ROI surpasses traditional marketing methods, and they outshine my previous experiences with other agencies and freelancers. Highly pleased with their services!</div>
                     <div className="date">Jan/01/2024</div>
                   </div>
               </div>

@@ -18,12 +18,12 @@ function Listen() {
         <div className="textListen">
           <span>
             <img src={imageIcon} width={30} height={30}  alt="" />
-            <a href="seotoolers.com">seotoolers.com</a>
+            <a href="https://socialpress.online">socialpress.online</a>
           </span>
           <h3>Listen Better. Plan Better. Build Better</h3>
           <p>
             Our team consists of skilled professionals who are experts in areas
-            like Web Development, Graphics designing, SEO, social media
+            like Web Development, Graphics designing, SocialPress, social media
             marketing, and PPC advertising. We provide various services to help
             clients succeed online. We know every business is different, so we
             personalize our approach for each client, working closely with them
@@ -31,7 +31,7 @@ function Listen() {
             business and ends with delivering results.
             <br /><br/>
             Our team consists of skilled professionals who are experts in areas
-            like Web Development, Graphics designing, SEO, social media
+            like Web Development, Graphics designing, SocialPress, social media
             marketing, and PPC advertising. We provide various services to help
             clients succeed online. We know every business is different, so we
             personalize our approach for each client, working closely with them

@@ -10,7 +10,7 @@ function For() {
             our <span>plans</span>
           </h2>
           <p>
-            Explore our services, featuring standard SEO tools access and
+            Explore our services, featuring standard SocialPress tools access and
             comprehensive learning courses. Elevate your online presence through
             social networks, utilizing insights into Google algorithms and
             effective marketing strategies. Unlock premium services and
@@ -26,13 +26,13 @@ function For() {
                 <div className="iconServicesPlan">
                   <TiTick />
                 </div>
-                Access SEO course
+                Access SocialPress course
               </li>
               <li>
                 <div className="iconServicesPlan">
                   <TiTick />
                 </div>
-                Basic SEO tools Access (Monthly)
+                Basic SocialPress tools Access (Monthly)
               </li>
               <li>
                 <div className="iconServicesPlan">
@@ -83,7 +83,7 @@ function For() {
                 <div className="iconServicesPlan">
                   <TiTick />
                 </div>
-                <abbr title="Monthly">Standard SEO tools Access</abbr>
+                <abbr title="Monthly">Standard SocialPress tools Access</abbr>
               </li>
               <li>
                 <div className="iconServicesPlan">
@@ -123,7 +123,7 @@ function For() {
                   title="on Your Submitted
                 Email."
                 >
-                  Send 2 SEO Optimize & Human Write Articles
+                  Send 2 SocialPress Optimize & Human Write Articles
                 </abbr>
               </li>
               <li>
@@ -161,7 +161,7 @@ function For() {
                 <div className="iconServicesPlan">
                   <TiTick />
                 </div>
-                Send SEO E-Book weekly, Monthly on Your Gmail.
+                Send SocialPress E-Book weekly, Monthly on Your Gmail.
               </li>
               <li>
                 <div className="iconServicesPlan">
@@ -187,7 +187,7 @@ function For() {
                 <div className="iconServicesPlan">
                   <TiTick />
                 </div>
-                Business SEO tools Access (Monthly)
+                Business SocialPress tools Access (Monthly)
               </li>
               <li>
                 <div className="iconServicesPlan">
@@ -213,7 +213,7 @@ function For() {
                 <div className="iconServicesPlan">
                   <TiTick />
                 </div>
-                Send 4 SEO Optimize & Human Write Articles on Your Submitted
+                Send 4 SocialPress Optimize & Human Write Articles on Your Submitted
                 Email.
               </li>
               <li>
@@ -266,7 +266,7 @@ function For() {
                 <div className="iconServicesPlan">
                   <TiTick />
                 </div>
-                Send SEO E-Book weekly, Monthly on Your Gmail
+                Send SocialPress E-Book weekly, Monthly on Your Gmail
               </li>
               <li>
                 <div className="iconServicesPlan">

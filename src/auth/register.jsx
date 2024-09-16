@@ -91,7 +91,7 @@ function SignUp() {
           <h1>Sign Up</h1>
         </div>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit suspendisse.
+        SocialPress.online
         </p>
         <img src={imageSign} alt="" />
       </div>

@@ -35,13 +35,13 @@ function Frequently() {
             >
               <summary>
                 <span>
-                  Could you share insights into the number of customers SEO
+                  Could you share insights into the number of customers SocialPress
                   Toolers has successfully served?
                 </span>
            
               </summary>
               <p>
-                Over the years, SEO Toolers has successfully served a diverse
+                Over the years, SocialPress Toolers has successfully served a diverse
                 clientele, establishing a track record of satisfied customers
                 who have benefited from our digital marketing expertise.
               </p>
@@ -53,13 +53,13 @@ function Frequently() {
             >
               <summary>
                 <span>
-                  How can SEO Toolers help me increase traffic to my website?{" "}
+                  How can SocialPress Toolers help me increase traffic to my website?{" "}
                 </span>
        
               </summary>
               <p>
                 {" "}
-                SEO Toolers employs proven SEO strategies to boost your website
+                SocialPress Toolers employs proven SocialPress strategies to boost your website
                 traffic and tools. Through targeted keyword optimisation,
                 content enhancement, and other techniques, we drive organic
                 traffic and improve your online visibility.
@@ -110,12 +110,12 @@ function Frequently() {
             >
               <summary>
                 <span>
-                  Is SEO Toolers experienced in working with WordPress websites?
+                  Is SocialPress Toolers experienced in working with WordPress websites?
                 </span>
   
               </summary>
               <p>
-                SEO Toolers is well-versed in working with WordPress websites,
+              SocialPress Toolers is well-versed in working with WordPress websites,
                 delivering tailored solutions for optimal performance, security,
                 and user experience.
               </p>
@@ -134,7 +134,7 @@ function Frequently() {
               <p>
                 Our team is dedicated to improving your website’s speed and
                 performance. Through optimisations, caching strategies, and
-                other techniques, we enhance user experiences and SEO rankings.
+                other techniques, we enhance user experiences and SocialPress rankings.
               </p>
             </details>
             <details
@@ -144,13 +144,13 @@ function Frequently() {
             >
               <summary>
                 <span>
-                  How can SEO Toolers assist with design aspects for my online
+                  How can SocialPress  assist with design aspects for my online
                   presence?
                 </span>
              
               </summary>
               <p>
-                SEO Toolers seamlessly integrates design aspects into your
+              SocialPress  seamlessly integrates design aspects into your
                 online presence. From website aesthetics to social media
                 graphics, our design services ensure a cohesive and visually
                 appealing brand image.

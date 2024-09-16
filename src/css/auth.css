@@ -37,9 +37,8 @@
 }
 
 .first p {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: 500;
-    width: calc(100% - 10rem);
     text-align: center;
     padding-block: 2rem;
 }
@@ -189,7 +188,7 @@ form .main-input label {
 
 .second h2 {
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     gap: 0.5rem;
     justify-content: center;
     margin-top: 2rem;
@@ -248,12 +247,12 @@ form .main-input label {
     }
     .main-input .input input {
         font-size: 1.3rem;
-        margin-bottom: 1.5rem;
+        margin-bottom: 2.4rem;
         padding: 1rem;
     }
     .input .input-icons {
         position: absolute;
-        top: 2rem;
+        top: 0.8rem;
         font-size: 2rem;
     }
     .second button {

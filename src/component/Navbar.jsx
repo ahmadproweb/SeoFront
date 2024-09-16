@@ -55,7 +55,7 @@ function Navbar() {
           scam alert
         </button>
         <button type="button">
-          <a href="mailto:ahmaddeveloper122@gmail.com?subject=Hello!">seotoolers@gmail.com</a>
+          <a href="mailto:swap.socialpress@gmail.com?subject=Hello!">swap.socialpress@gmail.com</a>
         </button>
       </div>
       <header className={`header ${stickyClass}`}>

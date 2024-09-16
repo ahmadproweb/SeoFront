@@ -79,7 +79,7 @@ function LoginPage() {
             <h1>Sign In</h1>
           </div>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit suspendisse.
+          SocialPress.online
           </p>
           <img src={imageSign} alt="" />
         </div>
