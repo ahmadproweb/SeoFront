@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../css/deal.css";
 import "../css/buyerPayment.css";
 import "../css/auth.css";
+import { FaLongArrowAltRight } from "react-icons/fa";
 import {
   MdOutlineDriveFileRenameOutline,
   MdOutlineEmail,
@@ -169,7 +170,17 @@ function DealDone() {
               </div>
             </div>
             <div className="main-input">
-              <label htmlFor="accountInfo">Account Info</label>
+              <label htmlFor="accountInfo">
+                Account Info :{" "}
+                <span
+                  style={{
+                    fontWeight: "300",
+                    color: "red",
+                  }}
+                >
+                  (Must Read Before Filling)
+                </span>{" "}
+              </label>
               <div className="input">
                 <textarea
                   name="accountInfo"
@@ -193,28 +204,27 @@ function DealDone() {
               />
             </div>
             <div className="Text">
-              1. Fill out the form after getting the payment screenshot in the
-              email.
+              <span>1.</span> Fill out the form after getting the payment
+              screenshot in the email.
               <br />
-              2. Confirm your email and seller's email while filling out this
-              form.
+              <span>2.</span> Confirm your email and seller's email while
+              filling out this form.
               <br />
-              3. Confirm the account email and password in form filling. So that
-              the
+              <span>3.</span> Confirm the account email and password in form
+              filling. So that the
               <br />
               buyer does not face any issues have while opening the account.{" "}
               <br />
               (For this you can use the input box below and write the account
               email and password in two places).
               <br />
-              4. After filling the form you have to wait 3 or 5 minutes, so that
-              the buyer can open and check your account. 5. Now at this time you
-              have to get buyer generated code from the buyer. which you have to
-              enter in the next form.
+              <span>4.</span> After filling the form you have to wait 3 or 5
+              minutes, so that the buyer can open and check your account. <br />
+              <span>5.</span> Now at this time you have to get buyer generated
+              code from the buyer. which you have to enter in the next form. So
+              that admin can easily send money into your Account.
               <br />
-              So that admin can easily send money into your Account.
-              <br />
-              6. Form fill Data will be stored
+              <span>6.</span> Form fill Data will be stored
               <div className="Condition">
                 <input type="checkbox" onChange={handleCheckboxChange} /> Ready
                 Term And Conditions
@@ -224,10 +234,18 @@ function DealDone() {
               type="submit"
               style={{
                 backgroundColor: "green",
+                height: "4rem",
+                padding: "0rem",
               }}
               className="button1"
             >
-              {loading ? <Processing /> : "Send"}
+              {loading ? (
+                <Processing />
+              ) : (
+                <div className="item">
+                  <FaLongArrowAltRight className="arrow1" />
+                </div>
+              )}
             </button>
           </form>
         </div>

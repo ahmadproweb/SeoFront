@@ -188,13 +188,17 @@ function PaymentMethodSeller() {
               </div>
             </div>
             <div className="Text">
-              1. Select Your Correct Payment method. <br />
-              2. Enter your Correct Account No and Account Name. <br />
-              3. Make sure Account no match to Merchant partner <br />
-              (Bank, Digital Account Jazzcash/Easypaisa, Crypto Account). <br />
-              4. Be Aware! If Account Information is Wrong, We do Nothing.{" "}
+              <span>1.</span> Select Your Correct Payment method. <br />
+              <span>2.</span> Enter your Correct Account No and Account Name.{" "}
               <br />
-              5. Payment will be processed in 5 to 15 minutes. <br />
+              <span>3.</span> Make sure Account no match to Merchant partner{" "}
+              <br />
+              <span>(B</span>ank, Digital Account Jazzcash/Easypaisa, Crypto
+              Account). <br />
+              <span>4.</span> Be Aware! If Account Information is Wrong, We do
+              Nothing. <br />
+              <span>5.</span> Payment will be processed in 5 to 15 minutes.{" "}
+              <br />
               <div className="Condition">
                 <input type="checkbox" onChange={handleCheckboxChange} /> Read
                 Terms And Conditions

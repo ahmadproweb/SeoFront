@@ -99,11 +99,11 @@ const BuyerPayment = () => {
           <div className="accountInfo">
             <div>
               <h1>Account Number</h1>
-              <span>03204052642</span>
+              <span>03089653131</span>
             </div>
             <div>
               <h1>Account Name</h1>
-              <span>hafiz ahmad</span>
+              <span>MUJEEB ULLAH</span>
             </div>
           </div>
         );
@@ -112,11 +112,11 @@ const BuyerPayment = () => {
           <div className="accountInfo">
             <div>
               <h1>Account Number</h1>
-              <span>18y291y8</span>
+              <span>03089653131</span>
             </div>
             <div>
               <h1>Account Name</h1>
-              <span>askvaskv</span>
+              <span>MUJEEB ULLAH</span>
             </div>
           </div>
         );
@@ -124,12 +124,16 @@ const BuyerPayment = () => {
         return (
           <div className="accountInfo">
             <div>
-              <h1>Account Number</h1>
-              <span>281947j9284091287094</span>
+              <h1>Bank Name</h1>
+              <span>Faysal Bank LTD</span>
+            </div>
+            <div>
+              <h1>IBN Number</h1>
+              <span>PK25FAYS3599704000005360</span>
             </div>
             <div>
               <h1>Account Name</h1>
-              <span>hafiz dev</span>
+              <span>INAM ULLAH</span>
             </div>
           </div>
         );
@@ -265,15 +269,15 @@ const BuyerPayment = () => {
           {renderAccountInfo()}
           <div className="main-input">
             <label>Payment Screenshot:</label>
-              <br />
-              <br />
-              <input
-                accept="image/png, image/jpg, image/jpeg"
-                type="file"
-                id="paymentPic"
-                name="paymentPic"
-                onChange={handleImageChange}
-              />
+            <br />
+            <br />
+            <input
+              accept="image/png, image/jpg, image/jpeg"
+              type="file"
+              id="paymentPic"
+              name="paymentPic"
+              onChange={handleImageChange}
+            />
           </div>
           <div className="main-input">
             <label htmlFor="contactNumber">Contact Number</label>
