@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
-
+import "../css/auth.css";
+import {
+  MdOutlineDriveFileRenameOutline,
+  MdOutlineEmail,
+} from "react-icons/md";
+import logo from "../images/logo.png";
+import imageSign from "../images/imageSign.png";
 function CodeMatching() {
   const [accountId, setAccountId] = useState("");
   const [sellerCode, setSellerCode] = useState("");
@@ -50,45 +56,41 @@ function CodeMatching() {
     <>
       <div className="DealBtn">
         <div className="DealBtnInner">
+          <a href="/DealDone">Account Info</a>
           <a href="/codeMatching">Code Matching</a>
           <a href="/paymentMethodSeller">Payment Method Seller</a>
         </div>
       </div>
-      <div className="paymentafter">
-        <div className="imgAuth">
-          <img
-            src="https://img.freepik.com/free-vector/checklist-concept-illustration_114360-479.jpg?w=740&t=st=1708034311~exp=1708034911~hmac=bcaed47c9ae3ee37247348450d9f84f2073483848649d0fdea5d199d1209703a"
-            alt="Checklist"
-          />
+
+      <div className="sign-main">
+      <div className="first">
+        <div className="logo">
+          <img src={logo} alt="" />
+        <h1>Welcome Code Matching</h1>
         </div>
-        <form className="formPa" onSubmit={handleSubmit}>
-          <div className="welcomePayment">
-            <h1>Welcome Code Matching</h1>
-          </div>
-          <div className="mainFormPayment">
-            <div className="mainFormPaymentInner">
+        <img src={imageSign} alt="" />
+      </div>
+      <div
+        className="line"
+      ></div>
+      <div className="second">
+        <form onSubmit={handleSubmit}>
+          <div className="main-input">
+            <label htmlFor="accountId">Account Id</label>
+            <div className="input">
               <input
-                type="number"
-                name="accountId"
-                value={accountId}
-                onChange={(e) => setAccountId(e.target.value)}
-                required
+              type="number"
+              name="accountId"
+              value={accountId}
+              onChange={(e) => setAccountId(e.target.value)}
+              required
               />
-              <label htmlFor="accountId">Account ID</label>
+              <MdOutlineDriveFileRenameOutline className="input-icons" />
             </div>
           </div>
-          <div className="mainFormPayment">
-            <div className="mainFormPaymentInner">
-              <input
-                type="number"
-                name="sellerCode"
-                value={sellerCode}
-                onChange={(e) => setSellerCode(e.target.value)}
-                required
-              />
-              <label htmlFor="sellerCode">Seller Code</label>
-            </div>
-            <div className="mainFormPaymentInner">
+          <div className="main-input">
+            <label htmlFor="buyerCode">Buyer Code</label>
+            <div className="input">
               <input
                 type="number"
                 name="buyerCode"
@@ -96,7 +98,21 @@ function CodeMatching() {
                 onChange={(e) => setBuyerCode(e.target.value)}
                 required
               />
-              <label htmlFor="buyerCode">Buyer Code</label>
+              <MdOutlineEmail className="input-icons" />
+            </div>
+          </div>
+       
+          <div className="main-input">
+            <label htmlFor="sellerCode">Seller Code</label>
+            <div className="input">
+              <input
+               type="number"
+               name="sellerCode"
+               value={sellerCode}
+               onChange={(e) => setSellerCode(e.target.value)}
+               required
+              />
+              <MdOutlineEmail className="input-icons" />
             </div>
           </div>
           <div className="Text">
@@ -113,11 +129,15 @@ function CodeMatching() {
               Term And Conditions
             </div>
           </div>
-          <button type="submit" className="sendEmail">
-            Send
+          <button type="submit" style={{
+            backgroundColor: 'green'
+          }} className="button1" >
+        Send
           </button>
+          
         </form>
       </div>
+    </div>
     </>
   );
 }

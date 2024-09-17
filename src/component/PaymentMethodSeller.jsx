@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
+import "../css/auth.css";
+import { TbCircleDashedNumber0 } from "react-icons/tb";
+import { IoPricetagOutline } from "react-icons/io5";
+import { MdDriveFileRenameOutline } from "react-icons/md";
+import logo from "../images/logo.png";
+import imageSign from "../images/imageSign.png";
 
 function PaymentMethodSeller() {
   const [formData, setFormData] = useState({
@@ -88,104 +93,124 @@ function PaymentMethodSeller() {
   };
 
   return (
-  <>
-    <div className="DealBtn">
-    <div className="DealBtnInner">
-      <a href="/codeMatching">Code Matching</a>
-      <a href="/paymentMethodSeller">Payment Method Seller</a>
-    </div>
-  </div>
-    <div className="paymentafter">
-      <div className="imgAuth">
-        <img
-          src="https://img.freepik.com/free-vector/checklist-concept-illustration_114360-479.jpg?w=740&t=st=1708034311~exp=1708034911~hmac=bcaed47c9ae3ee37247348450d9f84f2073483848649d0fdea5d199d1209703a"
-          alt=""
-        />
+    <>
+      <div className="DealBtn">
+        <div className="DealBtnInner">
+          <a href="/DealDone">Account Info</a>
+          <a href="/codeMatching">Code Matching</a>
+          <a href="/paymentMethodSeller">Payment Method Seller</a>
+        </div>
       </div>
-      <form className="formPa" onSubmit={handleSubmit}>
-        <div className="welcomePayment">
-          <h1>welcome Seller</h1>
+      <div className="sign-main">
+        <div className="first">
+          <div className="logo">
+            <img src={logo} alt="Logo" />
+            <h1>Welcome Seller</h1>
+          </div>
+          <p>Only seller can use and fill this form</p>
+          <img src={imageSign} alt="Sign" />
         </div>
-        <div className="mainFormPayment">
-          <div className="mainFormPaymentInner">
-            <select
-              id="accountId"
-              name="accountId"
-              value={formData.accountId}
-              onChange={handleChange}
-              required
+        <div className="line"></div>
+        <div className="second">
+          <form onSubmit={handleSubmit}>
+            <div className="main-input">
+              <label htmlFor="accountId">Account Id</label>
+              <div className="input">
+                <select
+                  id="accountId"
+                  name="accountId"
+                  value={formData.accountId}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="">Select Account ID</option>
+                  {accounts.map((account) => (
+                    <option key={account.accountId} value={account.accountId}>
+                      {account.accountId}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+            <div className="main-input">
+              <label htmlFor="sendedAmount">Sended Amount (Price)</label>
+              <div className="input">
+                <input
+                  name="sendedAmount"
+                  value={formData.sendedAmount}
+                  onChange={handleChange}
+                  required
+                />
+                <IoPricetagOutline className="input-icons" />
+              </div>
+            </div>
+            <div className="main-input">
+              <label htmlFor="paymentMethod">Payment Method</label>
+              <div className="input">
+                <select
+                  id="paymentMethod"
+                  name="paymentMethod"
+                  value={formData.paymentMethod}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="">Payment Method</option>
+                  <option value="jazzCash">JazzCash</option>
+                  <option value="easyPaisa">EasyPaisa</option>
+                  <option value="bankAccount">Bank Account</option>
+                </select>
+              </div>
+            </div>
+            <div className="main-input">
+              <label htmlFor="accountNumber">Account Number</label>
+              <div className="input">
+                <input
+                  name="accountNumber"
+                  type="number"
+                  value={formData.accountNumber}
+                  onChange={handleChange}
+                  required
+                />
+                <TbCircleDashedNumber0 className="input-icons" />
+              </div>
+            </div>
+            <div className="main-input">
+              <label htmlFor="accountName">Account Name</label>
+              <div className="input">
+                <input
+                  name="accountName"
+                  type="text"
+                  value={formData.accountName}
+                  onChange={handleChange}
+                  required
+                />
+                <MdDriveFileRenameOutline className="input-icons" />
+              </div>
+            </div>
+            <div className="Text">
+              1. Select Your Correct Payment method. <br />
+              2. Enter your Correct Account No and Account Name. <br />
+              3. Make sure Account no match to Merchant partner <br />
+              (Bank, Digital Account Jazzcash/Easypaisa, Crypto Account). <br />
+              4. Be Aware! If Account Information is Wrong, We do Nothing.{" "}
+              <br />
+              5. Payment will be processed in 5 to 15 minutes. <br />
+              <div className="Condition">
+                <input type="checkbox" onChange={handleCheckboxChange} /> Read
+                Terms And Conditions
+              </div>
+            </div>
+            <button
+              type="submit"
+              style={{ backgroundColor: "green" }}
+              className="button1"
             >
-              <option value="">Select Account ID</option>
-              {accounts.map((account) => (
-                <option key={account.accountId} value={account.accountId}>
-                  {account.accountId}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="mainFormPaymentInner">
-            <input
-              name="sendedAmount"
-              value={formData.sendedAmount}
-              onChange={handleChange}
-              required
-            />
-            <label htmlFor="sendedAmount">Sended Amount (Price)</label>
-          </div>
+              Send
+            </button>
+          </form>
         </div>
-        <div className="mainFormPaymentInner">
-          <select
-            id="paymentMethod"
-            name="paymentMethod"
-            value={formData.paymentMethod}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Payment Method</option>
-            <option value="jazzCash">JazzCash</option>
-            <option value="easyPaisa">EasyPaisa</option>
-            <option value="bankAccount">Bank Account</option>
-          </select>
-        </div>
-        <div className="mainFormPayment">
-          <div className="mainFormPaymentInner">
-            <input
-              name="accountNumber"
-              type="number"
-              value={formData.accountNumber}
-              onChange={handleChange}
-              required
-            />
-            <label htmlFor="accountNumber">Account Number</label>
-          </div>
-          <div className="mainFormPaymentInner">
-            <input
-              name="accountName"
-              type="text"
-              value={formData.accountName}
-              onChange={handleChange}
-              required
-            />
-            <label htmlFor="accountName">Account Name</label>
-          </div>
-        </div>
-        <div className="Text">
-          1. Select Your Correct Payment method. <br/>
-          2. Enter your Correct Account No and Account Name. <br/>
-          3. Make sure Account no match to Merchant partner <br/>
-          (Bank, Digital Account Jazzcash/Easypaisa, Crypto Account).<br/>
-          4. Be Aware! If Account Information is Worng, We do Nothing. <br/>
-          5. Payment will be processed in 5 to 15 minutes.<br/>
-          <div className="Condition">
-            <input type="checkbox" onChange={handleCheckboxChange} /> Ready Term And Conditions
-          </div>
-        </div>
-        <button type="submit" className="sendEmail" >
-          Send
-        </button>
-      </form>
-    </div>
-  </>
+      </div>
+    </>
   );
 }
 

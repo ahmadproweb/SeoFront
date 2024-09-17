@@ -17,7 +17,7 @@
 .headerButton button:has(p){
     text-transform: lowercase;
 } 
-.headerButton button:nth-child(3){
+.headerButton button:nth-child(2){
     background-color: red;
 }
 

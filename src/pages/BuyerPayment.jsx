@@ -1,23 +1,30 @@
 import React, { useState, useEffect } from "react";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import "../css/buyerPayment.css";
+import { toast } from "react-toastify";
+import "../css/auth.css";
 import Processing from "../component/Processing";
+import logo from "../images/logo.png";
+import imageSign from "../images/imageSign.png";
+import { IoPricetagOutline } from "react-icons/io5";
+import {
+  MdOutlineDriveFileRenameOutline,
+  MdOutlineEmail,
+  MdOutlinePermContactCalendar,
+} from "react-icons/md";
 
-const VITE_ADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAIL; 
-const VITE_BASE_URL = import.meta.env.VITE_BASE_URL; 
+const VITE_ADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAIL;
+const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const BuyerPayment = () => {
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
-    adminEmail: VITE_ADMIN_EMAIL, 
+    adminEmail: VITE_ADMIN_EMAIL,
     sellerEmail: "",
     totalPrice: "",
     transactionId: "",
     transactionDate: "",
     paymentMethod: "",
-    contactNumber: ""
+    contactNumber: "",
   });
   const [loading, setLoading] = useState(false);
 
@@ -29,7 +36,7 @@ const BuyerPayment = () => {
       setFormData((prevState) => ({
         ...prevState,
         fullName: user.fullName,
-        email: user.email
+        email: user.email,
       }));
     }
   }, []);
@@ -52,16 +59,15 @@ const BuyerPayment = () => {
       formDataObj.append("paymentPic", file);
     }
     setLoading(true);
-    const token = localStorage.getItem('token'); 
+    const token = localStorage.getItem("token");
 
     try {
       const response = await fetch(`${VITE_BASE_URL}/payment`, {
         method: "POST",
         body: formDataObj,
         headers: {
-          "Authorization": `Bearer ${token}` 
+          Authorization: `Bearer ${token}`,
         },
-    
       });
 
       const result = await response.json();
@@ -77,11 +83,11 @@ const BuyerPayment = () => {
         transactionId: "",
         transactionDate: "",
         paymentMethod: "",
-        contactNumber: ""
-      })
+        contactNumber: "",
+      });
     } catch (error) {
       toast.error("An error occurred");
-    }finally {
+    } finally {
       setLoading(false);
     }
   };
@@ -133,132 +139,163 @@ const BuyerPayment = () => {
   };
 
   return (
-    <div className="paymentafter">
-      <ToastContainer />
-      <div className="imgAuth">
-        <img
-          src="https://img.freepik.com/free-vector/checklist-concept-illustration_114360-479.jpg?w=740&t=st=1708034311~exp=1708034911~hmac=bcaed47c9ae3ee37247348450d9f84f2073483848649d0fdea5d199d1209703a"
-          alt=""
-        />
-      </div>
-      <form className="formPa" onSubmit={handleSubmit}>
-        <div className="welcomePayment">
+    <div className="sign-main">
+      <div className="first">
+        <div className="logo">
+          <img src={logo} alt="Logo" />
           <h1>Welcome Buyer Payment</h1>
         </div>
-        <div className="mainFormPayment">
-          <div className="mainFormPaymentInner">
-            <input
-              type="text"
-              name="fullName"
-              value={formData.fullName}
-              onChange={handleChange}
-              disabled 
-            />
+        <img src={imageSign} alt="Sign" />
+      </div>
+      <div className="line"></div>
+      <div className="second">
+        <form onSubmit={handleSubmit}>
+          <div className="main-input">
             <label htmlFor="fullName">Full Name</label>
+            <div className="input">
+              <input
+                type="text"
+                name="fullName"
+                value={formData.fullName}
+                onChange={handleChange}
+                disabled
+              />
+              <MdOutlineDriveFileRenameOutline className="input-icons" />
+            </div>
           </div>
-          <div className="mainFormPaymentInner">
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              disabled 
-            />
+          <div className="main-input">
+            <label htmlFor="sendedAmount">Sended Amount (Price)</label>
+            <div className="input">
+              <input
+                name="sendedAmount"
+                value={formData.sendedAmount}
+                onChange={handleChange}
+                required
+              />
+              <IoPricetagOutline className="input-icons" />
+            </div>
+          </div>
+          <div className="main-input">
             <label htmlFor="email">Email</label>
+            <div className="input">
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                disabled
+              />
+              <MdOutlineEmail className="input-icons" />
+            </div>
           </div>
-        </div>
-        <div className="mainFormPayment">
-          <div className="mainFormPaymentInner">
-            <input
-              type="email"
-              name="adminEmail"
-              value={formData.adminEmail}
-              onChange={handleChange}
-              disabled 
-            />
+          <div className="main-input">
             <label htmlFor="adminEmail">Admin Email</label>
+            <div className="input">
+              <input
+                type="email"
+                name="adminEmail"
+                value={formData.adminEmail}
+                onChange={handleChange}
+                disabled
+              />
+              <MdOutlineEmail className="input-icons" />
+            </div>
           </div>
-          <div className="mainFormPaymentInner">
-            <input
-              type="email"
-              name="sellerEmail"
-              value={formData.sellerEmail}
-              onChange={handleChange}
-            />
+          <div className="main-input">
             <label htmlFor="sellerEmail">Seller Email</label>
+            <div className="input">
+              <input
+                type="email"
+                name="sellerEmail"
+                value={formData.sellerEmail}
+                onChange={handleChange}
+              />
+              <MdOutlineEmail className="input-icons" />
+            </div>
           </div>
-        </div>
-        <div className="mainFormPayment">
-          <div className="mainFormPaymentInner">
-            <input
-              type="number"
-              name="totalPrice"
-              value={formData.totalPrice}
-              onChange={handleChange}
-            />
+          <div className="main-input">
             <label htmlFor="totalPrice">Total Price</label>
+            <div className="input">
+              <input
+                type="number"
+                name="totalPrice"
+                value={formData.totalPrice}
+                onChange={handleChange}
+              />
+              <IoPricetagOutline className="input-icons" />
+            </div>
           </div>
-          <div className="mainFormPaymentInner">
-            <input
-              type="number"
-              name="transactionId"
-              value={formData.transactionId}
-              onChange={handleChange}
-            />
+          <div className="main-input">
             <label htmlFor="transactionId">Transaction ID</label>
+            <div className="input">
+              <input
+                type="number"
+                name="transactionId"
+                value={formData.transactionId}
+                onChange={handleChange}
+              />
+              <IoPricetagOutline className="input-icons" />
+            </div>
           </div>
-        </div>
-        <div className="mainFormPayment">
-          <div className="mainFormPaymentInner">
-            <input
-              type="date"
-              name="transactionDate"
-              value={formData.transactionDate}
-              onChange={handleChange}
-            />
+          <div className="main-input">
             <label htmlFor="transactionDate">Transaction Date</label>
+            <div className="input">
+              <input
+                type="date"
+                name="transactionDate"
+                value={formData.transactionDate}
+                onChange={handleChange}
+              />
+            </div>
           </div>
-          <div className="mainFormPaymentInner">
-            <select
-              name="paymentMethod"
-              value={formData.paymentMethod}
-              onChange={handleChange}
-            >
-              <option value="">Select Payment Method</option>
-              <option value="jazzCash">JazzCash</option>
-              <option value="easyPaisa">EasyPaisa</option>
-              <option value="bankAccount">Bank Account</option>
-            </select>
+          <div className="main-input">
+            <div className="input">
+              <select
+                name="paymentMethod"
+                value={formData.paymentMethod}
+                onChange={handleChange}
+              >
+                <option value="">Select Payment Method</option>
+                <option value="jazzCash">JazzCash</option>
+                <option value="easyPaisa">EasyPaisa</option>
+                <option value="bankAccount">Bank Account</option>
+              </select>
+            </div>
           </div>
-        </div>
-        {renderAccountInfo()}
-        <div className="mainFormPayment">
-          <div className="selected">
+          {renderAccountInfo()}
+          <div className="main-input">
             <label>Payment Screenshot:</label>
-            <br />
-            <br />
-            <input
-              accept="image/png, image/jpg, image/jpeg"
-              type="file"
-              id="paymentPic"
-              name="paymentPic"
-              onChange={handleImageChange}
-            />
+              <br />
+              <br />
+              <input
+                accept="image/png, image/jpg, image/jpeg"
+                type="file"
+                id="paymentPic"
+                name="paymentPic"
+                onChange={handleImageChange}
+              />
           </div>
-          <div className="mainFormPaymentInner">
-            <input
-              type="number"
-              name="contactNumber"
-              value={formData.contactNumber}
-              onChange={handleChange}
-            />
+          <div className="main-input">
             <label htmlFor="contactNumber">Contact Number</label>
+            <div className="input">
+              <input
+                type="number"
+                name="contactNumber"
+                value={formData.contactNumber}
+                onChange={handleChange}
+              />
+              <MdOutlinePermContactCalendar className="input-icons" />
+            </div>
           </div>
-        </div>
-        <button type="submit" className="sendEmail">
-        {loading ? <Processing/> : 'Send'}
-        </button>
-      </form>
+          <button
+            style={{ backgroundColor: "green" }}
+            className="button1 sendEmail"
+            type="submit"
+          >
+            {loading ? <Processing /> : "Send"}
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

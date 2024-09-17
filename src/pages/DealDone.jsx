@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from "react";
 import "../css/deal.css";
 import "../css/buyerPayment.css";
+import "../css/auth.css";
+import {
+  MdOutlineDriveFileRenameOutline,
+  MdOutlineEmail,
+} from "react-icons/md";
 import { toast } from "react-toastify";
 import Processing from "../component/Processing";
 const VITE_ADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAIL;
 const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
+import logo from "../images/logo.png";
+import imageSign from "../images/imageSign.png";
 function DealDone() {
   const [formData, setFormData] = useState({
     fullName: "",
@@ -86,6 +93,7 @@ function DealDone() {
     <>
       <div className="DealBtn">
         <div className="DealBtnInner">
+          <a href="/DealDone">Account Info</a>
           <a href="/codeMatching">Code Matching</a>
           <a href="/paymentMethodSeller">Payment Method Seller</a>
         </div>
@@ -95,73 +103,85 @@ function DealDone() {
           </a>
         </div>
       </div>
-      <div className="paymentafter">
-        <div className="imgAuth">
-          <img
-            src="https://img.freepik.com/free-vector/checklist-concept-illustration_114360-479.jpg?w=740&t=st=1708034311~exp=1708034911~hmac=bcaed47c9ae3ee37247348450d9f84f2073483848649d0fdea5d199d1209703a"
-            alt=""
-          />
-        </div>
-        <form className="formPa" onSubmit={handleSubmit}>
-          <div className="welcomePayment">
+      <div className="sign-main">
+        <div className="first">
+          <div className="logo">
+            <img src={logo} alt="" />
             <h1>Acct Info Exchanger</h1>
-            <p>Only seller can use and fill this form</p>
           </div>
-          <div className="mainFormPayment">
-            <div className="mainFormPaymentInner">
-              <input
-                type="text"
-                id="name"
-                name="fullName"
-                value={formData.fullName}
-                onChange={handleChange}
-                disabled
-              />
-              <label htmlFor="name">Full Name</label>
+          <p>Only seller can use and fill this form</p>
+          <img src={imageSign} alt="" />
+        </div>
+        <div className="line"></div>
+        <div className="second">
+          <form onSubmit={handleSubmit}>
+            <div className="main-input">
+              <label htmlFor="fullName">Full Name</label>
+              <div className="input">
+                <input
+                  type="text"
+                  id="name"
+                  name="fullName"
+                  value={formData.fullName}
+                  onChange={handleChange}
+                  disabled
+                />
+                <MdOutlineDriveFileRenameOutline className="input-icons" />
+              </div>
             </div>
-            <div className="mainFormPaymentInner">
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                disabled
-              />
+            <div className="main-input">
               <label htmlFor="email">Email</label>
+              <div className="input">
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  disabled
+                />
+                <MdOutlineEmail className="input-icons" />
+              </div>
             </div>
-          </div>
-          <div className="mainFormPayment">
-            <div className="mainFormPaymentInner">
-              <input
-                type="email"
-                name="adminEmail"
-                value={formData.adminEmail}
-                onChange={handleChange}
-                disabled
-              />
+
+            <div className="main-input">
               <label htmlFor="adminEmail">Admin Email</label>
+              <div className="input">
+                <input
+                  type="email"
+                  name="adminEmail"
+                  value={formData.adminEmail}
+                  onChange={handleChange}
+                  disabled
+                />
+                <MdOutlineEmail className="input-icons" />
+              </div>
             </div>
-            <div className="mainFormPaymentInner">
-              <input
-                type="email"
-                name="buyerEmail"
-                value={formData.buyerEmail}
-                onChange={handleChange}
-              />
-              <label htmlFor="buyerEmail">Seller Email</label>
+            <div className="main-input">
+              <label htmlFor="buyerEmail">Buyer Email</label>
+              <div className="input">
+                <input
+                  type="email"
+                  name="buyerEmail"
+                  value={formData.buyerEmail}
+                  onChange={handleChange}
+                />
+                <MdOutlineEmail className="input-icons" />
+              </div>
             </div>
-          </div>
-          <div className="mainFormPaymentInner">
-            <textarea
-              name="accountInfo"
-              value={formData.accountInfo}
-              onChange={handleChange}
-              disabled
-            />
-          </div>
-          <div className="mainFormPayment">
-            <div className="selected">
-              <label>Payment Screenshot:</label>
+            <div className="main-input">
+              <label htmlFor="accountInfo">Account Info</label>
+              <div className="input">
+                <textarea
+                  name="accountInfo"
+                  value={formData.accountInfo}
+                  onChange={handleChange}
+                  disabled
+                />
+              </div>
+            </div>
+            <div className="main-input">
+              <label htmlFor="accountPic">Account Pic</label>
+              <br />
               <br />
               <br />
               <input
@@ -172,39 +192,45 @@ function DealDone() {
                 onChange={handleChange}
               />
             </div>
-          </div>
-          <div className="Text">
-            1. Fill out the form after getting the payment screenshot in the
-            email.
-            <br />
-            2. Confirm your email and seller's email while filling out this
-            form.
-            <br />
-            3. Confirm the account email and password in form filling. So that
-            the
-            <br />
-            buyer does not face any issues have while opening the account.{" "}
-            <br />
-            (For this you can use the input box below and write the account
-            email and password in two places).
-            <br />
-            4. After filling the form you have to wait 3 or 5 minutes, so that
-            the buyer can open and check your account. 5. Now at this time you
-            have to get buyer generated code from the buyer. which you have to
-            enter in the next form.
-            <br />
-            So that admin can easily send money into your Account.
-            <br />
-            6. Form fill Data will be stored
-            <div className="Condition">
-              <input type="checkbox" onChange={handleCheckboxChange} /> Ready
-              Term And Conditions
+            <div className="Text">
+              1. Fill out the form after getting the payment screenshot in the
+              email.
+              <br />
+              2. Confirm your email and seller's email while filling out this
+              form.
+              <br />
+              3. Confirm the account email and password in form filling. So that
+              the
+              <br />
+              buyer does not face any issues have while opening the account.{" "}
+              <br />
+              (For this you can use the input box below and write the account
+              email and password in two places).
+              <br />
+              4. After filling the form you have to wait 3 or 5 minutes, so that
+              the buyer can open and check your account. 5. Now at this time you
+              have to get buyer generated code from the buyer. which you have to
+              enter in the next form.
+              <br />
+              So that admin can easily send money into your Account.
+              <br />
+              6. Form fill Data will be stored
+              <div className="Condition">
+                <input type="checkbox" onChange={handleCheckboxChange} /> Ready
+                Term And Conditions
+              </div>
             </div>
-          </div>
-          <button type="submit" className="sendEmail" disabled={loading}>
-            {loading ? <Processing /> : "Send"}
-          </button>
-        </form>
+            <button
+              type="submit"
+              style={{
+                backgroundColor: "green",
+              }}
+              className="button1"
+            >
+              {loading ? <Processing /> : "Send"}
+            </button>
+          </form>
+        </div>
       </div>
     </>
   );
