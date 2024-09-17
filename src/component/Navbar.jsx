@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import "../css/navbar.css";
-import { MdOutlineSell } from "react-icons/md";
 import { LuLayoutPanelLeft } from "react-icons/lu";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoHomeOutline } from "react-icons/io5";
@@ -11,7 +10,7 @@ import { RiMoneyPoundCircleLine } from "react-icons/ri";
 
 function Navbar() {
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false); 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,8 +21,8 @@ function Navbar() {
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    setIsLoggedIn(false); 
-    navigate("/login"); 
+    setIsLoggedIn(false);
+    navigate("/login");
   };
 
   const toggleNav = () => {
@@ -45,19 +44,18 @@ function Navbar() {
   return (
     <>
       <div className="headerButton">
-        <button type="button" style={{
-          display:'none'
-        }} onClick={() => navigate("https://web-chat-seo-toolers.vercel.app/")}>
-          admin deal
-        </button>
-        <button type="button" onClick={() => navigate(`https://chat.whatsapp.com/CgwgYt1Pl6e84oZHA2Uy1K`)}>
-          join community
+        <button type="button">
+          <a href="https://chat.whatsapp.com/CgwgYt1Pl6e84oZHA2Uy1K">
+            Join Community
+          </a>
         </button>
         <button type="button" onClick={() => navigate("/scammers")}>
           scam alert
         </button>
         <button type="button">
-          <a href="mailto:swap.socialpress@gmail.com?subject=Hello!">swap.socialpress@gmail.com</a>
+          <a href="mailto:swap.socialpress@gmail.com?subject=Hello!">
+            swap.socialpress@gmail.com
+          </a>
         </button>
       </div>
       <header className={`header ${stickyClass}`}>
@@ -66,11 +64,22 @@ function Navbar() {
         </div>
         <nav className={`nav ${isNavOpen ? "nav-open" : ""}`}>
           <ul>
-            <li><IoHomeOutline className="font" /><a href="/">home</a></li>
-            <li><MdOutlineSell className="font" /><a href="/BuySell">buy & sell</a></li>
-            <li><FaRegPaperPlane className="font" /><a href="/CodeGenerate">Generate Code</a></li>
-            <li><RiMoneyPoundCircleLine className="font" /><a href="/payment">Buyer Payment</a></li>
-            <li><LuLayoutPanelLeft className="font" /><a href="/DealDone">Deal Done</a></li>
+            <li>
+              <IoHomeOutline className="font" />
+              <a href="/">home</a>
+            </li>
+            <li>
+              <FaRegPaperPlane className="font" />
+              <a href="/GenerateCode">Generate Code</a>
+            </li>
+            <li>
+              <RiMoneyPoundCircleLine className="font" />
+              <a href="/payment">Buyer Payment</a>
+            </li>
+            <li>
+              <LuLayoutPanelLeft className="font" />
+              <a href="/DealDone">Deal Done</a>
+            </li>
           </ul>
         </nav>
         <div className="login_SignUp">
@@ -79,6 +88,7 @@ function Navbar() {
               <a href="/details" className="UserDetails" type="button">
                 UserDetails
               </a>
+              <a href="/BuySell">Buy & Sell</a>
               <button className="logout" type="button" onClick={handleLogout}>
                 Logout
               </button>
@@ -87,10 +97,14 @@ function Navbar() {
             <>
               <a href="/login">Login</a>
               <a href="/signup">Signup</a>
-              <a href='https://admin.socialpress.online'>Admin</a>
+              <a href="/BuySell">Buy & Sell</a>
             </>
           )}
-          <div className={`hamburger ${isNavOpen ? "ahmad" : ""}`} style={{ cursor: "pointer" }} onClick={toggleNav}>
+          <div
+            className={`hamburger ${isNavOpen ? "ahmad" : ""}`}
+            style={{ cursor: "pointer" }}
+            onClick={toggleNav}
+          >
             {isNavOpen ? <IoMdClose /> : <RxHamburgerMenu />}
           </div>
         </div>

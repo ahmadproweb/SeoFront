@@ -88,6 +88,13 @@ function PaymentMethodSeller() {
   };
 
   return (
+  <>
+    <div className="DealBtn">
+    <div className="DealBtnInner">
+      <a href="/codeMatching">Code Matching</a>
+      <a href="/paymentMethodSeller">Payment Method Seller</a>
+    </div>
+  </div>
     <div className="paymentafter">
       <div className="imgAuth">
         <img
@@ -178,6 +185,7 @@ function PaymentMethodSeller() {
         </button>
       </form>
     </div>
+  </>
   );
 }
 

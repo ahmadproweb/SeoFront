@@ -32,7 +32,7 @@ function App() {
         <Route path="/BuySell" element={<BuySell />} />
         <Route path="/accountSell" element={<AccountSell />} />
         <Route path="/BuySell/:accountId" element={<AccountDetails />} />
-        <Route path="/CodeGenerate" element={<CodeGenerate />} />
+        <Route path="/GenerateCode" element={<CodeGenerate />} />
         <Route path="/payment" element={<BuyerPayment />} />
         <Route path="/DealDone" element={<DealDone />} />
         <Route path="/signup" element={<SignUp />} />
