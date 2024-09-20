@@ -23,7 +23,7 @@ function Footer() {
           </div>
         </footer>
         <div className="footer-row">
-          <div className="footer-col">
+          {/* <div className="footer-col">
             <h4>about us</h4>
             <ul className="links">
               <li>
@@ -42,7 +42,7 @@ function Footer() {
                 <a href="/DealDone">Deal Done</a>
               </li>
             </ul>
-          </div>
+          </div> */}
           {/* <div className="footer-col">
             <h4>Working Hour's</h4>
             <ul className="links">
@@ -89,6 +89,9 @@ function Footer() {
               <li>
                 <a href="/cookiesPolicy">cookies policy</a>
               </li>
+              <li>
+                <a href="/GenerateCode">Code Generate</a>
+              </li>
             </ul>
           </div>
           <div className="footer-col">
@@ -125,7 +128,7 @@ function Footer() {
             </div>
           </div>
         </div>
-        <div className="footer_bottom">
+        {/* <div className="footer_bottom">
           <div>
             <p>
               website Developed By :{" "}
@@ -147,8 +150,8 @@ function Footer() {
             <a href="">
               <SiFiverr className="fa" />
             </a>
-          </div>
-        </div>
+          </div> */}
+        {/* </div> */}
       </section>
     </>
   );

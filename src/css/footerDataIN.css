@@ -55,7 +55,7 @@
 @media (width < 500px) {
     .mainFooterData {
         line-height: 1.4;
-        margin-inline:  0rem;
+        margin-inline:  1rem;
     }
     .mainFooterData p {
         width: calc(100% - 0%);

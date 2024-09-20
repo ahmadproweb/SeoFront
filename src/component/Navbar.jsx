@@ -5,7 +5,6 @@ import { LuLayoutPanelLeft } from "react-icons/lu";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoHomeOutline } from "react-icons/io5";
 import { IoMdClose } from "react-icons/io";
-import { FaRegPaperPlane } from "react-icons/fa";
 import { RiMoneyPoundCircleLine } from "react-icons/ri";
 
 function Navbar() {
@@ -72,7 +71,7 @@ function Navbar() {
       </div>
       <header className={`header ${stickyClass}`}>
         <div className="logo">
-          <a href="/">Socialpress</a>
+          <a href="/">Social Press</a>
         </div>
         <nav className={`nav ${isNavOpen ? "nav-open" : ""}`}>
           <ul>

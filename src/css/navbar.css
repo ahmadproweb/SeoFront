@@ -113,10 +113,6 @@ header.header {
     text-transform: capitalize;
     font-weight: 500;
 }
-.login_SignUp a:nth-child(3){
-    font-weight: 900;
-    font-size: clamp(1rem, 3vw, 1.9rem);
-}
 
 .font {
     color: black;
