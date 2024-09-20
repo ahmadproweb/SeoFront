@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../css/deal.css";
 import "../css/buyerPayment.css";
 import "../css/auth.css";
+import iconI from '../images/iconI.png'
 import { FaLongArrowAltRight } from "react-icons/fa";
 import {
   MdOutlineDriveFileRenameOutline,
@@ -12,7 +13,7 @@ import Processing from "../component/Processing";
 const VITE_ADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAIL;
 const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
 import logo from "../images/logo.png";
-import imageSign from "../images/imageSign.png";
+import DealDone1 from "../images/DealDone1.png";
 function DealDone() {
   const [formData, setFormData] = useState({
     fullName: "",
@@ -111,7 +112,7 @@ function DealDone() {
             <h1>Acct Info Exchanger</h1>
           </div>
           <p>Only seller can use and fill this form</p>
-          <img src={imageSign} alt="" />
+          <img src={DealDone1} width={600} height={600} alt="" />
         </div>
         <div className="line"></div>
         <div className="second">
@@ -170,7 +171,11 @@ function DealDone() {
               </div>
             </div>
             <div className="main-input">
-              <label htmlFor="accountInfo">
+              <label htmlFor="accountInfo" style={{
+                display:'flex',
+                alignItems:'center',
+                justifyContent:'space-between'
+              }}>
                 Account Info :{" "}
                 <span
                   style={{
@@ -180,6 +185,9 @@ function DealDone() {
                 >
                   (Must Read Before Filling)
                 </span>{" "}
+                <img src={iconI} width={20} style={{
+                  cursor:'pointer',
+                }} alt="" />
               </label>
               <div className="input">
                 <textarea

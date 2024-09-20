@@ -212,6 +212,7 @@ header.header {
         display: block;
         position: relative;
         z-index: 1;
+        left: 1rem;
         color: black;
         font-size: clamp(1.6rem, 5vw, 3rem);
     }
@@ -232,16 +233,21 @@ header.header {
     .userText p{
         font-size: 1rem;
     }
+    .login_SignUp{
+        position: relative;
+        left: 1rem;
+    }
+    .hamburger{
+        position: relative;
+        left: 0.3rem;
+    }
     .logout , .UserDetails {
         font-size: 1rem;
-        padding: 0.5rem 0rem;
         font-weight: 400;
         margin-left:0rem;
-        background: transparent;
     }
-    .UserDetails{
-        position: relative;
-        left: 1.6rem;
-        top: -0.2rem;
-    }
+.login_SignUp a {
+    margin-right: 0.3rem;
+    font-weight: 400;
+}
 }

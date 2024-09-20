@@ -36,12 +36,12 @@ function Frequently() {
               <summary>
                 <span>
                   Could you share insights into the number of customers SocialPress
-                  Toolers has successfully served?
+                   has successfully served?
                 </span>
            
               </summary>
               <p>
-                Over the years, SocialPress Toolers has successfully served a diverse
+                Over the years, SocialPress  has successfully served a diverse
                 clientele, establishing a track record of satisfied customers
                 who have benefited from our digital marketing expertise.
               </p>
@@ -53,13 +53,13 @@ function Frequently() {
             >
               <summary>
                 <span>
-                  How can SocialPress Toolers help me increase traffic to my website?{" "}
+                  How can SocialPress  help me increase traffic to my website?{" "}
                 </span>
        
               </summary>
               <p>
                 {" "}
-                SocialPress Toolers employs proven SocialPress strategies to boost your website
+                SocialPress  employs proven SocialPress strategies to boost your website
                 traffic and tools. Through targeted keyword optimisation,
                 content enhancement, and other techniques, we drive organic
                 traffic and improve your online visibility.
@@ -110,12 +110,12 @@ function Frequently() {
             >
               <summary>
                 <span>
-                  Is SocialPress Toolers experienced in working with WordPress websites?
+                  Is SocialPress  experienced in working with WordPress websites?
                 </span>
   
               </summary>
               <p>
-              SocialPress Toolers is well-versed in working with WordPress websites,
+              SocialPress  is well-versed in working with WordPress websites,
                 delivering tailored solutions for optimal performance, security,
                 and user experience.
               </p>

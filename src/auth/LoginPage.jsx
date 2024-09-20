@@ -38,6 +38,9 @@ function LoginPage() {
         localStorage.setItem("token", data.token);
         localStorage.setItem("user", JSON.stringify(data.user));
 
+        // Trigger storage event manually
+        window.dispatchEvent(new Event('storage'));
+
         toast.success("Login successful!");
         navigate("/"); 
       } else {
@@ -49,25 +52,21 @@ function LoginPage() {
   };
 
   const handlePasswordReset = async () => {
-    // try {
-      const response = await fetch(`${VITE_BASE_URL}/api/users/reset-password-request`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      });
+    const response = await fetch(`${VITE_BASE_URL}/api/users/reset-password-request`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email }),
+    });
 
-      const data = await response.json();
+    const data = await response.json();
 
-      if (response.ok) {
-        toast.success("Password reset link sent to your email.");
-      } else {
-        toast.error(data.message || "Please Enter The Videos");
-      }
-    // } catch (error) {
-    //   toast.error("An error occurred. Please try again.");
-    // }
+    if (response.ok) {
+      toast.success("Password reset link sent to your email.");
+    } else {
+      toast.error(data.message || "Please Enter The Videos");
+    }
   };
 
   return (
@@ -79,7 +78,7 @@ function LoginPage() {
             <h1>Sign In</h1>
           </div>
           <p>
-          SocialPress.online
+            SocialPress.online
           </p>
           <img src={imageSign} alt="" />
         </div>
@@ -120,7 +119,7 @@ function LoginPage() {
                 </span>
               </div>
             </div>
-            <a  className="resetPassword" onClick={handlePasswordReset}>Forgot Password</a>
+            <a className="resetPassword" onClick={handlePasswordReset}>Forgot Password</a>
             <button type="submit" className="button1">
               Sign in
             </button>

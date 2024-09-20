@@ -8,6 +8,7 @@ import { MdOutlineMail } from "react-icons/md";
 import { FaMedium } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
+import "../css/footerDataIN.css";
 
 function Footer() {
   return (
@@ -26,7 +27,7 @@ function Footer() {
             <h4>about us</h4>
             <ul className="links">
               <li>
-            <a href="/">home</a>
+                <a href="/">home</a>
               </li>
               <li>
                 <a href="/BuySell">buy & sell</a>
@@ -70,27 +71,26 @@ function Footer() {
           </div> */}
           <div className="footer-col">
             <h4>Helpful Page's</h4>
-            
+
             <ul className="links">
-            <li>
-                <a  href="/refundPolicy"> Refund & Return Policy </a>
-              </li>
-            <li>
-                <a href="#">term and conditions</a>
+              <li>
+                <a href="/Refund"> Refund & Return Policy </a>
               </li>
               <li>
-                <a href="#">privacy policy</a>
-              </li>
-              
-              <li>
-                <a href="#">disclaimer</a>
+                <a href="/Terms">term and conditions</a>
               </li>
               <li>
-                <a href="#">cookies policy</a>
+                <a href="/PrivacyPolicy">privacy policy</a>
+              </li>
+
+              <li>
+                <a href="/Disclaimer">disclaimer</a>
+              </li>
+              <li>
+                <a href="/cookiesPolicy">cookies policy</a>
               </li>
             </ul>
           </div>
-
           <div className="footer-col">
             <h4>support</h4>
             <ul className="links">
@@ -98,10 +98,7 @@ function Footer() {
                 <a href="#">help & support</a>
               </li>
               <li>
-                <a href="#">contact us</a>
-              </li>
-              <li>
-                <a href="#">pricing</a>
+                <a href="/HelpCenter">contact us</a>
               </li>
             </ul>
           </div>

@@ -17,14 +17,27 @@ const PaymentHistory = () => {
             Authorization: `Bearer ${token}`,
           },
         });
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+
         const data = await response.json();
-        setPaymentData(data);
+        console.log('Fetched data:', data); // Log the fetched data to inspect its structure
+
+        if (Array.isArray(data)) {
+          setPaymentData(data);
+        } else {
+          throw new Error("Fetched data is not an array");
+        }
       } catch (error) {
+        // console.error('Error fetching data:', error); 
         toast.error("Error fetching data");
       } finally {
         setLoading(false);
       }
     };
+
     fetchData();
   }, []);
 
@@ -80,7 +93,6 @@ const PaymentHistory = () => {
               <tr><td colSpan="7">Loading...</td></tr>
             ) : (
               filteredData.map((item, index) => (
-              <>
                 <tr key={index} className="table__tr">
                   <td className="table__td">{item.fullName}</td>
                   <td className="table__td">{item.email}</td>
@@ -89,8 +101,7 @@ const PaymentHistory = () => {
                   <td className="table__td">{item.paymentMethod}</td>
                   <td className="table__td">{new Date(item.transactionDate).toLocaleDateString()}</td>
                   <td className="table__td"><a href={item.paymentPic}>Image</a></td>
-                </tr><br/>
-              </>
+                </tr>
               ))
             )}
           </tbody>

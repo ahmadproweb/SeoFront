@@ -155,7 +155,6 @@ font-weight: 600;
   font-size: 1.8rem;
   text-transform: capitalize;
   font-weight: 600;
-  font-family: 'Playball', cursive;
   
 }
 .footer_bottom .iconDev{
@@ -163,7 +162,6 @@ font-weight: 600;
   display: -ms-flexbox;
   display: flex;
   gap: 2rem;
-  margin-bottom: 0.2rem;
   font-size: 2.5rem;
 }
 

@@ -3,13 +3,13 @@ import { toast } from "react-toastify";
 import "../css/auth.css";
 import Processing from "../component/Processing";
 import logo from "../images/logo.png";
-import imageSign from "../images/imageSign.png";
 import { IoPricetagOutline } from "react-icons/io5";
 import {
   MdOutlineDriveFileRenameOutline,
   MdOutlineEmail,
   MdOutlinePermContactCalendar,
 } from "react-icons/md";
+import sellerPayment1 from "../images/sellerPayment1.png";
 
 const VITE_ADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAIL;
 const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
@@ -149,7 +149,7 @@ const BuyerPayment = () => {
           <img src={logo} alt="Logo" />
           <h1>Welcome Buyer Payment</h1>
         </div>
-        <img src={imageSign} alt="Sign" />
+        <img src={sellerPayment1} width={600} height={600} alt="Sign" />
       </div>
       <div className="line"></div>
       <div className="second">

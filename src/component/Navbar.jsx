@@ -16,6 +16,18 @@ function Navbar() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     setIsLoggedIn(!!token);
+
+    // Listen for changes to localStorage
+    const handleStorageChange = () => {
+      const updatedToken = localStorage.getItem("token");
+      setIsLoggedIn(!!updatedToken);
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
   }, []);
 
   const handleLogout = () => {
@@ -68,10 +80,10 @@ function Navbar() {
               <IoHomeOutline className="font" />
               <a href="/">home</a>
             </li>
-            <li>
+            {/* <li>
               <FaRegPaperPlane className="font" />
               <a href="/GenerateCode">Generate Code</a>
-            </li>
+            </li> */}
             <li>
               <RiMoneyPoundCircleLine className="font" />
               <a href="/payment">Buyer Payment</a>

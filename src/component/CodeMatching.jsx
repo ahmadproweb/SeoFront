@@ -6,7 +6,7 @@ import {
 } from "react-icons/md";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import logo from "../images/logo.png";
-import imageSign from "../images/imageSign.png";
+import codeMatcging1 from "../images/codeMatcging1.png";
 import "../css/auth.css";
 
 const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
@@ -76,99 +76,100 @@ function CodeMatching() {
           {timeLeft % 60}
         </h6>
       ) : (
-        <>
-          <div className="DealBtn">
-            <div className="DealBtnInner">
-              <a href="/DealDone">Account Info</a>
-              <a href="/codeMatching">Code Matching</a>
-              <a href="/paymentMethodSeller">Payment Method Seller</a>
-            </div>
-          </div>
-          <div className="sign-main">
-            <div className="first">
-              <div className="logo">
-                <img src={logo} alt="Logo" />
-                <h1>Welcome to Code Matching</h1>
-              </div>
-              <img src={imageSign} alt="Sign" />
-            </div>
-            <div className="line"></div>
-            <div className="second">
-              <form onSubmit={handleSubmit}>
-                <div className="main-input">
-                  <label htmlFor="accountId">Account Id</label>
-                  <div className="input">
-                    <input
-                      type="number"
-                      name="accountId"
-                      value={accountId}
-                      onChange={(e) => setAccountId(e.target.value)}
-                      required
-                    />
-                    <MdOutlineDriveFileRenameOutline className="input-icons" />
-                  </div>
-                </div>
-                <div className="main-input">
-                  <label htmlFor="buyerCode">Buyer Code</label>
-                  <div className="input">
-                    <input
-                      type="number"
-                      name="buyerCode"
-                      value={buyerCode}
-                      onChange={(e) => setBuyerCode(e.target.value)}
-                      required
-                    />
-                    <MdOutlineEmail className="input-icons" />
-                  </div>
-                </div>
-                <div className="main-input">
-                  <label htmlFor="sellerCode">Seller Code</label>
-                  <div className="input">
-                    <input
-                      type="number"
-                      name="sellerCode"
-                      value={sellerCode}
-                      onChange={(e) => setSellerCode(e.target.value)}
-                      required
-                    />
-                    <MdOutlineEmail className="input-icons" />
-                  </div>
-                </div>
-                <div className="Text">
-                  <span>1.</span> Wait 5 minutes, Buyer can check your Account.
-                  <br />
-                  <span>2.</span> In this section, Get Code from buyer through
-                  live Chat.
-                  <br />
-                  <span>3.</span> Confirm both codes then you can move to the
-                  next step.
-                  <br />
-                  <span>4.</span> Be Aware! Don't send wrong information in the
-                  form.
-                  <br />
-                  <div className="Condition">
-                    <input type="checkbox" onChange={handleCheckboxChange} /> I
-                    have read and agree to the Terms and Conditions
-                  </div>
-                </div>
-                <button
-                  type="submit"
-                  style={{
-                    backgroundColor: "green",
-                    height: "4rem",
-                    padding: "0rem",
-                  }}
-                  className="button1"
-                >
-                  <div className="item">
-                    <FaLongArrowAltRight className="arrow1" />
-                  </div>
-                </button>
-              </form>
-            </div>
-          </div>
-        </>
+        "Time Finish"
       )}
+      <>
+        <div className="DealBtn">
+          <div className="DealBtnInner">
+            <a href="/DealDone">Account Info</a>
+            <a href="/codeMatching">Code Matching</a>
+            <a href="/paymentMethodSeller">Payment Method Seller</a>
+          </div>
+        </div>
+        <div className="sign-main">
+          <div className="first">
+            <div className="logo">
+              <img src={logo} alt="Logo" />
+              <h1>Welcome to Code Matching</h1>
+            </div>
+            <img src={codeMatcging1} width={500} height={500} alt="codeMatching" />
+          </div>
+          <div className="line"></div>
+          <div className="second">
+            <form onSubmit={handleSubmit}>
+              <div className="main-input">
+                <label htmlFor="accountId">Account Id</label>
+                <div className="input">
+                  <input
+                    type="number"
+                    name="accountId"
+                    value={accountId}
+                    onChange={(e) => setAccountId(e.target.value)}
+                    required
+                  />
+                  <MdOutlineDriveFileRenameOutline className="input-icons" />
+                </div>
+              </div>
+              <div className="main-input">
+                <label htmlFor="buyerCode">Buyer Code</label>
+                <div className="input">
+                  <input
+                    type="number"
+                    name="buyerCode"
+                    value={buyerCode}
+                    onChange={(e) => setBuyerCode(e.target.value)}
+                    required
+                  />
+                  <MdOutlineEmail className="input-icons" />
+                </div>
+              </div>
+              <div className="main-input">
+                <label htmlFor="sellerCode">Seller Code</label>
+                <div className="input">
+                  <input
+                    type="number"
+                    name="sellerCode"
+                    value={sellerCode}
+                    onChange={(e) => setSellerCode(e.target.value)}
+                    required
+                  />
+                  <MdOutlineEmail className="input-icons" />
+                </div>
+              </div>
+              <div className="Text">
+                <span>1.</span> Wait 5 minutes, Buyer can check your Account.
+                <br />
+                <span>2.</span> In this section, Get Code from buyer through
+                live Chat.
+                <br />
+                <span>3.</span> Confirm both codes then you can move to the next
+                step.
+                <br />
+                <span>4.</span> Be Aware! Don't send wrong information in the
+                form.
+                <br />
+                <div className="Condition">
+                  <input type="checkbox" onChange={handleCheckboxChange} /> I
+                  have read and agree to the Terms and Conditions
+                </div>
+              </div>
+              <button
+                type="submit"
+                style={{
+                  backgroundColor: "green",
+                  height: "4rem",
+                  padding: "0rem",
+                }}
+                className="button1"
+              >
+                <div className="item">
+                  <FaLongArrowAltRight className="arrow1" />
+                </div>
+              </button>
+            </form>
+          </div>
+        </div>
+      </>
     </div>
   );
 }

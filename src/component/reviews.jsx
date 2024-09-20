@@ -38,7 +38,7 @@ function Reviews() {
                         <FaRegStar />
                       </div>
                     </div>
-                    <div className="paragraph">Such sotoolers is a very good website, I have earned a lot of profit from it, and their services are very slow, in case they are also from the country, you can take services from their website. Have 100 percent faith in them</div>
+                    <div className="paragraph">Such socialpress is a very good website, I have earned a lot of profit from it, and their services are very slow, in case they are also from the country, you can take services from their website. Have 100 percent faith in them</div>
                     <div className="date">January/01/2024</div>
                   </div>
                   <div className="reviews" >

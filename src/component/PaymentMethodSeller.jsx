@@ -6,7 +6,7 @@ import { TbCircleDashedNumber0 } from "react-icons/tb";
 import { IoPricetagOutline } from "react-icons/io5";
 import { MdDriveFileRenameOutline } from "react-icons/md";
 import logo from "../images/logo.png";
-import imageSign from "../images/imageSign.png";
+import sellerPayment1 from "../images/sellerPayment1.png";
 
 function PaymentMethodSeller() {
   const [formData, setFormData] = useState({
@@ -108,7 +108,7 @@ function PaymentMethodSeller() {
             <h1>Welcome Seller</h1>
           </div>
           <p>Only seller can use and fill this form</p>
-          <img src={imageSign} alt="Sign" />
+          <img src={sellerPayment1} width={600} height={600} alt="Sign" />
         </div>
         <div className="line"></div>
         <div className="second">
