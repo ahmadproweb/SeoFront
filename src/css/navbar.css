@@ -188,8 +188,11 @@ header.header {
         -webkit-box-direction: normal;
             -ms-flex-direction: column;
                 flex-direction: column;
-        height: 50dvh;
+        height: 100%;
         width: 100%;
+        gap: 5rem;
+        justify-content: start;
+        padding-top: 12rem;
     }
     .nav li:hover{
         background-color: rgba(0, 0, 0, 0.275);
@@ -235,7 +238,8 @@ header.header {
     }
     .hamburger{
         position: relative;
-        left: 0.3rem;
+        left: -1.5rem;
+        top: -2rem;
     }
     .logout , .UserDetails {
         font-size: 1rem;
