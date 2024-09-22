@@ -230,3 +230,7 @@ display: none !important;
   }
 }
 
+.account a{
+  color: white;
+  text-align: none;
+}

@@ -42,8 +42,9 @@ function AccountList({ services }) {
               <div className="class">
                 <h2>Deal</h2>
                 <button type="button"
-                  onClick={() => navigate(`${import.meta.env.VITE_CHAT_URL}`)}
-                >Live Chat</button>
+                >
+                  <a href={`${import.meta.env.VITE_CHAT_URL}`}>Live Chat</a>
+                </button>
               </div>
               <div className="class">
                 <h2>Details</h2>
@@ -55,7 +56,9 @@ function AccountList({ services }) {
                 </button>
               </div>
               <div className="class">
-                <button type="button">Buy Now</button>
+                <button type="button"
+                onClick={()=>navigate(`/payment`)}
+                >Buy Now</button>
               </div>
             </div>
           </div>

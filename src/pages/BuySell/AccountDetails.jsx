@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 import "../../css/buyDesc.css";
+import { toast } from "react-toastify";
 
 function AccountDetails() {
   const { accountId } = useParams(); 
@@ -17,11 +18,11 @@ function AccountDetails() {
           throw new Error(`Network response was not ok. Status: ${response.status}, Message: ${errorText}`);
         }
         const data = await response.json();
-        console.log("Fetched data:", data);
+        // console.log("Fetched data:", data);
         setBuyDetails(data);
-        console.log("State set to:", data);
+        // console.log("State set to:", data);
       } catch (error) {
-        console.error("Error fetching full details:", error.message);
+        toast.error("Error fetching full details:", error.message);
       }
     };
   
@@ -32,6 +33,13 @@ function AccountDetails() {
   
   console.log("Details Buy state:", detailsBuy);
   
+  const imageUrls = [
+    detailsBuy?.imagesUpload1,
+    detailsBuy?.imagesUpload2,
+    detailsBuy?.imagesUpload3,
+    detailsBuy?.imagesUpload4,
+  ].filter(Boolean); // Filters out any null or undefined values
+
   return (
     <div className="div">
       {detailsBuy ? (
@@ -76,16 +84,17 @@ function AccountDetails() {
               <strong>{detailsBuy.earningMethod}</strong>
             </div>
           </div>
-        <div className="CarouselReact">
-        {detailsBuy.imagesUpload1 && (
-            <Carousel>
-              {detailsBuy.imagesUpload1 && <div><img src={detailsBuy.imagesUpload1} alt="Image 1" /></div>}
-              {detailsBuy.imagesUpload2 && <div><img src={detailsBuy.imagesUpload2} alt="Image 2" /></div>}
-              {detailsBuy.imagesUpload3 && <div><img src={detailsBuy.imagesUpload3} alt="Image 3" /></div>}
-              {detailsBuy.imagesUpload4 && <div><img src={detailsBuy.imagesUpload4} alt="Image 4" /></div>}
-            </Carousel>
-          )}
-        </div>
+          <div className="CarouselReact">
+            {imageUrls.length > 0 && (
+              <Carousel>
+                {imageUrls.map((image, index) => (
+                  <div key={index}>
+                    <img src={image} alt={`Image ${index + 1}`} />
+                  </div>
+                ))}
+              </Carousel>
+            )}
+          </div>
         </div>
       ) : (
         <p className="error">No results found, please check spelling</p>

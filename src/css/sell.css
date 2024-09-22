@@ -61,7 +61,7 @@
   margin: 0;
 }
 .form_wrapper label {
-  font-size: 12px;
+  font-size: 1.5rem;
 }
 .form_wrapper .row {
   margin: 10px -15px;
@@ -94,7 +94,6 @@
 .form_wrapper .input_field > span > .icon {
   position: relative;
   top: 0.7rem;
-  left: 0.5rem;
   color: rgb(74, 73, 73);
   font-size: 2rem;
 }

@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import "../css/sell.css";
-import { MdAccountCircle, MdOutlinePriceCheck,  MdAttachEmail } from "react-icons/md";
+import {
+  MdAccountCircle,
+  MdOutlinePriceCheck,
+  MdAttachEmail,
+} from "react-icons/md";
 import { IoIosContacts } from "react-icons/io";
 import { LiaStreetViewSolid } from "react-icons/lia";
 import { toast } from "react-toastify";
@@ -8,8 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { PiBracketsCurlyBold } from "react-icons/pi";
 import { GiProfit } from "react-icons/gi";
 import { FaGem, FaTelegram } from "react-icons/fa";
-const VITE_BASE_URL = import.meta.env.VITE_BASE_URL
-
+const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
 
 function AccountSell() {
   const [formData, setFormData] = useState({
@@ -36,51 +39,42 @@ function AccountSell() {
     telegramUsername: "",
     accountImages: [],
   });
+  const [showSocialLinks, setShowSocialLinks] = useState(false);
+  const [loading , setLoading] = useState(false)
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  
+    if (name === "accountType") {
+      setShowSocialLinks(value === "Google & Blog");
+    }
+  };
+  
   const handleFileChange = (e) => {
     if (e.target.files) {
       const files = Array.from(e.target.files);
       setFormData((prevData) => ({ ...prevData, accountImages: files }));
     }
   };
-
-  const handleChange = (e) => {
-    const { name, value, files } = e.target;
-    if (name === "accountImages") {
-      setFormData((prevFormData) => ({
-        ...prevFormData,
-        [name]: files, 
-      }));
-    } else {
-      setFormData((prevFormData) => ({
-        ...prevFormData,
-        [name]: value,
-      }));
-    }
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const requiredFields  = [
+    setLoading(true)
+    const requiredFields = [
       "accountName",
       "accountPrice",
       "accountType",
       "MonthlyProfit",
-      "ProfitMargin",
-      "ProfitMultiple",
-      "RevenueMultiple",
       "PageViews",
       "accountUrl",
-      "socialLink1",
-      "socialLink2",
-      "socialLink3",
-      "socialLink4",
       "siteAge",
       "accountDesc",
       "monetizationEnabled",
       "earningMethod",
       "Email",
-      "otherEmail",
       "ContactNumber",
       "telegramUsername",
     ];
@@ -100,7 +94,7 @@ function AccountSell() {
         if (key === "monetizationEnabled") {
           formDataToSend.append(key, value === "Yes" ? "true" : "false");
         } else {
-          formDataToSend.append(key, value ); 
+          formDataToSend.append(key, value);
         }
       });
 
@@ -112,13 +106,13 @@ function AccountSell() {
         toast.error("Invalid image files. Please try again.");
         return;
       }
-      const token = localStorage.getItem('token'); 
+      const token = localStorage.getItem("token");
 
       const response = await fetch(`${VITE_BASE_URL}/buySell/create`, {
         method: "POST",
         body: formDataToSend,
-             headers: {
-          "Authorization": `Bearer ${token}` 
+        headers: {
+          Authorization: `Bearer ${token}`,
         },
       });
 
@@ -155,6 +149,8 @@ function AccountSell() {
       }
     } catch (error) {
       toast.error("Failed to submit the form. Please try again.");
+    }finally{
+      setLoading(false)
     }
   };
 
@@ -201,7 +197,7 @@ function AccountSell() {
                       </div>
                     </div>
                   </div>
-                  <label htmlFor="accountType">AccountType</label>
+                  <label htmlFor="accountType">AccountType</label><br/><br/>
                   <div className="input_field select_option">
                     <select
                       id="accountType"
@@ -218,7 +214,82 @@ function AccountSell() {
                       <option>Other Accounts</option>
                     </select>
                   </div>
+                  {showSocialLinks && (
+                    <>
+                      <div className="row clearfix">
+                        {[1, 2, 3, 4].map((num) => (
+                          <div className="col_half" key={`socialLink${num}`}>
+                            <div className="input_field">
+                              <span>
+                                <PiBracketsCurlyBold className="icon" />
+                              </span>
+                              <input
+                                type="url"
+                                id={`socialLink${num}`}
+                                name={`socialLink${num}`}
+                                placeholder={`Social Link ${num}`}
+                                value={formData[`socialLink${num}`]}
+                                onChange={handleChange}
+                              />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                     
+                      <div className="row clearfix">
+                        <div className="col_half">
+                          <div className="input_field">
+                            <span>
+                              <GiProfit className="icon" />
+                            </span>
+                            <input
+                              type="text"
+                              id="ProfitMultiple"
+                              name="ProfitMultiple"
+                              placeholder="Account Profit Multiple"
+                              value={formData.ProfitMultiple}
+                              onChange={handleChange}
+                            />
+                          </div>
+                        </div>
+                        <div className="col_half">
+                          <div className="input_field">
+                            <span>
+                              <GiProfit className="icon" />
+                            </span>
+                            <input
+                              type="text"
+                              id="RevenueMultiple"
+                              name="RevenueMultiple"
+                              placeholder="Account Revenue Multiple"
+                              value={formData.RevenueMultiple}
+                              onChange={handleChange}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </>
+                  )}
                   <div className="row clearfix">
+                  {showSocialLinks && (
+
+                  <div className="col_half">
+                        <div className="input_field">
+                          <span>
+                            <GiProfit className="icon" />
+                          </span>
+                          <input
+                            type="number"
+                            id="ProfitMargin"
+                            name="ProfitMargin"
+                            placeholder="Account Profit Margin"
+                            value={formData.ProfitMargin}
+                            onChange={handleChange}
+                          />
+                        </div>
+                      </div>
+
+                  )}
                     <div className="col_half">
                       <div className="input_field">
                         <span>
@@ -234,54 +305,8 @@ function AccountSell() {
                         />
                       </div>
                     </div>
-                    <div className="col_half">
-                      <div className="input_field">
-                        <span>
-                          <GiProfit className="icon" />
-                        </span>
-                        <input
-                          type="number"
-                          id="ProfitMargin"
-                          name="ProfitMargin"
-                          placeholder="Account Profit Margin"
-                          value={formData.ProfitMargin}
-                          onChange={handleChange}
-                        />
-                      </div>
-                    </div>
                   </div>
-                  <div className="row clearfix">
-                    <div className="col_half">
-                      <div className="input_field">
-                        <span>
-                          <GiProfit className="icon" />
-                        </span>
-                        <input
-                          type="text"
-                          id="ProfitMultiple"
-                          name="ProfitMultiple"
-                          placeholder="Account Profit Multiple"
-                          value={formData.ProfitMultiple}
-                          onChange={handleChange}
-                        />
-                      </div>
-                    </div>
-                    <div className="col_half">
-                      <div className="input_field">
-                        <span>
-                          <GiProfit className="icon" />
-                        </span>
-                        <input
-                          type="text"
-                          id="RevenueMultiple"
-                          name="RevenueMultiple"
-                          placeholder="Account Revenue Multiple"
-                          value={formData.RevenueMultiple}
-                          onChange={handleChange}
-                        />
-                      </div>
-                    </div>
-                  </div>
+
                   <div className="row clearfix">
                     <div className="col_half">
                       <div className="input_field">
@@ -307,77 +332,14 @@ function AccountSell() {
                           type="url"
                           id="accountUrl"
                           name="accountUrl"
-                          placeholder="Account Account Url"
+                          placeholder="Account Url"
                           value={formData.accountUrl}
                           onChange={handleChange}
                         />
                       </div>
                     </div>
                   </div>
-                  <div className="row clearfix">
-                    <div className="col_half">
-                      <div className="input_field">
-                        <span>
-                          <PiBracketsCurlyBold className="icon" />
-                        </span>
-                        <input
-                          type="url"
-                          id="socialLink1"
-                          name="socialLink1"
-                          placeholder="Social Link1"
-                          value={formData.socialLink1}
-                          onChange={handleChange}
-                        />
-                      </div>
-                    </div>
-                    <div className="col_half">
-                      <div className="input_field">
-                        <span>
-                          <PiBracketsCurlyBold className="icon" />
-                        </span>
-                        <input
-                          type="url"
-                          id="socialLink2"
-                          name="socialLink2"
-                          placeholder="Social Link2"
-                          value={formData.socialLink2}
-                          onChange={handleChange}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="row clearfix">
-                    <div className="col_half">
-                      <div className="input_field">
-                        <span>
-                          <PiBracketsCurlyBold className="icon" />
-                        </span>
-                        <input
-                          type="url"
-                          id="socialLink3"
-                          name="socialLink3"
-                          placeholder="Social Link3"
-                          value={formData.socialLink3}
-                          onChange={handleChange}
-                        />
-                      </div>
-                    </div>
-                    <div className="col_half">
-                      <div className="input_field">
-                        <span>
-                          <PiBracketsCurlyBold className="icon" />
-                        </span>
-                        <input
-                          type="url"
-                          id="socialLink4"
-                          name="socialLink4"
-                          placeholder="Social Link4"
-                          value={formData.socialLink4}
-                          onChange={handleChange}
-                        />
-                      </div>
-                    </div>
-                  </div>
+                 
 
                   <div className="row clearfix">
                     <div className="col_half">
@@ -418,7 +380,7 @@ function AccountSell() {
                   </div>
                   <label htmlFor="monetizationEnabled">
                     Monetization Enabled
-                  </label>
+                  </label><br/><br/>
                   <div className="input_field select_option">
                     <select
                       id="monetizationEnabled"
@@ -433,19 +395,33 @@ function AccountSell() {
                   </div>
 
                   <div className="input_field select_option">
-                    <label htmlFor="earningMethod">Earning Method</label>
+                    <label htmlFor="earningMethod">Earning Method</label><br/><br/>
                     <select
                       id="earningMethod"
                       name="earningMethod"
                       value={formData.earningMethod}
                       onChange={handleChange}
                     >
+                  {showSocialLinks ? (
+                    <>
                       <option>Google Adsense</option>
                       <option>Google ADX</option>
                       <option>Email Marketing</option>
                       <option>Direct Selling products</option>
                       <option>Sell Course/ebooks</option>
                       <option>Other payment method</option>
+                    </>
+
+                  ) : (
+                 <>
+                    <option >Ads Earning</option>
+                    <option>Shop Earning</option>
+                    <option>Sponsor Earning</option>
+                    <option>Referral Earning</option>
+                    <option>Other</option>
+                 </>
+
+                  )}
                     </select>
                   </div>
                   <h3 className="contctinformation">
@@ -519,8 +495,9 @@ function AccountSell() {
                       I agree with terms and conditions
                     </label>
                   </div>
+                  <br/><br/>
                   <button className="button mt-9" type="submit">
-                    Submit
+                    {loading ? 'Processing...' : 'Submit'}
                   </button>
                 </form>
               </div>
