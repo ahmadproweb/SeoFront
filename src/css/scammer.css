@@ -1,142 +1,242 @@
 :root {
-    --border-radius: 2rem;
-  }
-  
-  .main-scammer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0rem;
-    flex-wrap: wrap;
-  }
-  
-  .allScammer {
-    font-size: 3rem;
-    text-transform: capitalize;
-    text-align: center;
-    font-weight: 600;
-    margin-top: 3rem;
-    color: red;
-  }
-  
-  .card-scammer {
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    border-radius: var(--border-radius);
-    display: flex;
-    margin-top: 3rem;
-    gap: 10rem;
-    width:clamp(50rem , 100% , 70rem);
-    margin-inline: auto;
-    height: 40rem;
-    overflow: hidden;
-  }
-  
-  .card-scammer .imgScammer {
-    width: 100%;
-    cursor: pointer;
-  }
-  
-  .card-scammer img {
-    width: 100%;
-    height: 40rem;
-    border-radius: 0rem var(--border-radius) var(--border-radius) 0rem;
-  }
-  
-  .scammer-data .Data {
-    display: flex;
-    padding-inline: 1rem 0rem;
-    flex-direction: column;
-    line-height: 2.5rem;
-    width: 15rem;
-    margin-top: 2rem;
-  }
-  
-  .Data h1 {
-    font-size: 2rem;
-    text-transform: capitalize;
-    font-weight: 600;
-  }
-  
-  .Data p {
-    font-size: 1.3rem;
-    text-transform: capitalize;
-    font-weight: 500;
-  }
-  
-  @media (width < 992px) {
-    .card-scammer {
-      display: flex;
-      margin-top: 3rem;
-      flex-direction: column;
-    gap: 0rem;
+  --border-radius: 0.4rem;
+}
+
+.MainScammer {
+  margin-block: 2rem 4rem;
+}
+
+.MainScammer h1 {
+  font-size: 3rem;
+  text-transform: capitalize;
+  text-align: center;
+  font-weight: 600;
+}
+
+.card {
+  height: 38rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: calc(100% - 30rem);
+  margin-inline: auto;
+  border-radius: var(--border-radius);
+  display: flex;
+  margin-top: 3rem;
+  justify-content: space-between;
+}
+
+.firstInner {
+  display: flex;
+  gap: 1rem;
+}
+
+.firstInner .img {
+  height: 100%;
+  width: 30rem;
+  border-radius: 0;
+}
+
+.firstInner .img img {
+  width: 100%;
+  height: 100%;
+}
+
+.firstInfo,
+.secondInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+  padding-top: 4rem;
+  width: 10rem;
+}
+
+.firstInfo h1 {
+  font-size: 1.6rem;
+  text-transform: capitalize;
+  font-weight: 600;
+  text-align: start;
+}
+
+.secondInfo p {
+  font-size: 1.6rem;
+}
+
+.secondInner {
+  width: 20rem;
+  height: 100%;
+  padding-block: 4rem 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.socialProfile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.51rem;
+}
+
+.socialProfile h1 {
+  font-size: 2rem;
+  text-align: start;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.socialProfile a {
+  text-decoration: none;
+  font-size: 1.7rem;
+  position: relative;
+  left: 3.5rem;
+}
+
+.secondInner button {
+  background-color: #faaa1f;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, #faaa1f 0px 3px 7px -3px;
+  text-transform: capitalize;
+  font-size: 1.6rem;
+  color: black;
+  font-weight: 600;
+  height: 3.5rem;
+  width: 8rem;
+  border-radius: 0.5rem;
+}
+
+@media (width < 1100px) {
+  .secondInner {
+    width: 20%;
     height: 100%;
-      width: clamp(30rem, 100%, 70rem);
-    }
-    .scammer-data {
-      display: flex;
-      gap: 0rem;
-      align-items: center;
-      flex-wrap: wrap;
-      padding-block: 1rem;
-    }
-    .scammer-data .Data {
-      display: flex;
-      margin-top: 0rem;
-      padding-inline: 1rem 0rem;
-      flex-direction: column;
-      line-height: 2.5rem;
-    }
-    .card-scammer img {
-      border-radius: 0rem;
-    }
-    .main-scammer {
-      padding-inline: 1rem;
-    }
+    position: relative;
+    right: 2rem;
+    align-items: end;
   }
-  
-  @media (width < 400px) {
-    .card-scammer {
-      height: 45rem;
-    }
-    .card-scammer img {
-      height: 45rem;
-    }
-    .scammer-data .Data {
-      display: flex;
-      gap: 0rem;
-      margin-top: 0rem;
-      padding-block: 0.3rem;
-    }
-    .Data h1 {
-      font-size: 1.6rem;
-    }
-    .Data p {
-      font-size: 1.1rem;
-    }
+}
+
+@media (width < 992px) {
+  .card {
+    height: 38rem;
+    width: calc(100% - 10rem);
+    margin-inline: auto;
   }
-  
-  .blur-background {
-    filter: blur(5px);
-    pointer-events: none;
-    overflow: hidden; 
+}
+
+@media (width < 750px) {
+  .card {
+    width: calc(100% - 5rem);
   }
-  
-  .enlarged-image-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.8);
+}
+
+@media (width < 680px) {
+  .card {
+    height: 100% !important;
     display: flex;
-    justify-content: center;
+    width: calc(100% - 5rem);
+    flex-direction: column;
+    margin-top: 3rem;
+    overflow: scroll !important;
+    justify-content: space-between;
+  }
+
+  .firstInner {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+  }
+
+  .firstInner .img {
+    height: 20rem;
+    width: 100%;
+  }
+
+  .firstInfo,
+  .secondInfo {
+    display: flex;
+    flex-direction: row;
+    gap: 3.5rem;
+    padding-top: 0rem;
+    padding-inline: 1rem;
+    width: 100%;
+  }
+
+  .socialProfile {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
     align-items: center;
-    z-index: 1000;
+    width: 100%;
   }
-  
-  .enlarged-image-overlay img {
-    max-width: 90%;
-    max-height: 90%;
-    border-radius: var(--border-radius);
+
+  .socialProfile h1 {
+    font-size: 2rem;
+    text-align: start;
+    font-weight: 600;
+    text-transform: capitalize;
   }
-  
+
+  .socialProfile a {
+    text-decoration: none;
+    font-size: 1.7rem;
+    position: relative;
+    left: 0;
+  }
+
+  .secondInner button {
+    background-color: #faaa1f;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, #faaa1f 0px 3px 7px -3px;
+    text-transform: capitalize;
+    font-size: 1.4rem;
+    color: black;
+    font-weight: 600;
+    height: 3rem;
+    padding: 0.7rem 1rem;
+    width: 8rem;
+    border-radius: 0.5rem;
+  }
+
+  .secondInner {
+    width: 100%;
+    height: 100%;
+    padding-inline: 3rem 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    position: relative;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
+
+@media (width < 620px) {
+  .firstInfo h1 {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  .secondInfo p {
+    font-size: 1.2rem;
+  }
+}
+
+@media (width < 470px) {
+  .card {
+    width: calc(100% - 1rem);
+  }
+
+  .firstInfo,
+  .secondInfo {
+    gap: 2rem;
+    padding-inline: 1rem;
+  }
+}
+
+@media (width < 370px) {
+  .card {
+    width: calc(100% - 0.5rem);
+  }
+
+  .firstInfo,
+  .secondInfo {
+    gap: 1rem;
+    padding-inline: 1rem;
+  }
+}

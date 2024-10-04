@@ -6,7 +6,6 @@ import { RxCross1 } from "react-icons/rx";
 import Profile from "../component/profile.jsx";
 import PaymentHistory from "../component/PaymentHistory.jsx";
 import { FaHistory } from "react-icons/fa";
-
 function Details() {
   const [selectedComponent, setSelectedComponent] = useState("Profile");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -39,7 +38,6 @@ function Details() {
       )}
       <div className={isMenuOpen ? "main-part open" : "main-part"}>
         <div className="logo-first-ft">
-          <img src="favicon.ico" alt="" />
           <h1>User Details</h1>
         </div>
         <div className="mid-tail">

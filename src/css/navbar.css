@@ -251,3 +251,10 @@ header.header {
     font-weight: 400;
 }
 }
+@media (width < 345px) {
+    
+.logo a {
+    font-size: 1.7rem;
+}
+
+}

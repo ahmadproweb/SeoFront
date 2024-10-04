@@ -40,7 +40,6 @@ body.menu-open {
     color: white !important;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
     padding: 2rem 0rem;
 }
 
@@ -275,13 +274,14 @@ body.menu-open {
     margin-top: 5rem;
     box-shadow: rgba(0, 0, 0, 0.194) 0px 5px 10px;
     padding-block: 3rem 2rem;
-    overflow-x: scroll;
+    overflow-x: scroll !important;
     width: 100%;
 }
 
 .card-history .table {
     margin-inline: auto;
-    width: calc(100% - 5rem);
+    padding-inline: 1rem;
+    width: 100dvw;
 }
 
 .table .table__tbody {
@@ -295,6 +295,10 @@ body.menu-open {
     font-size: 1.7rem;
     text-transform: capitalize;
     font-weight: 600;
+    text-align: center;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
 }
 
 .table__tbody tr td {
@@ -354,7 +358,7 @@ body.menu-open {
     .logo-first-ft h1 {
         font-size: 2.5rem;
     }
-
+    
     .mid-tail {
         padding: 1rem 2rem;
     }
@@ -410,11 +414,19 @@ body.menu-open {
     .table th {
         font-size: 1.5rem;
         font-weight: 400;
+        text-align: center;
+        white-space: nowrap; 
+        overflow: hidden; 
+        text-overflow: ellipsis; 
     }
 
     .table__tbody tr td {
         font-size: 1.2rem;
         font-weight: 300;
+        text-align: center;
+        white-space: nowrap; 
+        overflow: hidden; 
+        text-overflow: ellipsis; 
     }
 
     .search-container {
@@ -431,10 +443,7 @@ body.menu-open {
     .card-history {
         width: 100%;
     }
-    
-    .card-history .table {
-        width: 100dvw;
-    }
+  
 
 }
 
