@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../css/sell.css";
+import { FaStarOfLife } from "react-icons/fa";
 import {
   MdAccountCircle,
   MdOutlinePriceCheck,
@@ -11,7 +12,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { PiBracketsCurlyBold } from "react-icons/pi";
 import { GiProfit } from "react-icons/gi";
-import { FaGem, FaTelegram } from "react-icons/fa";
+import {  FaTelegram } from "react-icons/fa";
 const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
 
 function AccountSell() {
@@ -30,6 +31,8 @@ function AccountSell() {
     socialLink3: "",
     socialLink4: "",
     siteAge: "",
+    paymentAccountVerified:"",
+    documentsAvailable:"",
     accountDesc: "",
     monetizationEnabled: "",
     earningMethod: "",
@@ -40,17 +43,25 @@ function AccountSell() {
     accountImages: [],
   });
   const [showSocialLinks, setShowSocialLinks] = useState(false);
+  const [paymentGetaway, setPaymentGetaway] = useState(false);
+  const [showEarningMethod, setShowEarningMethod] = useState(false);
   const [loading , setLoading] = useState(false)
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    // console.log(`Field Name: ${name}, Field Value: ${value}`);
     setFormData((prevFormData) => ({
       ...prevFormData,
       [name]: value,
     }));
-  
+
     if (name === "accountType") {
       setShowSocialLinks(value === "Google & Blog");
+      setPaymentGetaway(value === "Payment Getaway");
+
+    }
+    if (name === "monetizationEnabled") {
+      setShowEarningMethod(value === "Yes");
     }
   };
   
@@ -62,97 +73,121 @@ function AccountSell() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true)
+    setLoading(true);
+
+    // Define required fields without paymentAccountVerified and documentsAvailable
     const requiredFields = [
-      "accountName",
-      "accountPrice",
-      "accountType",
-      "MonthlyProfit",
-      "PageViews",
-      "accountUrl",
-      "siteAge",
-      "accountDesc",
-      "monetizationEnabled",
-      "earningMethod",
-      "Email",
-      "ContactNumber",
-      "telegramUsername",
+        "accountName",
+        "accountPrice",
+        "accountType",
+        "accountUrl",
+        "siteAge",
+        "accountDesc",
+        "Email",
+        "ContactNumber",
+        "accountImages"
     ];
 
+    // Validate required fields
     for (const field of requiredFields) {
-      if (!formData[field]) {
-        toast.error(`Please fill out the ${field} field.`);
-        return;
-      }
+        if (!formData[field]) {
+            toast.error(`Please fill out the ${field} field.`);
+            setLoading(false);
+            return;
+        }
     }
 
     try {
-      const formDataToSend = new FormData();
+        const formDataToSend = new FormData();
 
-      requiredFields.forEach((key) => {
-        const value = formData[key];
-        if (key === "monetizationEnabled") {
-          formDataToSend.append(key, value === "Yes" ? "true" : "false");
-        } else {
-          formDataToSend.append(key, value);
+        // Append required fields to the formDataToSend
+        requiredFields.forEach((key) => {
+            const value = formData[key];
+            formDataToSend.append(key, value);
+        });
+
+        // Append optional boolean fields if they are provided
+        if (formData.paymentAccountVerified) {
+            formDataToSend.append("paymentAccountVerified", formData.paymentAccountVerified === "Yes" ? "true" : "false");
         }
-      });
 
-      if (Array.isArray(formData.accountImages)) {
-        formData.accountImages.forEach((file) => {
-          formDataToSend.append("accountImages", file);
+        if (formData.monetizationEnabled) {
+            formDataToSend.append("monetizationEnabled", formData.monetizationEnabled === "Yes" ? "true" : "false");
+        }
+        if (formData.documentsAvailable) {
+            formDataToSend.append("documentsAvailable", formData.documentsAvailable === "Yes" ? "true" : "false");
+        }
+
+        // Append images
+        if (Array.isArray(formData.accountImages) && formData.accountImages.length > 0) {
+            formData.accountImages.forEach((file) => {
+                formDataToSend.append("accountImages", file);
+            });
+        } else {
+            toast.error("Invalid image files. Please try again.");
+            setLoading(false);
+            return;
+        }
+
+        // Log form data before submission
+        // for (let [key, value] of formDataToSend.entries()) {
+        //     console.log(`${key}:`, value);
+        // }
+
+        const token = localStorage.getItem("token");
+        const response = await fetch(`${VITE_BASE_URL}/buySell/create`, {
+            method: "POST",
+            body: formDataToSend,
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
         });
-      } else {
-        toast.error("Invalid image files. Please try again.");
-        return;
-      }
-      const token = localStorage.getItem("token");
 
-      const response = await fetch(`${VITE_BASE_URL}/buySell/create`, {
-        method: "POST",
-        body: formDataToSend,
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        toast.error(`Error: ${errorData.message || "Something went wrong"}`);
-      } else {
-        const successData = await response.json();
-        toast.success(successData.message || "Account successfully submitted!");
-        setFormData({
-          accountName: "",
-          accountPrice: "",
-          accountType: "",
-          MonthlyProfit: "",
-          ProfitMargin: "",
-          ProfitMultiple: "",
-          RevenueMultiple: "",
-          PageViews: "",
-          accountUrl: "",
-          socialLink1: "",
-          socialLink2: "",
-          socialLink3: "",
-          socialLink4: "",
-          siteAge: "",
-          accountDesc: "",
-          monetizationEnabled: "",
-          earningMethod: "",
-          Email: "",
-          otherEmail: "",
-          ContactNumber: "",
-          telegramUsername: "",
-          accountImages: [],
-        });
-      }
+        if (!response.ok) {
+            const errorData = await response.json();
+            toast.error(`Error: ${errorData.message || "Something went wrong"}`);
+        } else {
+            const successData = await response.json();
+            toast.success(successData.message || "Account successfully submitted!");
+            // Reset the form
+            setFormData({
+                accountName: "",
+                accountPrice: "",
+                accountType: "",
+                MonthlyProfit: "",
+                ProfitMargin: "",
+                ProfitMultiple: "",
+                RevenueMultiple: "",
+                PageViews: "",
+                accountUrl: "",
+                socialLink1: "",
+                socialLink2: "",
+                socialLink3: "",
+                socialLink4: "",
+                siteAge: "",
+                documentsAvailable: "",  // Reset field
+                paymentAccountVerified: "", // Reset field
+                accountDesc: "",
+                monetizationEnabled: "",
+                earningMethod: "",
+                Email: "",
+                otherEmail: "",
+                ContactNumber: "",
+                telegramUsername: "",
+                accountImages: [],
+            });
+        }
     } catch (error) {
-      toast.error("Failed to submit the form. Please try again.");
-    }finally{
-      setLoading(false)
+        // console.error(error); // Log the error to the console for debugging
+        toast.error("Failed to submit the form. Please try again.");
+    } finally {
+        setLoading(false);
     }
-  };
+};
+
+
+
+
 
   return (
     <>
@@ -167,6 +202,7 @@ function AccountSell() {
                 <form onSubmit={handleSubmit}>
                   <div className="row clearfix">
                     <div className="col_half">
+                  <label htmlFor="accountType">Account Name <FaStarOfLife className="Star"/></label><br/>
                       <div className="input_field">
                         <span>
                           <MdAccountCircle className="icon" />
@@ -182,6 +218,7 @@ function AccountSell() {
                       </div>
                     </div>
                     <div className="col_half">
+                  <label htmlFor="accountType">Account Price<FaStarOfLife className="Star"/></label><br/>
                       <div className="input_field">
                         <span>
                           <MdOutlinePriceCheck className="icon" />
@@ -197,7 +234,7 @@ function AccountSell() {
                       </div>
                     </div>
                   </div>
-                  <label htmlFor="accountType">AccountType</label><br/><br/>
+                  <label htmlFor="accountType">AccountType<FaStarOfLife className="Star"/></label><br/>
                   <div className="input_field select_option">
                     <select
                       id="accountType"
@@ -209,7 +246,7 @@ function AccountSell() {
                       <option>Google & Blog</option>
                       <option>Social Media</option>
                       <option>Gaming</option>
-                      <option>Tech & IT</option>
+                      <option>Payment Getaway</option>
                       <option>Theme & Plugins</option>
                       <option>Other Accounts</option>
                     </select>
@@ -219,6 +256,7 @@ function AccountSell() {
                       <div className="row clearfix">
                         {[1, 2, 3, 4].map((num) => (
                           <div className="col_half" key={`socialLink${num}`}>
+                  <label htmlFor="accountType">Social Link {`${num}`}<FaStarOfLife className="Star"/></label><br/>
                             <div className="input_field">
                               <span>
                                 <PiBracketsCurlyBold className="icon" />
@@ -238,6 +276,7 @@ function AccountSell() {
                      
                       <div className="row clearfix">
                         <div className="col_half">
+                  <label htmlFor="ProfitMultiple">Profit Multiple<FaStarOfLife className="Star"/></label><br/>
                           <div className="input_field">
                             <span>
                               <GiProfit className="icon" />
@@ -253,6 +292,7 @@ function AccountSell() {
                           </div>
                         </div>
                         <div className="col_half">
+                  <label htmlFor="RevenueMultiple">Revenue Multiple<FaStarOfLife className="Star"/></label><br/>
                           <div className="input_field">
                             <span>
                               <GiProfit className="icon" />
@@ -274,6 +314,7 @@ function AccountSell() {
                   {showSocialLinks && (
 
                   <div className="col_half">
+                  <label htmlFor="ProfitMargin">Profit Margin<FaStarOfLife className="Star"/></label><br/>
                         <div className="input_field">
                           <span>
                             <GiProfit className="icon" />
@@ -290,40 +331,8 @@ function AccountSell() {
                       </div>
 
                   )}
-                    <div className="col_half">
-                      <div className="input_field">
-                        <span>
-                          <GiProfit className="icon" />
-                        </span>
-                        <input
-                          type="number"
-                          id="MonthlyProfit"
-                          name="MonthlyProfit"
-                          placeholder="Account Monthly Profit"
-                          value={formData.MonthlyProfit}
-                          onChange={handleChange}
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="row clearfix">
-                    <div className="col_half">
-                      <div className="input_field">
-                        <span>
-                          <LiaStreetViewSolid className="icon" />
-                        </span>
-                        <input
-                          type="number"
-                          id="PageViews"
-                          name="PageViews"
-                          placeholder="Account Page Views"
-                          value={formData.PageViews}
-                          onChange={handleChange}
-                        />
-                      </div>
-                    </div>
-                    <div className="col_half">
+                     <div className="col_half">
+                  <label htmlFor="accountUrl">Account Url<FaStarOfLife className="Star"/></label><br/>
                       <div className="input_field">
                         <span>
                           <PiBracketsCurlyBold className="icon" />
@@ -339,16 +348,100 @@ function AccountSell() {
                       </div>
                     </div>
                   </div>
-                 
 
-                  <div className="row clearfix">
+                
+
+                  {paymentGetaway ? (
+                     
+                    <div className="row clearfix">
+
                     <div className="col_half">
+                     <label htmlFor="paymentAccountVerified">Payment Account Verified<FaStarOfLife className="Star"/></label><br/>
+                                       <div className="input_field select_option">
+                                         <select
+                                           id="paymentAccountVerified"
+                                           name="paymentAccountVerified"
+                                           value={formData.paymentAccountVerified}
+                                           onChange={handleChange}
+                                         >
+                                           <option value="">Please Select</option>
+                                           <option value="Yes">Yes</option>
+                                           <option value="No">No</option>
+                                         </select>
+                                       </div>
+                                       </div>
+                    <div className="col_half">
+
+                     <label htmlFor="documentsAvailable">Documents Available<FaStarOfLife className="Star"/></label><br/>
+                                       <div className="input_field select_option">
+                                         <select
+                                           id="documentsAvailable"
+                                           name="documentsAvailable"
+                                           value={formData.documentsAvailable}
+                                           onChange={handleChange}
+                                         >
+                                           <option value="">Please Select</option>
+                                           <option value="Yes">Yes</option>
+                                           <option value="No">No</option>
+                                         </select>
+                                       </div>
+                                     </div>
+                                     </div>
+                  ): (
+                    <div className="row clearfix">
+                    <div className="col_half">
+                  <label htmlFor="PageViews">Page Views<FaStarOfLife className="Star"/></label><br/>
                       <div className="input_field">
                         <span>
-                          <FaGem className="icon" />
+                          <LiaStreetViewSolid className="icon" />
                         </span>
                         <input
                           type="number"
+                          id="PageViews"
+                          name="PageViews"
+                          placeholder="Account Page Views"
+                          value={formData.PageViews}
+                          onChange={handleChange}
+                        />
+                      </div>
+                    </div>
+                   
+                    <div className="col_half">
+                  <label htmlFor="MonthlyProfit">Monthly Profit<FaStarOfLife className="Star"/></label><br/>
+                      <div className="input_field">
+                        <span>
+                          <GiProfit className="icon" />
+                        </span>
+                        <input
+                          type="number"
+                          id="MonthlyProfit"
+                          name="MonthlyProfit"
+                          placeholder="Account Monthly Profit"
+                          value={formData.MonthlyProfit}
+                          onChange={handleChange}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  )
+                  
+                  }
+                     <label htmlFor="accountDesc">Account Description<FaStarOfLife className="Star"/></label><br/>
+                  <div className="input_field">
+                    <textarea
+                      placeholder="Account Information Description"
+                      id="accountDesc"
+                      name="accountDesc"
+                      value={formData.accountDesc}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="row clearfix">
+                    <div className="col_half">
+                  <label htmlFor="siteAge">Site Age<FaStarOfLife className="Star"/></label><br/>
+                      <div className="input_field">
+                        <input
+                          type="datetime-local"
                           id="siteAge"
                           name="siteAge"
                           placeholder="Account Age"
@@ -358,6 +451,7 @@ function AccountSell() {
                       </div>
                     </div>
                     <div className="col_half">
+                  <label htmlFor="accountImages">Account Images<FaStarOfLife className="Star"/></label><br/>
                       <div className="input_field">
                         <input
                           multiple
@@ -369,18 +463,10 @@ function AccountSell() {
                       </div>
                     </div>
                   </div>
-                  <div className="input_field">
-                    <textarea
-                      placeholder="Account Information Description"
-                      id="accountDesc"
-                      name="accountDesc"
-                      value={formData.accountDesc}
-                      onChange={handleChange}
-                    />
-                  </div>
-                  <label htmlFor="monetizationEnabled">
-                    Monetization Enabled
-                  </label><br/><br/>
+                 {
+                  paymentGetaway ? "" :  <div className="row clearfix">
+                  <div className="col_half">
+                  <label htmlFor="monetizationEnabled">Monetization Enabled<FaStarOfLife className="Star"/></label><br/>
                   <div className="input_field select_option">
                     <select
                       id="monetizationEnabled"
@@ -389,13 +475,15 @@ function AccountSell() {
                       onChange={handleChange}
                     >
                       <option value="">Please Select</option>
-                      <option>Yes</option>
-                      <option>No</option>
+                      <option value="Yes">Yes</option>
+                      <option value="No">No</option>
                     </select>
                   </div>
-
+                  </div>
+                  {showEarningMethod && (
+                  <div className="col_half">
+                    <label htmlFor="earningMethod">Earning Method</label><br/>
                   <div className="input_field select_option">
-                    <label htmlFor="earningMethod">Earning Method</label><br/><br/>
                     <select
                       id="earningMethod"
                       name="earningMethod"
@@ -424,11 +512,17 @@ function AccountSell() {
                   )}
                     </select>
                   </div>
+                  </div>
+                  )}
+                  </div>
+                 }
+
                   <h3 className="contctinformation">
                     Please fill this contact information 👇 👇 👇
                   </h3>
                   <div className="row clearfix">
                     <div className="col_half">
+                  <label htmlFor="Email">Email<FaStarOfLife className="Star"/></label><br/>
                       <div className="input_field">
                         <span>
                           <MdAttachEmail className="icon" />
@@ -437,13 +531,14 @@ function AccountSell() {
                           type="email"
                           id="Email"
                           name="Email"
-                          placeholder="Comprosie Email"
+                          placeholder="Seller Email"
                           value={formData.Email}
                           onChange={handleChange}
                         />
                       </div>
                     </div>
                     <div className="col_half">
+                  <label htmlFor="otherEmail">Other Email</label><br/>
                       <div className="input_field">
                         <span>
                           <MdAttachEmail className="icon" />
@@ -459,6 +554,7 @@ function AccountSell() {
                       </div>
                     </div>
                   </div>
+                  <label htmlFor="ContactNumber">Contact Number<FaStarOfLife className="Star"/></label><br/>
                   <div className="input_field">
                     <span>
                       <IoIosContacts className="icon" />
@@ -472,6 +568,7 @@ function AccountSell() {
                       onChange={handleChange}
                     />
                   </div>
+                  <label htmlFor="telegramUsername">Telegram Username</label><br/>
                   <div className="input_field">
                     <span>
                       <FaTelegram className="icon" />
@@ -484,15 +581,16 @@ function AccountSell() {
                       value={formData.telegramUsername}
                       onChange={handleChange}
                     />
-                  </div>
+                  </div><br/>
                   <div className="container">
+                    
                     <input
                       type="checkbox"
                       id="termsCheckbox"
                       name="termsCheckbox"
                     />
                     <label htmlFor="termsCheckbox" id="termsLabel">
-                      I agree with terms and conditions
+                      I agree with terms and conditions <FaStarOfLife className="Star"/>
                     </label>
                   </div>
                   <br/><br/>

@@ -1,7 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
 .sign-main {
     margin: 2rem 4rem;
     display: flex;
     padding: 4rem 4rem;
+    font-family: "Nunito", system-ui;
+    font-optical-sizing: auto;
+    font-style: oblique;
     box-shadow: rgba(0, 0, 0, 0.194) 0px 5px 10px;
 }
 .resetPassword{
@@ -37,7 +42,7 @@
     font-size: 1.5rem;
     font-weight: 500;
     text-align: center;
-    padding-block: 2rem;
+    padding-block: 1rem 0rem;
 }
 
 .line {
@@ -64,8 +69,8 @@ form {
 }
 
 form .main-input label {
-    font-size: 1.7rem;
-    font-weight: 500;
+    font-size: 1.9rem;
+    font-weight: 600;
 }
 
 .main-input .input {
@@ -196,11 +201,10 @@ form .main-input label {
 
 .second h2 {
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 2rem;
     gap: 0.5rem;
-    justify-content: center;
-    margin-top: 2rem;
     display: flex;
+    margin-bottom: 1.4rem;
 }
 
 .second h2 a {

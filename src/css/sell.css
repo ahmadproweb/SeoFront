@@ -1,13 +1,13 @@
-/*
-* Prefixed by https://autoprefixer.github.io
-* PostCSS: v8.4.14,
-* Autoprefixer: v10.4.7
-* Browsers: last 4 version
-*/
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
 
 .sellForm2{
   width: 100%;
   padding-block:  4rem;
+  font-family: "Nunito", system-ui;
+  font-optical-sizing: auto;
+  font-style: oblique;
 }
 .contctinformation{
   font-size: clamp(1rem , 3vw , 2rem) !important;
@@ -45,7 +45,7 @@
   opacity: 0;
 }
 .form_wrapper h2 {
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: 600;
   letter-spacing: 0.2rem;
   font-style: oblique;
@@ -61,7 +61,15 @@
   margin: 0;
 }
 .form_wrapper label {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.form_wrapper label .Star{
+  color: red;
+  font-size: 1.2rem;
 }
 .form_wrapper .row {
   margin: 10px -15px;
@@ -77,7 +85,7 @@
 }
 .form_wrapper .input_field {
   position: relative;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   -webkit-animation: bounce 0.6s ease-out;
   animation: bounce 0.6s ease-out;
 }
@@ -101,10 +109,10 @@
   padding-top: 10px;
 }
 
-.form_wrapper input[type=text], .form_wrapper input[type=url],     .button , textarea,  .form_wrapper input[type=number], .form_wrapper input[type=email], .form_wrapper input[type=password] {
+.form_wrapper input[type=text], .form_wrapper input[type=url],  .form_wrapper input[type=datetime-local],     .button , textarea,  .form_wrapper input[type=number], .form_wrapper input[type=email], .form_wrapper input[type=password] {
   width: 100%;
   padding: 8px 10px 9px 35px;
-  height: 35px;
+  height: 3.8rem;
   border: 1px solid #cccccc;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -113,7 +121,7 @@
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-.form_wrapper input[type=text]:hover, .form_wrapper input[type=url]:hover,   .button:hover , textarea:hover,.form_wrapper input[type=number]:hover .form_wrapper input[type=email]:hover, .form_wrapper input[type=password]:hover {
+.form_wrapper input[type=text]:hover, .form_wrapper input[type=datetime-local], .form_wrapper input[type=url]:hover,   .button:hover , textarea:hover,.form_wrapper input[type=number]:hover .form_wrapper input[type=email]:hover, .form_wrapper input[type=password]:hover {
   background: #fafafa;
 }
 .form_wrapper input[type=text]:focus, .form_wrapper input[type=url]:focus,   .button:focus , textarea:focus,  .form_wrapper input[type=email]:focus, .form_wrapper input[type=number]:focus , .form_wrapper input[type=password]:focus {
@@ -462,5 +470,17 @@ textarea
 
   .remember_me {
     padding-bottom: 20px;
+  }
+  .form_wrapper {
+    background: #fff;
+    width: calc(100% - 10%);
+    margin-inline:  auto;
+  }
+}
+@media (max-width: 400px) {
+
+  .form_wrapper {
+    width: calc(100% - 1rem);
+    margin-inline:  auto;
   }
 }

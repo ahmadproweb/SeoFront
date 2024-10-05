@@ -113,6 +113,7 @@ function PaymentMethodSeller() {
         <div className="line"></div>
         <div className="second">
           <form onSubmit={handleSubmit}>
+          <h2>Select Payment Method For Withdraw</h2>
             <div className="main-input">
               <label htmlFor="accountId">Account Id</label>
               <div className="input">

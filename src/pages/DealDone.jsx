@@ -117,6 +117,7 @@ function DealDone() {
         <div className="line"></div>
         <div className="second">
           <form onSubmit={handleSubmit}>
+            <h2>Send Account Email & Password to Buyer</h2>
             <div className="main-input">
               <label htmlFor="fullName">Full Name</label>
               <div className="input">

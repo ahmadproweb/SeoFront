@@ -97,6 +97,7 @@ function CodeMatching() {
           <div className="line"></div>
           <div className="second">
             <form onSubmit={handleSubmit}>
+            <h2>Get The Code From Buyer Now</h2>
               <div className="main-input">
                 <label htmlFor="accountId">Account Id</label>
                 <div className="input">

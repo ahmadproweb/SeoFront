@@ -24,6 +24,7 @@ import { TbWorldBolt } from "react-icons/tb";
 import { IoIdCardOutline } from "react-icons/io5";
 import { LiaCcVisa } from "react-icons/lia";
 import { PiBracketsCurly } from "react-icons/pi";
+import { FaStarOfLife } from "react-icons/fa";
 const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
@@ -226,16 +227,16 @@ const PaymentForm = () => {
       <div className="secondData">
         <form onSubmit={handleSubmit}>
           <div className="stripeInput">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">Email <FaStarOfLife className="Star"/></label>
             <div className="input">
               <input type="email" name="email" value={emailAddress} readOnly />
               <MdOutlineEmail className="input-icons" />
             </div>
           </div>
-
+<h6>1. Account Information </h6>
           <div className="StripeRow">
             <div className="stripeInput">
-              <label htmlFor="accountId">Select Account Id</label>
+              <label htmlFor="accountId">Select Account Id <FaStarOfLife className="Star"/></label>
               <div className="input">
                 <select
                   value={accountId}
@@ -290,6 +291,19 @@ const PaymentForm = () => {
               </div>
             </div>
           </div>
+          <div className="stripeInput">
+              <label htmlFor="email">Seller Email</label>
+              <div className="input">
+                <input
+                  type="email"
+                  name="sellerEmail"
+                  value={sellerEmail}
+                  readOnly
+                />
+                <MdOutlineEmail className="input-icons" />
+              </div>
+            </div>
+<h6>2. Account Price & Fee</h6>
 
           <div className="StripeRow">
             <div className="stripeInput">
@@ -318,19 +332,7 @@ const PaymentForm = () => {
               </div>
             </div>
           </div>
-          <div className="StripeRow">
-            <div className="stripeInput">
-              <label htmlFor="email">Seller Email</label>
-              <div className="input">
-                <input
-                  type="email"
-                  name="sellerEmail"
-                  value={sellerEmail}
-                  readOnly
-                />
-                <MdOutlineEmail className="input-icons" />
-              </div>
-            </div>
+            
             <div className="stripeInput">
               <label htmlFor="totalPriceUSD">Total Price (in Cents)</label>
               <div className="input">
@@ -342,12 +344,12 @@ const PaymentForm = () => {
                 />
                 <IoPricetagOutline className="input-icons" />
               </div>
-            </div>
           </div>
+          <h6>3. Send payment to Admin</h6>
 
           <div className="StripeRow">
             <div className="stripeInput">
-              <label htmlFor="address">Address</label>
+              <label htmlFor="address">Address <FaStarOfLife className="Star"/></label>
               <div className="input">
                 <input
                   type="text"
@@ -361,7 +363,7 @@ const PaymentForm = () => {
             </div>
 
             <div className="stripeInput">
-              <label htmlFor="country">Country</label>
+              <label htmlFor="country">Country <FaStarOfLife className="Star"/></label>
               <div className="input">
                 <select
                   value={country}
@@ -379,7 +381,7 @@ const PaymentForm = () => {
           </div>
           <div className="StripeRow">
             <div className="stripeInput">
-              <label htmlFor="fullName">Card Holder Name</label>
+              <label htmlFor="fullName">Card Holder Name <FaStarOfLife className="Star"/></label>
               <div className="input">
                 <input
                   type="text"
@@ -392,7 +394,7 @@ const PaymentForm = () => {
               </div>
             </div>
             <div className="stripeInput">
-              <label htmlFor="fullName">Card Number</label>
+              <label htmlFor="fullName">Card Number <FaStarOfLife className="Star"/></label>
               <div className="input">
                 <CardNumberElement className="formControl" />
                 <LiaCcVisa className="input-icons" />
@@ -401,14 +403,14 @@ const PaymentForm = () => {
           </div>
           <div className="StripeRow">
             <div className="stripeInput">
-              <label htmlFor="fullName">Expiration Date</label>
+              <label htmlFor="fullName">Expiration Date <FaStarOfLife className="Star"/></label>
               <div className="input">
                 <CardExpiryElement className="formControl" />
                 <MdUpdateDisabled className="input-icons" />
               </div>
             </div>
             <div className="stripeInput">
-              <label htmlFor="fullName">CVC Number</label>
+              <label htmlFor="fullName">CVC Number <FaStarOfLife className="Star"/></label>
               <div className="input">
                 <CardCvcElement className="formControl" />
                 <IoIdCardOutline className="input-icons" />
@@ -421,7 +423,7 @@ const PaymentForm = () => {
             className="button1 sendEmail"
             type="submit"
           >
-            {loading ? <Processing /> : "Stripe"}
+            {loading ? <Processing /> : `Stripe $${totalPriceUSD}`}
           </button>
         </form>
       </div>
