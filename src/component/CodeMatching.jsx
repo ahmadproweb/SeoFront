@@ -8,6 +8,7 @@ import { FaLongArrowAltRight } from "react-icons/fa";
 import logo from "../images/logo.png";
 import codeMatcging1 from "../images/codeMatcging1.png";
 import "../css/auth.css";
+import { FaStarOfLife } from "react-icons/fa";
 
 const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
 
@@ -99,7 +100,7 @@ function CodeMatching() {
             <form onSubmit={handleSubmit}>
             <h2>Get The Code From Buyer Now</h2>
               <div className="main-input">
-                <label htmlFor="accountId">Account Id</label>
+                <label htmlFor="accountId">Account Id : <FaStarOfLife className="Star"/></label>
                 <div className="input">
                   <input
                     type="number"
@@ -112,7 +113,7 @@ function CodeMatching() {
                 </div>
               </div>
               <div className="main-input">
-                <label htmlFor="buyerCode">Buyer Code</label>
+                <label htmlFor="buyerCode">Buyer Code : <FaStarOfLife className="Star"/></label>
                 <div className="input">
                   <input
                     type="number"
@@ -125,7 +126,7 @@ function CodeMatching() {
                 </div>
               </div>
               <div className="main-input">
-                <label htmlFor="sellerCode">Seller Code</label>
+                <label htmlFor="sellerCode">Seller Code : <FaStarOfLife className="Star"/></label>
                 <div className="input">
                   <input
                     type="number"

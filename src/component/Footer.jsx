@@ -1,9 +1,9 @@
 import React from "react";
 import "../css/footer.css";
-import { MdMarkEmailRead } from "react-icons/md";
-import { SiFiverr } from "react-icons/si";
-import { FaWhatsapp } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
+// import { MdMarkEmailRead } from "react-icons/md";
+// import { SiFiverr } from "react-icons/si";
+// import { FaWhatsapp } from "react-icons/fa";
+// import { FaLinkedin } from "react-icons/fa";
 import { MdOutlineMail } from "react-icons/md";
 import { FaMedium } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";

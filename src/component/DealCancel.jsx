@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 const VITE_BASE_URL = import.meta.env.VITE_BASE_URL
+import "../css/auth.css";
+import { FaStarOfLife } from "react-icons/fa";
+import { MdOutlineDriveFileRenameOutline, MdOutlineEmail } from 'react-icons/md';
+import logo from "../images/logo.png";
+import sellerPayment1 from "../images/sellerPayment1.png";
 
 function DealCancel() {
   const [fullName, setFullName] = useState('');
@@ -49,65 +54,82 @@ function DealCancel() {
   };
 
   return (
-    <div className="paymentafter">
-      <div className="imgAuth">
-        <img
-          src="https://img.freepik.com/free-vector/checklist-concept-illustration_114360-479.jpg?w=740&t=st=1708034311~exp=1708034911~hmac=bcaed47c9ae3ee37247348450d9f84f2073483848649d0fdea5d199d1209703a"
-          alt="Illustration"
-        />
+    <div className="sign-main">
+    <div className="first">
+      <div className="logo">
+        <img src={logo} alt="Logo" />
+        <h1>Welcome Seller</h1>
       </div>
-      <form className="formPa" onSubmit={handleSubmit}>
-        <div className="welcomePayment">
-          <h1>Deal Cancel For Seller</h1>
-        </div>
-        <div className="mainFormPayment">
-          <div className="mainFormPaymentInner">
-            <input
-              type="text"
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
-              required
-              disabled
-            />
-            <label htmlFor="fullName">Full Name</label>
-          </div>
-          <div className="mainFormPaymentInner">
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              disabled
+      <p>Only seller can use and fill this form</p>
+      <img src={sellerPayment1} width={600} height={600} alt="Sign" />
+    </div>
+    <div className="line"></div>
+    <div className="second">
+      <form onSubmit={handleSubmit}>
+    <h2>Deal Cancel For Seller</h2>
+    <div className="main-input">
+      <label htmlFor="fullName">Full Name</label>
+      <div className="input">
+        <input
+            type="text"
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
+            required
+            disabled
+        />
+        <MdOutlineDriveFileRenameOutline className="input-icons" />
+      </div>
+    </div>
+    <div className="main-input">
+      <label htmlFor="email">Email</label>
+      <div className="input">
+        <input
+           type="email"
+           value={email}
+           onChange={(e) => setEmail(e.target.value)}
+           required
+           disabled
+        />
+        <MdOutlineEmail className="input-icons" />
+      </div>
+    </div>
 
-            />
-            <label htmlFor="email">Email</label>
-          </div>
-        </div>
-        <div className="mainFormPayment">
-          <div className="mainFormPaymentInner">
-            <input
-              type="email"
-              value={adminEmail}
-              readOnly
-            />
-            <label htmlFor="adminEmail">Admin Email</label>
-          </div>
-          <div className="mainFormPaymentInner">
-            <input
-              type="email"
-              value={sellerEmail}
-              onChange={(e) => setSellerEmail(e.target.value)}
-              required
-              disabled
-
-            />
-            <label htmlFor="sellerEmail">Seller Email</label>
-          </div>
-        </div>
-        <button type="submit" className="sendEmail">
-          Send
-        </button>
-      </form>
+    <div className="main-input">
+      <label htmlFor="adminEmail">Admin Email</label>
+      <div className="input">
+        <input
+           type="email"
+           value={adminEmail}
+           readOnly
+        />
+        <MdOutlineEmail className="input-icons" />
+      </div>
+    </div>
+    <div className="main-input">
+      <label htmlFor="sellerEmail">Seller Email  <FaStarOfLife className="Star"/>   </label>
+      <div className="input">
+        <input
+        type="email"
+        value={sellerEmail}
+        onChange={(e) => setSellerEmail(e.target.value)}
+        required
+        />
+        <MdOutlineEmail className="input-icons" />
+      </div>
+    </div>
+    <button
+      type="submit"
+      style={{
+        backgroundColor: "green",
+        height: "4rem",
+        padding: "0rem",
+      }}
+      className="button1 sendEmail"
+    >
+      Send
+    </button>
+  </form>
+    </div>
     </div>
   );
 }

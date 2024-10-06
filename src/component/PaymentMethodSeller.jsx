@@ -7,6 +7,7 @@ import { IoPricetagOutline } from "react-icons/io5";
 import { MdDriveFileRenameOutline } from "react-icons/md";
 import logo from "../images/logo.png";
 import sellerPayment1 from "../images/sellerPayment1.png";
+import { FaStarOfLife } from "react-icons/fa";
 
 function PaymentMethodSeller() {
   const [formData, setFormData] = useState({
@@ -115,7 +116,7 @@ function PaymentMethodSeller() {
           <form onSubmit={handleSubmit}>
           <h2>Select Payment Method For Withdraw</h2>
             <div className="main-input">
-              <label htmlFor="accountId">Account Id</label>
+              <label htmlFor="accountId">Account Id : <FaStarOfLife className="Star"/></label>
               <div className="input">
                 <select
                   id="accountId"
@@ -134,7 +135,7 @@ function PaymentMethodSeller() {
               </div>
             </div>
             <div className="main-input">
-              <label htmlFor="sendedAmount">Sended Amount (Price)</label>
+              <label htmlFor="sendedAmount">Sended Amount (Price) : <FaStarOfLife className="Star"/></label>
               <div className="input">
                 <input
                   name="sendedAmount"
@@ -146,7 +147,7 @@ function PaymentMethodSeller() {
               </div>
             </div>
             <div className="main-input">
-              <label htmlFor="paymentMethod">Payment Method</label>
+              <label htmlFor="paymentMethod">Payment Method : <FaStarOfLife className="Star"/></label>
               <div className="input">
                 <select
                   id="paymentMethod"
@@ -163,7 +164,7 @@ function PaymentMethodSeller() {
               </div>
             </div>
             <div className="main-input">
-              <label htmlFor="accountNumber">Account Number</label>
+              <label htmlFor="accountNumber">Account Number : <FaStarOfLife className="Star"/></label>
               <div className="input">
                 <input
                   name="accountNumber"
@@ -176,7 +177,7 @@ function PaymentMethodSeller() {
               </div>
             </div>
             <div className="main-input">
-              <label htmlFor="accountName">Account Name</label>
+              <label htmlFor="accountName">Account Name : <FaStarOfLife className="Star"/></label>
               <div className="input">
                 <input
                   name="accountName"

@@ -69,8 +69,15 @@ form {
 }
 
 form .main-input label {
-    font-size: 1.9rem;
-    font-weight: 600;
+    font-size: 1.8rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+.main-input label .Star{
+    color: red;
+    font-size: 1rem;
 }
 
 .main-input .input {

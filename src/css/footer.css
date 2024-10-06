@@ -41,7 +41,7 @@ abbr[title] {
 
 .footer-row .footer-col h4 {
   color: black;
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 600;
   text-transform: uppercase;
 }
@@ -61,7 +61,7 @@ abbr[title] {
   -webkit-transition: 300ms;
   -o-transition: 300ms;
   transition: 300ms;
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   text-transform: capitalize;
 }
 
@@ -70,8 +70,9 @@ abbr[title] {
 }
 
 .footer-col p {
-  margin: 20px 0;
+  margin: 5px 0;
   color: black;
+  font-size: 1.4rem;
   max-width: 300px;
 }
 
@@ -81,7 +82,7 @@ abbr[title] {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-top: 30px;
+  margin-top: 13px;
   gap: 30px;
   cursor: pointer;
 }

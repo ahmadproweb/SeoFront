@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../css/deal.css";
 import "../css/buyerPayment.css";
 import "../css/auth.css";
-import iconI from '../images/iconI.png'
+import iconI from "../images/iconI.png";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import {
   MdOutlineDriveFileRenameOutline,
@@ -14,12 +14,14 @@ const VITE_ADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAIL;
 const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
 import logo from "../images/logo.png";
 import DealDone1 from "../images/DealDone1.png";
+import { FaStarOfLife } from "react-icons/fa";
 function DealDone() {
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     adminEmail: VITE_ADMIN_EMAIL,
     buyerEmail: "",
+    accountDesc: "",
     accountInfo: `1. You have 5 minutes to check seller account.
 2. You can cancel the deal if the account is not correct (Email & Password or others).
 3. In case of deal cancellation, You Need Seller generated code & Contact with admin.
@@ -80,6 +82,7 @@ function DealDone() {
         setFormData({
           buyerEmail: "",
           accountPic: "",
+          accountDesc: "",
         });
       } else {
         toast.error(`Error: ${result.message}`);
@@ -160,7 +163,9 @@ function DealDone() {
               </div>
             </div>
             <div className="main-input">
-              <label htmlFor="buyerEmail">Buyer Email</label>
+              <label htmlFor="buyerEmail">
+                Buyer Email <FaStarOfLife className="Star" />{" "}
+              </label>
               <div className="input">
                 <input
                   type="email"
@@ -172,23 +177,46 @@ function DealDone() {
               </div>
             </div>
             <div className="main-input">
-              <label htmlFor="accountInfo" style={{
-                display:'flex',
-                alignItems:'center',
-                justifyContent:'space-between'
-              }}>
-                Account Info :{" "}
+              <label htmlFor="accountDesc">
+                Account Info : <FaStarOfLife className="Star" />
+              </label>
+              <div className="input">
+                <textarea
+                  name="accountDesc"
+                  value={formData.accountDesc}
+                  onChange={handleChange}
+                  placeholder="Account Info"
+                />
+              </div>
+            </div>
+            <div className="main-input">
+              <label
+                htmlFor="accountInfo"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                }}
+              >
                 <span
                   style={{
                     fontWeight: "300",
                     color: "red",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.3rem",
                   }}
                 >
-                  (Must Read Before Filling)
+                  (Must Read Before Filling) <FaStarOfLife className="Star" />
                 </span>{" "}
-                <img src={iconI} width={20} style={{
-                  cursor:'pointer',
-                }} alt="" />
+                <img
+                  src={iconI}
+                  width={20}
+                  style={{
+                    cursor: "pointer",
+                  }}
+                  alt=""
+                />
               </label>
               <div className="input">
                 <textarea
@@ -200,7 +228,9 @@ function DealDone() {
               </div>
             </div>
             <div className="main-input">
-              <label htmlFor="accountPic">Account Pic</label>
+              <label htmlFor="accountPic">
+                Account Pic <FaStarOfLife className="Star" />
+              </label>
               <br />
               <br />
               <br />
