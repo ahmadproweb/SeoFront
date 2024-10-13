@@ -11,17 +11,21 @@ function PlatformFilter({
 }) {
   return (
     <div className="buttonServices">
-      <button type="button" onClick={() => setSelectedPlatform("All Account")}>
+      <button type="button" onClick={() => setSelectedPlatform([])}>
         <span>{allAccountsCount}</span>
-        All Account
+        All Accounts
       </button>
       {platforms.map((platform) => (
-        <button key={platform} type="button" onClick={() => setSelectedPlatform(platform)}>
+        <button
+          key={platform}
+          type="button"
+          onClick={() => setSelectedPlatform([platform])} // Set as an array
+        >
           <span>{platformCounts[platform.toLowerCase()] || 0}</span>
           {platform}
         </button>
       ))}
-      <button type="button" onClick={() => setSelectedPlatform("Other Accounts")}>
+      <button type="button" onClick={() => setSelectedPlatform(["Other Accounts"])}>
         <span>{otherAccountsCount}</span>
         Other Accounts
       </button>

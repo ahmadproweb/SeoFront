@@ -6,7 +6,7 @@ function SearchForm({ search, setSearch }) {
       <input
         type="text"
         id="search-bar"
-        placeholder="Just Type and Get"
+        placeholder="Search Account Id | Type | Name | Price | Seller Email | Name "
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
