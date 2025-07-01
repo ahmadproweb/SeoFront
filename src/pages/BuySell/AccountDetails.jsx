@@ -79,40 +79,39 @@ function AccountDetails() {
           <div className="card-data-details">
             <div className="title-details">
               <h1>{detailsBuy.accountName}</h1>
-              <span>
-           
-              </span>
+              <span></span>
             </div>
             <h3>
-                <strong>Account Id:</strong>{" "}
-                 {detailsBuy.accountId}
-              </h3>
+              <strong>Account Id:</strong> {detailsBuy.accountId}
+            </h3>
             <p>{detailsBuy.accountDesc}</p>
-           
           </div>
           <div className="card-img-details">
-          <h3>
-                <strong>Page Views:</strong>{" "}
-                 {detailsBuy.PageViews}
-              </h3>
+            <h3>
+              <strong>Page Views:</strong> {detailsBuy.PageViews}
+            </h3>
             <img
               src={images[currentImageIndex]}
               alt="images"
               onClick={() => handleImageClick(images[currentImageIndex])}
             />
           </div>
-          
         </div>
         <div className="last-data-details">
-               <div>
-              <h3>
-                <strong>CreatedAt:</strong>{" "}
-                {new Date(detailsBuy.createdAt).toLocaleDateString()}
-              </h3>
-               <h3> <strong>AccountPrice</strong>{" "} {detailsBuy.accountPrice}</h3>
-               </div>
-               <h3><a href="">Chat With Seller</a></h3>
-            </div>
+          <div>
+            <h3>
+              <strong>CreatedAt:</strong>{" "}
+              {new Date(detailsBuy.createdAt).toLocaleDateString()}
+            </h3>
+            <h3>
+              {" "}
+              <strong>AccountPrice</strong> {detailsBuy.accountPrice}
+            </h3>
+          </div>
+          <h3>
+            <a href="">Chat With Seller</a>
+          </h3>
+        </div>
         <div className="btn-details">
           <div className="btn-inner">
             <h3 style={{ textTransform: "lowercase" }}>
@@ -141,7 +140,7 @@ function AccountDetails() {
         </div>
       </div>
       <div className="drop-down-image">
-        <details>
+        <details open>
           <summary>Site age</summary>
           <h1>Site age: {detailsBuy.siteAge}</h1>
           <br />
@@ -150,7 +149,7 @@ function AccountDetails() {
             alt="site age"
           />
         </details>
-        <details>
+        <details open>
           <summary>Monthly Profit</summary>
           <h1>Monthly Profit: {detailsBuy.MonthlyProfit}</h1>
           <br />
@@ -159,7 +158,7 @@ function AccountDetails() {
             alt="monthly profit"
           />
         </details>
-        <details>
+        <details open>
           <summary>Profit Margin</summary>
           <h1>Profit Margin: {detailsBuy.ProfitMargin}</h1>
           <br />
@@ -168,7 +167,7 @@ function AccountDetails() {
             alt="profit margin"
           />
         </details>
-        <details>
+        <details open>
           <summary>Monetization Enabled</summary>
           <h1>Profit Margin: {detailsBuy.monetizationEnabled}</h1>
           <br />
@@ -177,7 +176,7 @@ function AccountDetails() {
             alt="profit margin"
           />
         </details>
-        <details>
+        <details open>
           <summary>Social Media</summary>
           {/* <h1>Profit Margin: {detailsBuy.ProfitMargin}</h1> */}
           <br />
@@ -186,7 +185,7 @@ function AccountDetails() {
             alt="profit margin"
           />
         </details>
-        <details>
+        <details open>
           <summary>Google Analytics</summary>
           {/* <h1>Profit Margin: {detailsBuy.ProfitMargin}</h1> */}
           <br />

@@ -1,5 +1,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
 
 .servicesAll{
   padding-bottom: 12rem;
@@ -17,8 +21,11 @@
   gap: 2rem;
   
   }
-  .loading h3 {
-    font-size: 3rem;
+  .loadingInam{
+    font-weight: 600;
+    font-size: 5rem;
+    position: relative;
+    left: 26%;
   }
 .totalAccount{
   /* text-align: center; */
@@ -165,23 +172,31 @@ display: none !important;
 
 .main-container{
   display: flex;
-  gap: 0rem;
+  gap: 2rem;
   width: 100%;
   margin-top: 3rem;
   position: relative;
+}
+.main-container > hr{
+  position: relative;
+  opacity: 0.7;
+
+  right: 5rem;
 }
 .left-navbar{
   display:flex ;
   flex-direction: column;
   gap: 2rem;
   padding-inline: 5rem;
+  width: 28rem;
 }
 .left-navbar button{
   background-color: green;
   border-radius: 1rem;
   padding: 1rem;
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
+  width: 14rem;
   cursor: pointer;
 }
 .categories{
@@ -190,7 +205,7 @@ flex-direction: column;
 gap: 1rem;
 }
 .categories h1{
-  font-size: 2.5rem;
+  font-size: 2.3rem;
   text-transform: capitalize;
   font-weight: 500;
   color: black;
@@ -203,57 +218,9 @@ gap: 1rem;
   align-items: center;
   gap: 0.5rem;
 }
-.categories  input[type="range"] {
-  -webkit-appearance: none; /* Remove default styling in WebKit browsers */
-  width: 100%; /* Make it full width */
-  height: 8px; /* Set height */
-  background: transparent; /* Remove default background */
-}
 
-.categories  input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none; /* Remove default thumb style */
-  appearance: none; /* For other browsers */
-  width: 20px; /* Thumb width */
-  height: 20px; /* Thumb height */
-  border-radius: 50%; /* Round thumb */
-  background: green; /* Thumb color */
-  cursor: pointer; /* Change cursor */
-}
 
-.categories  input[type="range"]::-moz-range-thumb {
-  width: 20px; /* Thumb width */
-  height: 20px; /* Thumb height */
-  border-radius: 50%; /* Round thumb */
-  background: green; /* Thumb color */
-  cursor: pointer; /* Change cursor */
-}
 
-.categories  input[type="range"]::-ms-thumb {
-  width: 20px; /* Thumb width */
-  height: 20px; /* Thumb height */
-  border-radius: 50%; /* Round thumb */
-  background: green; /* Thumb color */
-  cursor: pointer; /* Change cursor */
-}
-
-.categories  input[type="range"]::-webkit-slider-runnable-track {
-  height: 8px; /* Track height */
-  background: green; /* Track color */
-  border-radius: 5px; /* Round track */
-}
-
-.categories  input[type="range"]::-moz-range-track {
-  height: 8px; /* Track height */
-  background: green; /* Track color */
-  border-radius: 5px; /* Round track */
-}
-
-.categories  input[type="range"]::-ms-track {
-  height: 8px; /* Track height */
-  background: transparent; /* Make it transparent */
-  border-color: transparent; /* Remove border */
-  color: green; /* Track color */
-}
 
 .main-card{
   display: flex;
@@ -271,6 +238,14 @@ gap: 1rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 1rem;
+  padding: 1rem;
+  cursor: pointer;
+  transition: 100ms ease-in-out;
+}
+.card-outside:hover{
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .card-inner{
   display: flex;
@@ -288,7 +263,9 @@ gap: 1rem;
 }
 .card-data {
   display: flex;
-  flex-direction: column;gap:0.61rem;
+  flex-direction: column;
+  gap:0.61rem;
+  justify-content: space-around;
   width: 100%;
 }
 .title{
@@ -298,17 +275,13 @@ gap: 1rem;
   flex-wrap: wrap;
 }
 .title h1{
-  font-size: 2.5rem;
+  font-size: 3rem;
   text-transform: capitalize;
 }
-.title span{
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
 .title h2{
-  font-size: 1.8rem;
+  font-size: 2.5rem;
 }
+
 .title button{
   font-size: 1.3rem;
   text-transform: capitalize;
@@ -318,7 +291,20 @@ gap: 1rem;
   cursor: pointer;
   height: 2.5rem;
 }
-.card-data p{
+.title-data{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 1rem;
+}
+.title-data h4{
+  font-weight: 500 !important;
+  text-transform: capitalize;
+  font-size: 2rem;
+}
+
+.card-outside p{
   font-size: 1.6rem;
   text-transform: capitalize;
   font-weight: 400;
@@ -329,10 +315,10 @@ gap: 1rem;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 1rem;
+  justify-content: space-evenly;
+  row-gap: 1rem;
 }
-.last-data :is(h3 , a ,button){
+.last-data :is( h3, a ,button){
   font-size: 1.7rem;
   text-transform: capitalize;
   font-weight: 400;
@@ -345,23 +331,35 @@ gap: 1rem;
   height: 2.5rem;
 }
 hr{
-  margin-top: 2rem;
   opacity: 0.7;
 }
-@media (width < 1053px) {
-  .main-container{
-    gap: 2rem;
+@media (width < 1238px) {
+  .main-container > hr{
+    right: 1rem;
   }
   .left-navbar{
-    gap: 1.5rem;
-    padding-inline: 1rem 0rem;
+    padding-inline: 5rem 0rem;
+    width: 26rem !important;
   }
-  .card-outside{
-    gap: 0.5rem;
+}
+@media (width < 1135px) {
+  .main-card{
+    padding-right: 1rem;
+    width: clamp(10rem , 75% , 110rem);
   }
-  .card-outside hr{margin-top: 1rem;}
+  .main-container > hr{
+    right: 0rem;
+    left:0.5rem
+  }
+  .left-navbar{
+    width: 30rem !important ;
+    padding-inline: 5rem 0rem;
+  }
 }
 @media (width < 992px) {
+  .main-container > hr{
+    display: none;
+  }
   .buttonServices{
     margin-top: 3rem;
     width: calc(100% - 2rem);
@@ -380,8 +378,8 @@ hr{
   .hamburger1{
     display: block;
     position: absolute;
-    left: 1rem;
-    top: 0;
+    left: 3rem;
+    top: 1rem;
   }
   .backdrop.visible {
     display: block; 
@@ -396,9 +394,9 @@ hr{
     background-color: white;
     top: 0;
     left: 0;
-    padding-inline: 1rem;
-    padding-top: 2rem;
-    width: 17rem; 
+    padding-inline: 3rem;
+    padding-block: 3rem 5rem;
+    width: 25rem !important; 
     transition: transform 0.3s ease; 
     transform: translateX(-100%); 
     z-index: 10; 
@@ -412,12 +410,26 @@ hr{
     transform: translateX(0); 
   }
   .main-card{
-    padding-inline: 2rem;
+    padding-inline: 5rem;
     width: 100%;
-    margin-top: 4.5rem;
+    margin-top: 6rem;
+  }
+  .left-navbar button{
+    margin-top: 2rem;
+  }
+}
+@media (width < 800px) {
+  .main-card{
+    padding-inline: 3rem;
+  }
+  .title-data h4{
+    font-size: 1.5rem;
   }
 }
 @media (width < 650px) {
+  .main-card{
+    padding-inline: 2rem;
+  }
   .buttonServices button{
     padding: 0.2rem 1rem;
     font-size: 1.2rem;
@@ -466,9 +478,7 @@ hr{
   }
 }
 @media (width < 500px) {
-  
- .sell1 a{
-
+ .sell1 > a{
   height: 3rem;
   width: 15rem;
   padding: 0.5rem 1.5rem 0.5rem 1.5rem;
@@ -478,11 +488,18 @@ hr{
   left: 50%;
   transform: translate( -50%);
 }
+.hamburger1{
+  left: 2rem;
+}
+.left-navbar {
+  padding-inline: 2rem;
+  width: 20rem !important; 
+}
 }
 @media (width < 416px) {
   .main-card{
     padding-inline: 0.7rem;
-    margin-top: 4rem;
+    margin-top: 5rem;
   }
   .buttonServices{
     margin-top: 3rem;

@@ -417,8 +417,10 @@ function BuySell() {
 
           <button onClick={clearFilters}>Clear Filters</button>
         </div>
+        <hr />
         {loading ? (
-          <div className="loader"><h3>Loading...</h3></div>
+          <div className="loadingInam">Loading...</div>
+          
         ) : (
           <AccountList services={filteredServices} />
         )}

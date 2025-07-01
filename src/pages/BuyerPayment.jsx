@@ -59,9 +59,9 @@ const PaymentForm = () => {
         const response = await fetch(`${VITE_BASE_URL}/buySellList/all`);
         const data = await response.json();
         setAccounts(data);
-        // console.log("Fetched Accounts:", data);
+        console.log("Fetched Accounts:", data);
       } catch (error) {
-        // console.error("Error fetching accounts:", error);
+        console.error("Error fetching accounts:", error);
         toast.error("Error fetching accounts");
       }
     };
@@ -78,7 +78,7 @@ const PaymentForm = () => {
         const data = await response.json();
         setConversionRate(data.rates.USD);
       } catch (error) {
-        // console.error("Error fetching conversion rate:", error);
+        console.error("Error fetching conversion rate:", error);
         toast.error("Error fetching conversion rate");
       }
     };
@@ -111,7 +111,7 @@ const PaymentForm = () => {
         setAccountPrice(selectedAccount.accountPrice);
         setAccountUrl(selectedAccount.accountUrl);
         setSellerEmail(selectedAccount.sellerDetails.SellerEmail);
-        // console.log("Selected Account:", selectedAccount);
+        console.log("Selected Account:", selectedAccount);
       } else {
         setAccountType("");
         setAccountPrice("");
@@ -129,7 +129,7 @@ const PaymentForm = () => {
         );
         setCountries(countryOptions);
       } catch (error) {
-        // console.error("Error fetching countries:", error);
+        console.error("Error fetching countries:", error);
         toast.error("Error fetching countries");
       }
     };
@@ -157,7 +157,7 @@ const PaymentForm = () => {
       const totalPriceUSD = totalPricePKR * conversionRate;
       const totalPriceCents = Math.round(totalPriceUSD * 100);
 
-      // console.log("Total Price in Cents:", totalPriceCents);
+      console.log("Total Price in Cents:", totalPriceCents);
 
       const cardElement = elements.getElement(CardNumberElement);
 
