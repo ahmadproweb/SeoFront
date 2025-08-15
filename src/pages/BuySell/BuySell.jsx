@@ -26,14 +26,14 @@ function BuySell() {
   const [monetizationEnabled, setMonetizationEnabled] = useState({
     yes: false,
     no: false,
-  }); 
+  });
   const handleMonetizationChange = (value) => {
     setMonetizationEnabled((prev) => ({
       yes: value === "yes",
       no: value === "no",
     }));
   };
-  
+
   const toggleNavbar = () => {
     setNavbarVisible((prev) => !prev);
   };
@@ -127,13 +127,13 @@ function BuySell() {
       "tech & it",
       "theme & plugins",
     ];
-  
+
     const matchesPlatformFilter =
       selectedPlatforms.length === 0 ||
       (selectedPlatforms.includes("Other Accounts")
         ? !excludedPlatforms.includes(platformLowerCase) // Exclude predefined platforms for "Other Accounts"
         : selectedPlatforms.includes(platformLowerCase));
-  
+
     const nameMatches =
       selectedPlatforms.length === 0 ||
       selectedPlatforms.some((platform) => {
@@ -141,20 +141,20 @@ function BuySell() {
           .toLowerCase()
           .includes(platform.toLowerCase());
       });
-  
+
     const priceRangeMatches =
       selectedPriceRanges.length === 0 ||
       selectedPriceRanges.some((range) => {
         const [min, max] = range.split(" - ").map(Number);
         return service.accountPrice >= min && service.accountPrice <= max;
       });
-  
+
     const siteAgeMatches =
       selectedSiteAges.length === 0 ||
       selectedSiteAges.some((ageRange) =>
         ageMatches(service.siteAge, ageRange)
       );
-  
+
     const monthlyProfitMatches =
       selectedMonthlyProfits.length === 0 ||
       selectedMonthlyProfits.some((profitRange) => {
@@ -164,7 +164,7 @@ function BuySell() {
           Number(service.MonthlyProfit) <= max
         );
       });
-  
+
     const profitMarginMatches =
       selectedProfitMargins.length === 0 ||
       selectedProfitMargins.some((marginRange) => {
@@ -176,31 +176,37 @@ function BuySell() {
           Number(service.ProfitMargin) <= max
         );
       });
-  
+
     const matchesSearch =
       search === "" ||
       service.accountName.toLowerCase().includes(search.toLowerCase()) ||
       service.accountType.toLowerCase().includes(search.toLowerCase()) ||
-      service.sellerDetails.SellerEmail.toLowerCase().includes(search.toLowerCase()) ||
-      service.sellerDetails.SellerFullName.toLowerCase().includes(search.toLowerCase()) ||
+      service.sellerDetails.SellerEmail.toLowerCase().includes(
+        search.toLowerCase()
+      ) ||
+      service.sellerDetails.SellerFullName.toLowerCase().includes(
+        search.toLowerCase()
+      ) ||
       service.accountPrice.toString().includes(search) ||
       service.accountId.toString().includes(search);
-      const monetizationMatches =
-      !monetizationEnabled.yes && !monetizationEnabled.no ||
+    const monetizationMatches =
+      (!monetizationEnabled.yes && !monetizationEnabled.no) ||
       (monetizationEnabled.yes && service.monetizationEnabled === "Yes") ||
       (monetizationEnabled.no && service.monetizationEnabled === "No");
 
+    const pageViewMatches =
+      selectedPageViews.length === 0 ||
+      selectedPageViews.some((range) => {
+        const [min, max] = range.split(" - ").map(Number);
+        console.log(
+          `Checking Page Views: ${service.PageViews} against range: ${range}`
+        );
+        return service.PageViews >= min && service.PageViews <= max;
+      });
 
-      const pageViewMatches =
-    selectedPageViews.length === 0 ||
-    selectedPageViews.some((range) => {
-      const [min, max] = range.split(" - ").map(Number);
-      console.log(`Checking Page Views: ${service.PageViews} against range: ${range}`);
-      return service.PageViews >= min && service.PageViews <= max;
-    });
-
-  console.log(`Page View Match for ${service.accountName}: ${pageViewMatches}`);
-    
+    console.log(
+      `Page View Match for ${service.accountName}: ${pageViewMatches}`
+    );
 
     return (
       (matchesPlatformFilter || nameMatches) &&
@@ -210,10 +216,10 @@ function BuySell() {
       profitMarginMatches &&
       matchesSearch &&
       monetizationMatches &&
-      pageViewMatches 
+      pageViewMatches
     );
   });
-  
+
   const handlePageViewChange = (range) => {
     setSelectedPageViews((prev) =>
       prev.includes(range) ? prev.filter((r) => r !== range) : [...prev, range]
@@ -260,7 +266,7 @@ function BuySell() {
     setSelectedMonthlyProfits([]);
     setSelectedProfitMargins([]);
     setSelectedPlatforms([]);
-    setMonetizationEnabled([])
+    setMonetizationEnabled([]);
   };
 
   return (
@@ -344,7 +350,7 @@ function BuySell() {
               "5000 - 10000",
             ].map((range) => (
               <label key={range}>
-                {range} 
+                {range}
                 <input
                   type="checkbox"
                   checked={selectedMonthlyProfits.includes(range)}
@@ -375,25 +381,25 @@ function BuySell() {
             ))}
           </div>
 
-         <div className="categories">
-          <h1>Page Views</h1>
-          {[
-            "0 - 100",
-            "100 - 500",
-            "500 - 1000",
-            "1000 - 5000",
-            "5000 - 10000",
-          ].map((range) => (
-            <label key={range}>
-              {range}
-              <input
-                type="checkbox"
-                checked={selectedPageViews.includes(range)}
-                onChange={() => handlePageViewChange(range)}
-              />
-            </label>
-          ))}
-        </div>
+          <div className="categories">
+            <h1>Page Views</h1>
+            {[
+              "0 - 100",
+              "100 - 500",
+              "500 - 1000",
+              "1000 - 5000",
+              "5000 - 10000",
+            ].map((range) => (
+              <label key={range}>
+                {range}
+                <input
+                  type="checkbox"
+                  checked={selectedPageViews.includes(range)}
+                  onChange={() => handlePageViewChange(range)}
+                />
+              </label>
+            ))}
+          </div>
 
           <div className="categories">
             <h1>Monetization Enabled</h1>
@@ -420,7 +426,6 @@ function BuySell() {
         <hr />
         {loading ? (
           <div className="loadingInam">Loading...</div>
-          
         ) : (
           <AccountList services={filteredServices} />
         )}

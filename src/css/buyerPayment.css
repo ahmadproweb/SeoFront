@@ -258,3 +258,117 @@
     }
 }
 
+.payment-method-selection {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.payment-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f8f9fa;
+  padding: 8px 15px;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.payment-option input {
+  accent-color: #28a745; /* Green selection color */
+  cursor: pointer;
+}
+
+.payment-option:hover {
+  background: #eef4ff;
+}
+
+.payment-option.selected {
+  border-color: #28a745;
+  background: #e6f7ed;
+}
+
+.method-label {
+  font-weight: 500;
+  font-size: 14px;
+}
+.payment-details {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0px 3px 8px rgba(0,0,0,0.05);
+  margin-top: 15px;
+  max-width: 400px;
+}
+
+.payment-details h4 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.qr-image {
+  display: block;
+  margin: 0 auto 15px auto;
+  border-radius: 8px;
+  padding: 5px;
+  height: 100%;
+  width: 100%;
+}
+
+.form-group {
+  margin-bottom: 12px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.input-file,
+.input-text {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.input-file {
+  background: #f9f9f9;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn-jazzcash {
+  background: #f7941d;
+  color: white;
+}
+
+.btn-jazzcash:hover {
+  background: #db7d09;
+}
+
+.btn-easypaisa {
+  background: #1fab54;
+  color: white;
+}
+
+.btn-easypaisa:hover {
+  background: #178a43;
+}
